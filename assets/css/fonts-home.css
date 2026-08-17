@@ -1,0 +1,58 @@
+/* TET Consumer Homepage — self-hosted webfonts (Latin subset only).
+   Originally shipped as 35 @font-face rules across 5 language subsets
+   (cyrillic, cyrillic-ext, greek, vietnamese, latin, latin-ext) x every
+   named weight, several as full multi-language variable TTFs — ~4.1MB.
+   Site content is Dutch/French/English only, so non-Latin subsets were
+   dropped and the variable-weight duplicates (same file declared under
+   five different font-weight labels) were deduplicated to one file per
+   family/style. Result: ~980KB, cacheable, parallel-loadable. */
+
+@font-face {
+  font-family: 'Libre Franklin';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('../fonts/home/LibreFranklin-Variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Libre Franklin';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/home/LibreFranklin-Variable-Italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('../fonts/home/PlayfairDisplay-Variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('../fonts/home/PlayfairDisplay-Variable-Italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('../fonts/home/EBGaramond-Variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: italic;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('../fonts/home/EBGaramond-Variable-Italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/home/Caveat-Variable.woff2') format('woff2');
+}

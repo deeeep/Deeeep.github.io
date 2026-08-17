@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110" role="img" aria-labelledby="title desc">
+  <title id="title">Integrative Thinking</title>
+  <desc id="desc">TET talent identity mark</desc>
+  <defs>
+    <linearGradient id="surface" gradientUnits="userSpaceOnUse" x1="12" y1="4" x2="97" y2="110">
+      <stop offset="0" stop-color="#6e9897"></stop>
+      <stop offset="0.48" stop-color="#246361"></stop>
+      <stop offset="1" stop-color="#1b4b4a"></stop>
+    </linearGradient>
+    <radialGradient id="light" gradientUnits="userSpaceOnUse" cx="27" cy="15" r="64">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".36"></stop>
+      <stop offset=".7" stop-color="#ffffff" stop-opacity="0"></stop>
+    </radialGradient>
+    <linearGradient id="warm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" stop-color="#fff0b8"></stop>
+      <stop offset=".48" stop-color="#efc56f"></stop>
+      <stop offset="1" stop-color="#dda136"></stop>
+    </linearGradient>
+    <linearGradient id="warmLine" gradientUnits="userSpaceOnUse" x1="34" y1="41" x2="82" y2="66.5">
+      <stop offset="0" stop-color="#fff0b8"></stop>
+      <stop offset=".48" stop-color="#efc56f"></stop>
+      <stop offset="1" stop-color="#dda136"></stop>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.6" flood-color="#160d08" flood-opacity=".26"></feDropShadow>
+    </filter>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2" result="b"></feGaussianBlur>
+      <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+    </filter>
+    <clipPath id="clip"><path d="M 28 2 H 82 Q 108 2 108 28 V 54 Q 108 108 54 108 H 28 Q 2 108 2 82 V 28 Q 2 2 28 2 Z"></path></clipPath>
+  </defs>
+  <path d="M 28 2 H 82 Q 108 2 108 28 V 54 Q 108 108 54 108 H 28 Q 2 108 2 82 V 28 Q 2 2 28 2 Z" fill="url(#surface)"></path>
+  <path d="M 28 2 H 82 Q 108 2 108 28 V 54 Q 108 108 54 108 H 28 Q 2 108 2 82 V 28 Q 2 2 28 2 Z" fill="url(#light)"></path>
+  <g clip-path="url(#clip)"><path d="M0 82 C25 69 76 113 114 77 L114 114 L0 114Z" fill="#000" opacity=".08"></path></g>
+  <path d="M 28 9 H 82 Q 101 9 101 28 V 54 Q 101 101 54 101 H 28 Q 9 101 9 82 V 28 Q 9 9 28 9 Z" fill="none" stroke="#fffaf0" stroke-opacity=".34" stroke-width="1"></path>
+  <g filter="url(#shadow)"><g>
+    <line x1="34" y1="41" x2="82" y2="66.5" stroke="url(#warmLine)" stroke-width="5" stroke-linecap="round" filter="url(#glow)"></line>
+    <circle cx="34" cy="41" r="5" fill="url(#warm)" filter="url(#glow)"></circle><circle cx="82" cy="66.5" r="5" fill="url(#warm)" filter="url(#glow)"></circle>
+    <g transform="rotate(-16 55 55)" stroke="#fffaf0" stroke-opacity=".78" stroke-width="1.2" stroke-linejoin="round">
+      <path d="M55 22 L81 38.3 L55 56 L29 38.3Z" fill="#fffaf0" fill-opacity=".20"></path>
+      <path d="M29 38.3 L55 56 L55 85 L29 68.6Z" fill="#fffaf0" fill-opacity=".11"></path>
+      <path d="M55 56 L81 38.3 L81 68.6 L55 85Z" fill="#fffaf0" fill-opacity=".16"></path>
+    </g>
+  </g></g>
+</svg>

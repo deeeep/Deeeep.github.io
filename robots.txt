@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /full-fables.html
+Disallow: /assets/plates/
+
+# full-fables.html also carries <meta name="robots" content="noindex, nofollow">
+# in its own <head>, and no page on this site links to it -- it is reachable
+# only by someone who already has the direct URL.
+#
+# Note for Deepak: this file only asks polite, rule-following crawlers not to
+# index the page -- it does not prevent access, and it does not stop scrapers
+# that ignore robots.txt (most content-scraping bots do ignore it). If you
+# need the fable text itself to stay non-public, the reliable options are:
+# password-protecting the page at the Cloudflare Pages level (Cloudflare
+# Access), or not publishing full-fables.html on the public site at all until
+# there's a real access-control layer in front of it.

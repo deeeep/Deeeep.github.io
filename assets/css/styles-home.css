@@ -1,0 +1,214 @@
+:root{
+  /* Paper & ink — institutional base (website, decks, one-pagers) */
+  --paper: #f6f1e6;
+  --paper-warm: #efe7d6;
+  --paper-deep: #e6dcc6;
+  --ink: #201c16;
+  --ink-soft: #45403a;
+  --ink-faint: #6f6a61;
+  --hairline: #d9cfb8;
+  --hairline-strong: #c3b799;
+
+  /* Jewel palette — drawn from the fable plates; use for accents, illustration surrounds, fable/literary contexts */
+  --jewel-indigo: #23324a;
+  --jewel-indigo-soft: #3c5170;
+  --jewel-moss: #445a37;
+  --jewel-moss-soft: #66805a;
+  --jewel-ochre: #b8862f;
+  --jewel-ochre-soft: #d7ac5c;
+  --jewel-sienna: #a04a24;
+  --jewel-sienna-soft: #c47046;
+  --jewel-plum: #5b3a52;
+  --jewel-plum-soft: #7d5878;
+  --tet-purple: #5e3a82;
+  --tet-purple-soft: #8064a8;
+  --tet-purple-tint: #f2eef7;
+  --fables-gold-tint: #faf3e3;
+
+  /* Semantic aliases */
+  --surface-page: var(--paper);
+  --surface-card: #fffdf7;
+  --surface-sunken: var(--paper-warm);
+  --surface-inverse: var(--jewel-indigo);
+
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: var(--ink-faint);
+  --text-on-inverse: var(--paper);
+
+  --accent-primary: var(--jewel-ochre);
+  --accent-primary-hover: #a3781f;
+  --accent-primary-active: #8f6a1c;
+  --accent-secondary: var(--jewel-sienna);
+  --accent-tertiary: var(--jewel-moss);
+
+  --border-default: var(--hairline);
+  --border-strong: var(--hairline-strong);
+  --border-focus: var(--jewel-indigo);
+
+  --link: var(--jewel-indigo);
+  --link-hover: var(--jewel-sienna);
+}
+
+
+
+
+
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+
+:root{
+  --font-display: "Playfair Display", "EB Garamond", Georgia, serif;
+  --font-serif: "EB Garamond", Georgia, serif;
+  --font-sans: "Libre Franklin", -apple-system, "Segoe UI", sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-body: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2.125rem;
+  --text-3xl: 2.875rem;
+  --text-4xl: 3.75rem;
+  --text-5xl: 4.75rem;
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-body: 1.6;
+  --leading-loose: 1.8;
+
+  --tracking-wide: 0.06em;
+  --tracking-wider: 0.12em;
+}
+
+:root{
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --content-max: 720px;
+  --page-max: 1200px;
+  --gutter: clamp(20px, 5vw, 64px); /* @kind spacing */
+}
+
+:root{
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-full: 999px;
+
+  --shadow-card: 0 1px 2px rgba(32,28,22,0.06), 0 8px 24px rgba(32,28,22,0.07);
+  --shadow-raised: 0 2px 4px rgba(32,28,22,0.08), 0 16px 40px rgba(32,28,22,0.10);
+  --shadow-inset-hairline: inset 0 0 0 1px var(--hairline);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1); /* @kind other */
+  --duration-fast: 140ms; /* @kind other */
+  --duration-base: 220ms; /* @kind other */
+  --duration-slow: 420ms; /* @kind other */
+}
+
+:root{
+  --paper-base: var(--paper);
+  --paper-faint: var(--paper-warm);
+  --ink-base: var(--ink);
+  --muted-ink: var(--text-secondary);
+  --muted-ink-strong: var(--text-secondary);
+  --muted-ink-strongest: var(--text-primary);
+  --muted-ink-stronger: var(--text-primary);
+  --gold-base: var(--jewel-ochre);
+  --gold-faint: var(--jewel-ochre-soft);
+  --cream-base: var(--paper);
+  --cream-faint: var(--paper-warm);
+  --cream-dim-stronger: var(--text-muted);
+  --border-hairline: var(--hairline);
+  --surface-chrome-veil: var(--surface-card);
+  --cover-bg-base: var(--jewel-indigo);
+  --radius-btn: var(--radius-sm);
+  --shadow-thumb: var(--shadow-card);
+  --accent-crow-1: var(--jewel-indigo-soft);
+  --accent-fox-2: var(--jewel-sienna);
+  --accent-bat-1: var(--jewel-plum);
+  --accent-octopus-1: var(--jewel-moss-soft);
+  --accent-horse-1: var(--jewel-sienna-soft);
+  --accent-whale-1: var(--jewel-indigo);
+  --accent-elephant-1: var(--jewel-moss);
+  --accent-chameleon-2: var(--tet-purple);
+  --font-body: var(--font-serif); /* @kind font */
+}
+
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-body);line-height:var(--leading-body)}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:var(--leading-tight);margin:0 0 var(--space-4)}
+p{margin:0 0 var(--space-4)}
+a{color:var(--link);text-decoration:underline;text-decoration-color:var(--hairline-strong);text-underline-offset:2px}
+a:hover{color:var(--link-hover);text-decoration-color:currentColor}
+img{max-width:100%;display:block}
