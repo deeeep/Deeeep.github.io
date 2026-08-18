@@ -924,7 +924,7 @@ Thank you — your application has been sent to fableambassador@deeeep.com. We�
 </footer>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script="" data-props="{&quot;formActionUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://docs.google.com/forms/d/e/1FAIpQLSfjBN39mNztVy9e0NeX2zTGKpy8JIG8w1ohatc33mNg3WxAiQ/viewform?usp=publish-editor&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Ambassador form&quot;}}">
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;formActionUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://docs.google.com/forms/u/1/d/e/1FAIpQLSfjBN39mNztVy9e0NeX2zTGKpy8JIG8w1ohatc33mNg3WxAiQ/formResponse}}">
 class Component extends DCLogic {
   state = { submitted: false, navOpen: false };
 
@@ -940,7 +940,7 @@ class Component extends DCLogic {
 
     // NOTE: placeholder Google Form target — replace formActionUrl (prop) and the
     // entry.* field names below with the real ones from your Google Form once created.
-    const rawUrl = this.props.formActionUrl || 'https://docs.google.com/forms/d/e/REPLACE_WITH_FORM_ID/formResponse';
+    const rawUrl = this.props.formActionUrl || 'https://docs.google.com/forms/u/1/d/e/1FAIpQLSfjBN39mNztVy9e0NeX2zTGKpy8JIG8w1ohatc33mNg3WxAiQ/formResponse';
     // accept a viewform link too and convert it to the POST endpoint
     const actionUrl = rawUrl.split('?')[0].replace(/\/(viewform|formResponse)$/, '') + '/formResponse';
 
