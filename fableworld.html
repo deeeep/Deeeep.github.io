@@ -625,11 +625,137 @@ nav{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;align-items:cent
   .talent-node.horse{top:79%!important}
 }
 
+
+/* v17 — simplified Ambassador form */
+.ambassador-form fieldset,
+.ambassador-choices,
+.choice,
+.field-help{
+  display:none!important;
+}
+.ambassador-submit:disabled{
+  opacity:.55;
+  cursor:wait;
+}
+.form-status{
+  min-height:1.4em;
+}
+
+
+/* v18 — quiet Mailchimp closing invitation */
+.newsletter{
+  position:relative;
+  overflow:hidden;
+  background:#111516;
+  color:#eee7d9;
+  padding:clamp(95px,11vw,155px) 0 clamp(80px,9vw,125px);
+  border-top:1px solid rgba(238,231,217,.08);
+}
+.newsletter-glow{
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 30%,rgba(166,110,55,.14),transparent 30%),
+    radial-gradient(circle at 78% 52%,rgba(89,67,112,.16),transparent 34%);
+}
+.newsletter-inner{
+  position:relative; z-index:2;
+  width:min(980px,88vw); margin:0 auto;
+}
+.newsletter-kicker{
+  margin-bottom:16px; color:#b69668;
+  text-transform:uppercase; letter-spacing:.18em;
+  font:700 .67rem/1 sans-serif;
+}
+.newsletter h2{
+  margin:0; max-width:850px;
+  font:500 clamp(3rem,6vw,6rem)/.97 var(--serif);
+  letter-spacing:-.045em;
+}
+.newsletter-inner>p{
+  max-width:700px; margin:28px 0 46px;
+  color:rgba(238,231,217,.70);
+  font:400 clamp(1.08rem,1.7vw,1.3rem)/1.58 var(--serif);
+}
+.newsletter-form{
+  display:grid; grid-template-columns:minmax(0,1fr) auto;
+  gap:16px; align-items:end; max-width:780px;
+}
+.newsletter-field{display:block}
+.newsletter-field>span{
+  display:block; margin-bottom:10px;
+  color:rgba(238,231,217,.58);
+  text-transform:uppercase; letter-spacing:.12em;
+  font:700 .65rem/1 sans-serif;
+}
+.newsletter-field input{
+  width:100%; box-sizing:border-box;
+  border:0; border-bottom:1px solid rgba(238,231,217,.34);
+  background:transparent; padding:14px 2px 13px;
+  color:#f2eadc; outline:none; border-radius:0;
+  font:400 1.1rem/1.35 var(--serif);
+}
+.newsletter-field input::placeholder{color:rgba(238,231,217,.28)}
+.newsletter-field input:focus{border-color:#c69b5d}
+#mc-embedded-subscribe{
+  border:1px solid rgba(238,231,217,.34);
+  background:rgba(238,231,217,.04); color:#f2eadc;
+  padding:15px 20px 14px; min-width:145px; cursor:pointer;
+  font:600 .82rem/1 sans-serif; letter-spacing:.04em;
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
+  transition:background .25s ease,border-color .25s ease,transform .25s ease;
+}
+#mc-embedded-subscribe:hover{
+  background:rgba(238,231,217,.10);
+  border-color:#c69b5d; transform:translateY(-2px);
+}
+.newsletter-note{
+  margin:18px 0 0!important;
+  color:rgba(238,231,217,.38)!important;
+  font:400 .78rem/1.45 sans-serif!important;
+}
+.mc-honeypot{
+  position:absolute!important; left:-5000px!important;
+}
+@media(max-width:650px){
+  .newsletter-form{grid-template-columns:1fr}
+  #mc-embedded-subscribe{width:100%}
+}
+
+
+/* v19 — publishing + audience CTAs */
+.fable-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px 28px;
+  align-items:center;
+  margin-top:30px;
+}
+.fable-actions .read-fable,
+.fable-actions .print-fable-link{
+  display:inline-block;
+  margin-top:0;
+  padding-bottom:5px;
+  font-size:.72rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+.fable-actions .read-fable{
+  border-bottom:1px solid #d3ba7f;
+}
+.fable-actions .print-fable-link{
+  border-bottom:1px solid rgba(255,255,255,.34);
+  color:rgba(255,255,255,.72);
+}
+.fable-actions .print-fable-link:hover{
+  color:#fff;
+  border-color:#d3ba7f;
+}
+
 </style>
 </head>
 <body>
 <div class="grain"></div>
-<nav><a class="brand" href="#top"><b class="tet-mark" aria-label="TƎT"><span>T</span><span class="flip-e">E</span><span>T</span></b><span class="brand-name"> · Talents for Exceptional Times</span></a><div class="navhint">wander · recognise · follow the threads</div></nav>
+<nav><a class="brand" href="#top"><b class="tet-mark" aria-label="TƎT"><span>T</span><span class="flip-e">E</span><span>T</span></b><span class="brand-name"> · Talents for Exceptional Times</span></a><div class="navhint"></div></nav>
 <main id="top">
 <section class="hero">
   <div class="hero-copy">
@@ -777,9 +903,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;align-items:cent
 <section class="audiences">
   <div class="audiences-top"><h2>The same constellation.<br>Different places to meet it.</h2><p>TET does not sort people. It gives different conversations a shared language for noticing what may be happening between a mind and its environment.</p></div>
   <div class="paths">
-    <a class="path" href="#"><div class="num">I</div><h3>In myself</h3><p>When being capable and feeling mismatched somehow coexist. Explore without first deciding what category you belong to.</p><span>follow what feels familiar →</span></a>
-    <a class="path" href="#"><div class="num">II</div><h3>In a team</h3><p>When useful cognition is hiding inside behaviour the role, process or culture has learned to call difficult.</p><span>look for hidden contribution →</span></a>
-    <a class="path" href="#"><div class="num">III</div><h3>With a young person</h3><p>Before difficulty hardens into identity, stay curious about what their mind may be trying to do.</p><span>observe before you label →</span></a>
+    <a class="path" href="#constellation"><div class="num">I</div><h3>In myself</h3><p>When being capable and feeling mismatched somehow coexist. Explore without first deciding what category you belong to.</p><span>Start with the Fables →</span></a>
+    <a class="path" href="https://doodle.com/bp/deepakmehta/professional-meeting" target="_blank" rel="noopener"><div class="num">II</div><h3>In a team</h3><p>When useful cognition is hiding inside behaviour the role, process or culture has learned to call difficult.</p><span>Book a workshop →</span></a>
+    <a class="path" href="https://doodle.com/bp/deepakmehta/professional-meeting" target="_blank" rel="noopener"><div class="num">III</div><h3>With a young person</h3><p>Before difficulty hardens into identity, stay curious about what their mind may be trying to do.</p><span>Sponsor our youth outreach · Book a call →</span></a>
   </div>
 </section>
 
@@ -799,7 +925,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;align-items:cent
     <div class="overlay-content">
       <div class="talent" id="talentLabel"></div><h3 id="overlayTitle"></h3><div class="desc" id="desc"></div>
       <div class="triptych"><div><b>Friction</b><span id="frictionText"></span></div><div><b>Capability</b><span id="capabilityText"></span></div><div><b>Conditions</b><span id="conditionsText"></span></div></div>
-      <a class="read-fable" href="#" id="readFable">enter the full fable →</a>
+      <div class="fable-actions">
+        <a class="read-fable" href="fable-chameleon.html" id="readFable">enter the full fable →</a>
+        <a class="print-fable-link" href="#companions" id="printFableLink">Fable Book coming soon in print →</a>
+      </div>
     </div>
   </section>
   <section class="relations"><h4>Follow another thread</h4><div class="relation-row" id="relations"></div></section>
@@ -828,6 +957,13 @@ function openTalent(key){
   document.getElementById('conditionsText').textContent=d.conditions;
   document.getElementById('overlayLogo').src=d.image;
   document.getElementById('overlayLogo').alt=d.animal+' fable emblem';
+  const readFable=document.getElementById('readFable');
+  if(key==='chameleon'){
+    readFable.style.display='inline-block';
+    readFable.href='fable-chameleon.html';
+  }else{
+    readFable.style.display='none';
+  }
   const overlayBg=document.getElementById('overlayBg');
   overlayBg.style.backgroundImage=`url(${d.bg})`;
   overlayBg.style.backgroundSize='cover';
@@ -929,36 +1065,48 @@ window.addEventListener('resize',()=>{if(activeConstellation) showConstellation(
       </p>
     </div>
 
-    <form class="ambassador-form" id="ambassadorForm">
-      <label>
-        <span>Your name</span>
-        <input type="text" name="name" autocomplete="name" placeholder="How should I address you?">
-      </label>
-      <label>
-        <span>Email</span>
-        <input type="email" name="email" autocomplete="email" placeholder="you@example.com">
-      </label>
+    
+<form class="ambassador-form" id="ambassadorForm"
+      action="https://docs.google.com/forms/u/1/d/e/1FAIpQLSfjBN39mNztVy9e0NeX2zTGKpy8JIG8w1ohatc33mNg3WxAiQ/formResponse"
+      method="POST"
+      target="ambassadorSubmitFrame">
+  <label>
+    <span>Your name</span>
+    <input type="text"
+           name="entry.1162102303"
+           autocomplete="name"
+           placeholder="How should I address you?"
+           required>
+  </label>
 
-      <fieldset>
-        <legend>How might you help the fables travel?</legend>
-        <p class="field-help">Choose what feels realistic. You can select more than one.</p>
-        <div class="ambassador-choices">
-          <label class="choice"><input type="checkbox" name="help" value="feedback"><span>Read early and give thoughtful feedback</span></label>
-          <label class="choice"><input type="checkbox" name="help" value="conversation"><span>Start a conversation around the fables</span></label>
-          <label class="choice"><input type="checkbox" name="help" value="introductions"><span>Introduce TƎT to people or organisations who should see it</span></label>
-          <label class="choice"><input type="checkbox" name="help" value="reading"><span>Host or suggest a small reading / discussion</span></label>
-          <label class="choice"><input type="checkbox" name="help" value="other"><span>Something else</span></label>
-        </div>
-      </fieldset>
+  <label>
+    <span>Email</span>
+    <input type="email"
+           name="entry.2001919023"
+           autocomplete="email"
+           placeholder="you@example.com"
+           required>
+  </label>
 
-      <label>
-        <span>Tell me a little more</span>
-        <textarea name="message" rows="5" placeholder="What caught your attention, who do you imagine sharing it with, or what could you realistically contribute?"></textarea>
-      </label>
+  <label>
+    <span>Why would you like an Ambassador Edition?</span>
+    <textarea name="entry.402786780"
+              rows="7"
+              placeholder="What caught your attention, who do you imagine sharing the fables with, or how might you help the stories travel?"
+              required></textarea>
+  </label>
 
-      <button type="submit" class="ambassador-submit">Ask for Ambassador Edition access <span>→</span></button>
-      <p class="form-status" id="ambassadorStatus" aria-live="polite"></p>
-    </form>
+  <button type="submit" class="ambassador-submit">
+    Ask for Ambassador Edition access <span>→</span>
+  </button>
+
+  <p class="form-status" id="ambassadorStatus" aria-live="polite"></p>
+</form>
+<iframe name="ambassadorSubmitFrame"
+        id="ambassadorSubmitFrame"
+        title="Ambassador form submission"
+        style="display:none"></iframe>
+
   </div>
 </div>
 
@@ -985,10 +1133,7 @@ window.addEventListener('resize',()=>{if(activeConstellation) showConstellation(
   openers.forEach(el => el.addEventListener('click', open));
   closers.forEach(el => el.addEventListener('click', close));
   document.addEventListener('keydown', e => { if(e.key === 'Escape' && modal.classList.contains('open')) close(); });
-  form?.addEventListener('submit', e => {
-    e.preventDefault();
-    status.textContent = 'Prototype only — connect this form to your preferred form/email service when you publish.';
-  });
+  
 })();
 </script>
 
@@ -1349,6 +1494,96 @@ window.addEventListener('resize',()=>{if(activeConstellation) showConstellation(
   });
 
   load();
+})();
+</script>
+
+
+<script>
+(() => {
+  const form = document.getElementById('ambassadorForm');
+  const frame = document.getElementById('ambassadorSubmitFrame');
+  const status = document.getElementById('ambassadorStatus');
+  const submit = form?.querySelector('.ambassador-submit');
+  if (!form || !frame || !status || !submit) return;
+
+  let submitted = false;
+
+  form.addEventListener('submit', () => {
+    submitted = true;
+    submit.disabled = true;
+    submit.setAttribute('aria-busy', 'true');
+    status.textContent = 'Sending your request…';
+  });
+
+  frame.addEventListener('load', () => {
+    if (!submitted) return;
+    status.textContent = 'Thank you — your Ambassador Edition request has been sent.';
+    submit.disabled = false;
+    submit.removeAttribute('aria-busy');
+    submitted = false;
+    form.reset();
+  });
+})();
+</script>
+
+
+<section class="newsletter" id="subscribe" aria-labelledby="newsletter-title">
+  <div class="newsletter-glow" aria-hidden="true"></div>
+  <div class="newsletter-inner">
+    <div class="newsletter-kicker">Stay close to the constellation</div>
+    <h2 id="newsletter-title">New stories, journals and ways to explore.</h2>
+    <p>
+      TƎT is still growing. Subscribe to hear when the books come online, where you can test the Discovery Game,
+      speak at or attend our TƎT Talks, and stay close as new stories, tools and gatherings emerge.
+    </p>
+
+    <form action="https://twitter.us6.list-manage.com/subscribe/post?u=5bf5641e99686b66085f92571&amp;id=d434c7e248&amp;f_id=002722e2f0"
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          class="newsletter-form"
+          target="_blank">
+      <label class="newsletter-field" for="mce-EMAIL">
+        <span>Email address</span>
+        <input type="email"
+               name="EMAIL"
+               id="mce-EMAIL"
+               autocomplete="email"
+               placeholder="you@example.com"
+               required>
+      </label>
+
+      <input type="hidden" name="tags" value="4048730">
+
+      <div aria-hidden="true" class="mc-honeypot">
+        <input type="text"
+               name="b_5bf5641e99686b66085f92571_d434c7e248"
+               tabindex="-1"
+               value="">
+      </div>
+
+      <button type="submit" name="subscribe" id="mc-embedded-subscribe">
+        Subscribe <span>→</span>
+      </button>
+    </form>
+
+    <p class="newsletter-note">Occasional updates only. No profile, no quiz, no funnel.</p>
+  </div>
+</section>
+
+
+<script>
+(() => {
+  const printLink = document.getElementById('printFableLink');
+  const overlay = document.getElementById('overlay');
+  printLink?.addEventListener('click', e => {
+    e.preventDefault();
+    overlay?.classList.remove('open');
+    document.body.style.overflow = '';
+    requestAnimationFrame(() => {
+      document.getElementById('companions')?.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
 })();
 </script>
 
