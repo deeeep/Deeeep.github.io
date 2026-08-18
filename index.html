@@ -16,8 +16,9 @@ window.__resources = {
 <body>
 <x-dc>
 <!-- @template name="TET Consumer Homepage" description="Consumer-track homepage: T Ǝ T scroll-flip hero, two-ways-in split, animated talent constellation, consolidated fable/workshop/book block — per the Consumer Site Design System Brief" -->
-<helmet><style>
-body{margin:0;background:#faf9f5}
+<helmet><style></style>
+<style>
+body{margin:0;background:#faf9f5;padding-bottom:env(safe-area-inset-bottom)}
 a{color:#5e3a82}
 a:hover{color:#1a1208}
 .talent-card{background:#fffdf7;border:1px solid #e6dcc6;border-radius:14px;box-shadow:none;appearance:none;-webkit-appearance:none;transition:background 320ms ease,border-color 320ms ease}
@@ -40,14 +41,16 @@ a:hover{color:#1a1208}
 .mode-view.active{display:block}
 .way-btn{background:none;border:none;padding:0;margin:0;cursor:pointer;text-align:left;font:inherit;display:block;width:100%;text-decoration:none;color:inherit}
 .story-card{display:flex;gap:0}
-.story-card img{width:42%;object-fit:cover;flex-shrink:0}
+.story-card img{width:42%;object-fit:cover;flex-shrink:0;min-height:0}
 .nav-toggle{display:none}
 .nav-links{display:flex;align-items:center;gap:26px}
 @media (max-width:900px){
-  .story-card{flex-direction:column;height:560px}
-  .story-card img{width:100%;height:50%;flex:none;aspect-ratio:auto}
-  .story-card>div{height:50%;overflow-y:auto}
+  .story-card{flex-direction:column;height:auto;max-height:none}
+  .story-card img{width:100%;height:280px;min-height:280px;flex:none;aspect-ratio:auto;object-fit:cover}
+  .story-card>div{flex:none;overflow-y:visible;max-height:none}
   .nav-toggle{display:block}
+  .talent-detail-grid{grid-template-columns:1fr !important}
+  .talent-detail-grid img{max-width:160px;margin:0 auto}
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#faf9f5;border-bottom:1px solid #e6dcc6;flex-direction:column;align-items:flex-start;gap:0;padding:8px 24px 16px;z-index:20}
   .nav-links.open{display:flex}
   .nav-links a,.nav-links span{width:100%;padding:12px 0;border-bottom:1px solid #f0ebd0}
@@ -66,9 +69,9 @@ a:hover{color:#1a1208}
   </div>
   <button class="nav-toggle way-btn" style="width:auto;font-size:22px;line-height:1;padding:4px" sc-camel-on-click="{{ toggleNav }}" aria-label="Menu">{{ navToggleIcon }}</button>
   <nav class="nav-links {{ navOpenClass }}" style="font-family:'Libre Franklin',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:#45403a">
-    <a class="way-btn" href="#constellation-section" style="width:auto" sc-camel-on-click="{{ showTalentsMode }}">The 8 Talents</a>
+    <a class="way-btn" href="#constellation-section" style="width:auto" sc-camel-on-click="{{ showTalentsMode }}" data-comment-anchor="0e37a3facb-a">Framework</a>
     <a class="way-btn" href="#constellation-section" style="width:auto" sc-camel-on-click="{{ showFablesMode }}">Fables</a>
-    <span style="opacity:0.55">Book (soon)</span>
+    <a class="way-btn" href="products.html" style="width:auto" data-comment-anchor="79a14c8cac-span">Products</a>
     <span>About</span>
     <a href="https://doodle.com/bp/deepakmehta/professional-meeting" style="background:#1a1208;color:#faf9f5;padding:10px 20px;border-radius:999px;font-size:12px;text-decoration:none">Book a call →</a>
   </nav>
@@ -79,7 +82,7 @@ a:hover{color:#1a1208}
 </section>
 
 <div ref="{{ trackRef }}" style="height:{{trackHeightVh}}vh;position:relative">
-  <div style="position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
+  <div style="position:sticky;top:0;height:100vh;height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden">
     <div style="perspective:1800px;display:flex;align-items:center;justify-content:center">
       <div style="transform:{{stageTransform}};display:flex;flex-direction:column;align-items:center;gap:20px">
         <div style="display:inline-flex;align-items:baseline;transform:scaleX({{eScaleX}});font-family:'Libre Franklin',sans-serif;font-weight:900;font-size:min(18vw,190px);line-height:1">
@@ -154,7 +157,7 @@ a:hover{color:#1a1208}
   </div>
 
   <div class="{{ detailPanelClass }}" ref="{{ detailRef }}" style="max-width:1040px;margin:36px auto 0">
-    <div style="background:#fffdf7;border:1px solid #e6dcc6;border-radius:14px;padding:36px;display:grid;grid-template-columns:160px 1fr;gap:28px;align-items:start" data-comment-anchor="cebad373ab-div">
+    <div class="talent-detail-grid" style="background:#fffdf7;border:1px solid #e6dcc6;border-radius:14px;padding:36px;display:grid;grid-template-columns:160px 1fr;gap:28px;align-items:start" data-comment-anchor="cebad373ab-div">
       <img src="{{ detail.image }}" style="width:100%;border-radius:12px;aspect-ratio:1;object-fit:cover">
       <div>
         <div class="{{ detail.colorClass }}" style="font-family:'Libre Franklin',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px">{{ detail.eyebrow }}</div>
@@ -173,11 +176,11 @@ a:hover{color:#1a1208}
 <section style="max-width:1040px;margin:80px auto;padding:0 24px;display:grid;grid-template-columns:1.1fr 1fr;gap:24px">
   <div class="story-card" style="background:#1a1208;color:#faf9f5;border-radius:16px;overflow:hidden">
     <img src="assets/images/hero-tet.webp" alt="The Chameleon and the Colour of Twilight">
-    <div style="padding:32px 28px">
+    <div style="padding:32px 28px" data-comment-anchor="e50fc8674d-div">
       <div style="font-family:'Libre Franklin',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#d7ac5c;margin-bottom:12px">A full story to begin</div>
       <div style="font-family:'EB Garamond',serif;font-style:italic;font-size:21px;line-height:1.4;margin-bottom:14px">The Chameleon and the Colour of Twilight</div>
       <p style="font-family:'EB Garamond',serif;font-size:14px;color:#d8d2c4;line-height:1.6;margin-bottom:16px">Selecting which self to show is a skill, not a betrayal of an authentic one. This story carries that weight all the way through.</p>
-      <a href="https://deeeep.github.io/Fable-Chameleon.html" style="font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:#d7ac5c;text-decoration:none">Read the full fable →</a>
+      <a href="fable-chameleon.html" style="font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:#d7ac5c;text-decoration:none">Read the full fable →</a>
     </div>
   </div>
   <div style="display:flex;flex-direction:column;gap:24px">
@@ -191,7 +194,7 @@ a:hover{color:#1a1208}
       <div style="font-family:'Libre Franklin',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#6f6a61;margin-bottom:10px">Read further</div>
       <div style="font-family:'EB Garamond',serif;font-size:19px;font-weight:600;margin-bottom:8px">Fables for Exceptional Times</div>
       <p style="font-family:'EB Garamond',serif;font-size:14px;color:#45403a;line-height:1.55;margin:0 0 14px">Eight stories that carry the eight talents further than a framework page can.</p>
-      <a href="#book-options" style="font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:#5e3a82;text-decoration:none" data-comment-anchor="97cf1ca8f7-span">Discover the book →</a>
+      <a href="products.html" style="font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:#5e3a82;text-decoration:none" data-comment-anchor="97cf1ca8f7-span">Discover the book →</a>
     </div>
   </div>
 </section>
@@ -204,7 +207,7 @@ a:hover{color:#1a1208}
 </section>
 
 <footer style="background:#1a1208;color:#c9c4b6;padding:36px 48px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;font-family:'Libre Franklin',sans-serif;font-size:12px">
-  <span>About Deepak · Contact</span>
+  <span data-comment-anchor="8aeed18333-span">About &amp; Contact</span>
   <form action="https://twitter.us6.list-manage.com/subscribe/post?u=5bf5641e99686b66085f92571&amp;id=d434c7e248&amp;f_id=002722e2f0" method="post" target="_blank" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
     <div style="display:flex;gap:8px">
       <input type="email" name="EMAIL" required="" placeholder="Your email" style="background:transparent;border:1px solid #4a4335;border-radius:6px;color:#faf9f5;font-family:'Libre Franklin',sans-serif;font-size:12px;padding:8px 10px;width:180px">
@@ -230,14 +233,14 @@ const HOME_TALENT_DATA=[
 {name:'Adaptive Masking',eyebrow:'Choosing the self',color:'#70446b',mark:R('tm8','assets/images/talent-marks/08-adaptive-masking.svg'),definition:'The conscious adjustment of communication style, visible behaviour, and self-presentation to match the norms of different contexts — without losing one\u2019s substantive position.',slogan:'Selecting how to show up as a practiced capability, not a betrayal.',constellation:[0,2]}
 ];
 const HOME_FABLE_DATA=[
-{animal:'Crow',title:'The Crow Who Saw the Bridges',mark:R('fl1','assets/images/fable-logos/01-crow-integrative-thinking.webp'),body:"A crow who cannot stop connecting things across domains is quietly building the one pattern his community will need — long before anyone knows to ask him for it.",constellation:[2,3]},
-{animal:'Fox',title:'The Fox Who Moved Before the Map Was Ready',mark:R('fl2','assets/images/fable-logos/02-fox-creative-implementation.webp'),body:"A fox feels the forest changing faster than her community can agree on a plan for it — and has to decide what to do with that gap.",constellation:[3,5]},
-{animal:'Bat',title:'The Bat Who Heard Both Sides',mark:R('fl3','assets/images/fable-logos/03-bat-strategic-empathy.webp'),body:"A bat can hear the fear underneath what two warring sides are shouting at each other — and one day, both sides ask her to stand in the middle.",constellation:[0,6]},
-{animal:'Octopus',title:'The Octopus Who Stayed With the Question',mark:R('fl4','assets/images/fable-logos/04-octopus-cognitive-dexterity.webp'),body:"An octopus feels every problem as several true answers at once, and has to decide what happens when the room only has space for one.",constellation:[1,4]},
-{animal:'Horse',title:'The Horse Whose Body Knew First',mark:R('fl5','assets/images/fable-logos/05-horse-embodiment.webp'),body:"A horse's body knows a room has gone wrong before anyone can explain why — and the forest already has a name ready for that: too much.",constellation:[6,1]},
-{animal:'Whale',title:'The Whale Who Could Not Dive Shallow',mark:R('fl6','assets/images/fable-logos/06-whale-deep-focus.webp'),body:"A whale is the only one who can dive deep enough to find real answers — but the calls for those answers keep arriving faster than a real dive allows.",constellation:[0,3]},
-{animal:'Elephant',title:'The Elephant Who Held the Herd',mark:R('fl7','assets/images/fable-logos/07-elephant-emotional-intelligence.webp'),body:"An elephant feels the herd's fear first and longest, and has quietly learned there's a right way and a wrong way to let anyone know it.",constellation:[5,2]},
-{animal:'Chameleon',title:'The Chameleon and the Colour of Twilight',mark:R('fl8','assets/images/fable-logos/08-chameleon-adaptive-masking.webp'),body:"A chameleon can become exactly what anyone around him needs — until the day he's asked to become several things at once.",constellation:[0,2]}
+{animal:'Crow',title:'The Crow Who Saw the Bridges',mark:R('fl1','assets/images/fable-logos-small/01-crow-integrative-thinking.webp'),body:"A crow who cannot stop connecting things across domains is quietly building the one pattern his community will need — long before anyone knows to ask him for it.",constellation:[2,3]},
+{animal:'Fox',title:'The Fox Who Moved Before the Map Was Ready',mark:R('fl2','assets/images/fable-logos-small/02-fox-creative-implementation.webp'),body:"A fox feels the forest changing faster than her community can agree on a plan for it — and has to decide what to do with that gap.",constellation:[3,5]},
+{animal:'Bat',title:'The Bat Who Heard Both Sides',mark:R('fl3','assets/images/fable-logos-small/03-bat-strategic-empathy.webp'),body:"A bat can hear the fear underneath what two warring sides are shouting at each other — and one day, both sides ask her to stand in the middle.",constellation:[0,6]},
+{animal:'Octopus',title:'The Octopus Who Stayed With the Question',mark:R('fl4','assets/images/fable-logos-small/04-octopus-cognitive-dexterity.webp'),body:"An octopus feels every problem as several true answers at once, and has to decide what happens when the room only has space for one.",constellation:[1,4]},
+{animal:'Horse',title:'The Horse Whose Body Knew First',mark:R('fl5','assets/images/fable-logos-small/05-horse-embodiment.webp'),body:"A horse's body knows a room has gone wrong before anyone can explain why — and the forest already has a name ready for that: too much.",constellation:[6,1]},
+{animal:'Whale',title:'The Whale Who Could Not Dive Shallow',mark:R('fl6','assets/images/fable-logos-small/06-whale-deep-focus.webp'),body:"A whale is the only one who can dive deep enough to find real answers — but the calls for those answers keep arriving faster than a real dive allows.",constellation:[0,3]},
+{animal:'Elephant',title:'The Elephant Who Held the Herd',mark:R('fl7','assets/images/fable-logos-small/07-elephant-emotional-intelligence.webp'),body:"An elephant feels the herd's fear first and longest, and has quietly learned there's a right way and a wrong way to let anyone know it.",constellation:[5,2]},
+{animal:'Chameleon',title:'The Chameleon and the Colour of Twilight',mark:R('fl8','assets/images/fable-logos-small/08-chameleon-adaptive-masking.webp'),body:"A chameleon can become exactly what anyone around him needs — until the day he's asked to become several things at once.",constellation:[0,2]}
 ];
 class Component extends DCLogic {
   constructor(props) {

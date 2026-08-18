@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/fonts-products.css">
+<script>
+window.__resources = {
+  "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "assets/js/react.production.min.js",
+  "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "assets/js/react-dom.production.min.js"
+};
+</script>
+<script src="assets/js/dc-runtime.js"></script>
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>:root{
+  /* Paper & ink — institutional base (website, decks, one-pagers) */
+  --paper: #f6f1e6;
+  --paper-warm: #efe7d6;
+  --paper-deep: #e6dcc6;
+  --ink: #201c16;
+  --ink-soft: #45403a;
+  --ink-faint: #6f6a61;
+  --hairline: #d9cfb8;
+  --hairline-strong: #c3b799;
+
+  /* Jewel palette — drawn from the fable plates; use for accents, illustration surrounds, fable/literary contexts */
+  --jewel-indigo: #23324a;
+  --jewel-indigo-soft: #3c5170;
+  --jewel-moss: #445a37;
+  --jewel-moss-soft: #66805a;
+  --jewel-ochre: #b8862f;
+  --jewel-ochre-soft: #d7ac5c;
+  --jewel-sienna: #a04a24;
+  --jewel-sienna-soft: #c47046;
+  --jewel-plum: #5b3a52;
+  --jewel-plum-soft: #7d5878;
+  --tet-purple: #5e3a82;
+  --tet-purple-soft: #8064a8;
+  --tet-purple-tint: #f2eef7;
+  --fables-gold-tint: #faf3e3;
+
+  /* Semantic aliases */
+  --surface-page: var(--paper);
+  --surface-card: #fffdf7;
+  --surface-sunken: var(--paper-warm);
+  --surface-inverse: var(--jewel-indigo);
+
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: var(--ink-faint);
+  --text-on-inverse: var(--paper);
+
+  --accent-primary: var(--jewel-ochre);
+  --accent-primary-hover: #a3781f;
+  --accent-primary-active: #8f6a1c;
+  --accent-secondary: var(--jewel-sienna);
+  --accent-tertiary: var(--jewel-moss);
+
+  --border-default: var(--hairline);
+  --border-strong: var(--hairline-strong);
+  --border-focus: var(--jewel-indigo);
+
+  --link: var(--jewel-indigo);
+  --link-hover: var(--jewel-sienna);
+}
+</style>
+<style>:root{
+  --font-display: "Playfair Display", "EB Garamond", Georgia, serif;
+  --font-serif: "EB Garamond", Georgia, serif;
+  --font-sans: "Libre Franklin", -apple-system, "Segoe UI", sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-body: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2.125rem;
+  --text-3xl: 2.875rem;
+  --text-4xl: 3.75rem;
+  --text-5xl: 4.75rem;
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-body: 1.6;
+  --leading-loose: 1.8;
+
+  --tracking-wide: 0.06em;
+  --tracking-wider: 0.12em;
+}
+</style>
+<style>:root{
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --content-max: 720px;
+  --page-max: 1200px;
+  --gutter: clamp(20px, 5vw, 64px); /* @kind spacing */
+}
+</style>
+<style>:root{
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-full: 999px;
+
+  --shadow-card: 0 1px 2px rgba(32,28,22,0.06), 0 8px 24px rgba(32,28,22,0.07);
+  --shadow-raised: 0 2px 4px rgba(32,28,22,0.08), 0 16px 40px rgba(32,28,22,0.10);
+  --shadow-inset-hairline: inset 0 0 0 1px var(--hairline);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1); /* @kind other */
+  --duration-fast: 140ms; /* @kind other */
+  --duration-base: 220ms; /* @kind other */
+  --duration-slow: 420ms; /* @kind other */
+}
+</style>
+<style>:root{
+  --paper-base: var(--paper);
+  --paper-faint: var(--paper-warm);
+  --ink-base: var(--ink);
+  --muted-ink: var(--text-secondary);
+  --muted-ink-strong: var(--text-secondary);
+  --muted-ink-strongest: var(--text-primary);
+  --muted-ink-stronger: var(--text-primary);
+  --gold-base: var(--jewel-ochre);
+  --gold-faint: var(--jewel-ochre-soft);
+  --cream-base: var(--paper);
+  --cream-faint: var(--paper-warm);
+  --cream-dim-stronger: var(--text-muted);
+  --border-hairline: var(--hairline);
+  --surface-chrome-veil: var(--surface-card);
+  --cover-bg-base: var(--jewel-indigo);
+  --radius-btn: var(--radius-sm);
+  --shadow-thumb: var(--shadow-card);
+  --accent-crow-1: var(--jewel-indigo-soft);
+  --accent-fox-2: var(--jewel-sienna);
+  --accent-bat-1: var(--jewel-plum);
+  --accent-octopus-1: var(--jewel-moss-soft);
+  --accent-horse-1: var(--jewel-sienna-soft);
+  --accent-whale-1: var(--jewel-indigo);
+  --accent-elephant-1: var(--jewel-moss);
+  --accent-chameleon-2: var(--tet-purple);
+  --font-body: var(--font-serif); /* @kind font */
+}
+</style>
+<style>/* Webfonts: self-hosted locally, Latin subset only. See assets/css/fonts-products.css */
+
+</style>
+<style>/* ─── FABLES OF TET — COLOR TOKENS ───────────────────────────
+   Sourced verbatim from the reader app's :root palette
+   (fables-of-tet/index.html, Fables of TET.html, print templates).
+   A restrained, ink-on-paper literary palette + one warm gold accent. */
+
+:root {
+  /* Base values */
+  --ink-base: #1a1208;         /* primary text, near-black warm ink */
+  --paper-base: #faf9f5;       /* page background, warm off-white */
+  --cream-base: #f4ead4;       /* text-on-dark, warm parchment cream */
+  --gold-base: #c69a3a;        /* the one accent color: eyebrows, rules, active states */
+  --cover-bg-base: #130e05;    /* near-black cover/TOC background */
+
+  /* Derived / alpha values (copied exactly as used in source) */
+  --gold-dim: rgba(198, 154, 58, 0.18);   /* gold hover wash */
+  --gold-faint: rgba(198, 154, 58, 0.08); /* gold hover wash, subtler (toc links) */
+  --muted-ink: rgba(26, 18, 8, 0.5);      /* secondary text on paper */
+  --muted-ink-strong: rgba(26, 18, 8, 0.7);  /* citation notes */
+  --muted-ink-stronger: rgba(26, 18, 8, 0.8);/* image description body, story-close */
+  --muted-ink-strongest: rgba(26, 18, 8, 0.85); /* reflection question text */
+  --rule: rgba(26, 18, 8, 0.14);          /* hairline dividers on paper */
+  --cream-dim: rgba(244, 234, 212, 0.5);  /* secondary text on dark (cover subtitle) */
+  --cream-dim-strong: rgba(244, 234, 212, 0.65); /* chapter epigraph on dark plate */
+  --cream-dim-stronger: rgba(244, 234, 212, 0.75); /* toc link default */
+  --cream-faint: rgba(244, 234, 212, 0.4);   /* toc sub-label */
+  --cover-veil: rgba(19, 14, 5, 0.85);       /* header background over cover */
+  --cover-veil-light: rgba(19, 14, 5, 0.5);  /* toc overlay scrim */
+  --cover-veil-heavy: rgba(19, 14, 5, 0.84); /* chapter-opener text gradient base */
+  --plate-caption: rgba(244, 234, 212, 0.45); /* "After [Artist]" plate caption */
+
+  /* Semantic aliases */
+  --text-body: var(--ink-base);
+  --text-muted: var(--muted-ink);
+  --text-on-dark: var(--cream-base);
+  --text-on-dark-muted: var(--cream-dim);
+  --text-accent: var(--gold-base);
+
+  --surface-page: var(--paper-base);
+  --surface-dark: var(--cover-bg-base);
+  --surface-accent-wash: var(--gold-dim);
+
+  --border-hairline: var(--rule);
+  --border-accent: var(--gold-base);
+}
+</style>
+<style>/* ─── FABLES OF TET — LIGHT THEME (v2) ────────────────────────
+   Direction update: the reader moves from a dark cover/TOC to a
+   light, paper-forward theme throughout — no near-black chrome.
+   --ink-base is now used for TEXT ONLY, never as a background.
+   Cream is now a warm elevated-surface tone (cards, TOC, chips),
+   not "text on dark". Gold remains the one accent. */
+
+:root {
+  /* Chrome surfaces (replace the old dark cover-bg for backgrounds) */
+  --surface-chrome: var(--cream-base);         /* TOC drawer, cover section, elevated chrome */
+  --surface-chrome-veil: rgba(244, 234, 212, 0.9); /* header-over-cover veil, was --cover-veil (dark) */
+  --surface-chrome-border: rgba(198, 154, 58, 0.3);
+
+  /* Text on the light chrome surfaces (replaces --cream text-on-dark roles) */
+  --text-on-chrome: var(--ink-base);
+  --text-on-chrome-muted: var(--muted-ink);
+  --text-on-chrome-faint: rgba(26, 18, 8, 0.4);
+
+  /* Overlay scrim used behind chapter-opener titles — now light, fading up from paper */
+  --plate-scrim: linear-gradient(to bottom, transparent, rgba(250, 249, 245, 0.94)); /* @kind other */
+  --plate-caption-light: rgba(26, 18, 8, 0.55);
+}
+</style>
+<style>/* ─── FABLES OF TET — PER-CHAPTER WASH TINTS ───────────────────
+   Each chapter's iOS/Mac wallpaper (assets/wallpapers/*) carries a
+   distinct abstract color signature. These tokens are light,
+   low-saturation echoes of that signature — two-stop tint pairs
+   used behind a chapter's reading content at very low emphasis
+   (via the ChapterWash component), for per-chapter cohesion
+   without introducing any dark background. Not exact color
+   extractions — eyeballed from the source wallpapers. */
+
+:root {
+  --wash-crow-a: #eef3ea;      /* sage/green + gold grid */
+  --wash-crow-b: #f7ecd2;
+
+  --wash-fox-a: #eef1f7;       /* starry-night indigo + gold moon */
+  --wash-fox-b: #fbf0d9;
+
+  --wash-bat-a: #f2eef7;       /* faceted purple/charcoal crystal */
+  --wash-bat-b: #ece9ee;
+
+  --wash-octopus-a: #f5efe2;   /* sepia Escher-style isometric pattern */
+  --wash-octopus-b: #efe8d6;
+
+  --wash-horse-a: #f6ecd9;     /* parchment + radiating red-ember threads */
+  --wash-horse-b: #f8e2d3;
+
+  --wash-whale-a: #eef1f6;     /* deep navy + gold horizon */
+  --wash-whale-b: #f9e6d9;
+
+  --wash-elephant-a: #fbeee0;  /* red/ochre storm */
+  --wash-elephant-b: #f7dcd0;
+
+  --wash-chameleon-a: #f8f0da; /* gold + purple mosaic */
+  --wash-chameleon-b: #f1e9f3;
+
+  --wash-longnight-a: #eceef5; /* synthesis chapter — pale indigo/violet */
+  --wash-longnight-b: #eee9f2;
+}
+</style>
+<style>/* ─── FABLES OF TET — PER-CHAPTER ACCENT COLORS ────────────────
+   Direction 1b ("Paper & Gouache") adopted. Beyond the light wash
+   tints, each chapter now also gets a genuine ACCENT pair — pulled
+   from that chapter's own full illustration (not the abstract
+   wallpaper) — used for its eyebrow label, dividers, and reflection
+   bullets, so each chapter reads as visually its own.
+
+   The CHAMELEON pair doubles as --accent-primary-1/2 — the default,
+   system-wide brand accent for anything that isn't a specific
+   chapter (cover, header, TOC, marketing collateral, the wordmark).
+   The Chameleon fable is the flagship/general-communication story. */
+
+:root {
+  --accent-crow-1: #3d6b63;       /* deep teal, from the Klee-grid greens/blues */
+  --accent-crow-2: #b98a3e;       /* warm ochre-gold at the grid's center */
+
+  --accent-fox-1: #2f3b63;        /* Van Gogh starry-night indigo */
+  --accent-fox-2: #d1a13f;        /* moon / amber-gold fox coat */
+
+  --accent-bat-1: #6b4b8a;        /* violet glow at the bat's chest */
+  --accent-bat-2: #5a6072;        /* faceted slate-blue crystal wings */
+
+  --accent-octopus-1: #6b5f4f;    /* warm sepia ink, near-monochrome plate */
+  --accent-octopus-2: #8f8471;    /* lighter parchment-grey */
+
+  --accent-horse-1: #a8542f;      /* rust-red thread network */
+  --accent-horse-2: #c99a4a;      /* parchment gold */
+
+  --accent-whale-1: #1f3b5c;      /* deep navy dive */
+  --accent-whale-2: #d99a3a;      /* surface-light gold */
+
+  --accent-elephant-1: #c1502c;   /* burnt-orange storm */
+  --accent-elephant-2: #4a2f52;   /* deep plum undertone */
+
+  --accent-chameleon-1: #c9a227;  /* gold ground of the Klimt-style mosaic — THE flagship fable */
+  --accent-chameleon-2: #5e3a82;  /* the chameleon's mosaic purple */
+
+  --accent-longnight-1: #4a4a6b;  /* indigo synthesis */
+  --accent-longnight-2: #c69a3a;  /* the book's original gold, unchanged */
+
+  /* System default — general communication, not tied to a specific chapter.
+     Aliased to the Chameleon pair per direction: it becomes the flagship story. */
+  --accent-primary-1: var(--accent-chameleon-1);
+  --accent-primary-2: var(--accent-chameleon-2);
+}
+</style>
+<style>/* ─── FABLES OF TET — TYPE TOKENS ─────────────────────────────
+   Two Google-served serifs, no sans anywhere in the brand.
+   EB Garamond carries all reading copy; Playfair Display is
+   reserved for titles/headings only. */
+
+:root {
+  --font-body: 'EB Garamond', 'Garamond', 'Georgia', serif;
+  --font-display: 'Playfair Display', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-hand: 'Caveat', 'Segoe Script', cursive; /* direction 1b: hand-lettered epigraphs */
+
+  /* Base sizing — root font-size the reader sets, and the scale built on top of it */
+  --text-root-size: 18px;         /* html { font-size } on desktop */
+  --text-root-size-mobile: 17px;  /* html { font-size } under 620px */
+
+  --text-body-size: 1rem;
+  --text-body-line-height: 1.82;
+
+  /* Eyebrow / label (small caps-style uppercase tag above headings) */
+  --text-eyebrow-size: 0.7rem;
+  --text-eyebrow-tracking: 0.2em;
+
+  /* Display headings (Playfair Display, clamp for responsive) */
+  --text-cover-title-size: clamp(2.2rem, 6vw, 3.6rem);
+  --text-front-title-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  --text-chapter-title-size: clamp(1.6rem, 4vw, 2.5rem);
+  --text-display-line-height: 1.2;
+  --text-display-weight: 400; /* body/front-matter headings stay regular */
+  --text-chapter-title-weight: 700; /* direction 1b: chapter + cover titles set bolder, warmer */
+  --text-epigraph-size-hand: 1.3rem; /* Caveat renders smaller visually at the same px — sized up */
+
+  /* Supporting sizes */
+  --text-subtitle-size: 1.05rem;   /* cover subtitle, italic */
+  --text-epigraph-size: 1rem;      /* chapter epigraph, italic */
+  --text-questions-intro-size: 1.05rem;
+  --text-small-size: 0.88rem;      /* citation notes, rl-note */
+  --text-tiny-size: 0.68rem;       /* plate captions */
+  --text-nav-size: 0.85rem;        /* begin-btn, nav-btn */
+
+  --text-tracking-wide: 0.12em;    /* uppercase buttons */
+  --text-tracking-widest: 0.22em;  /* cover series label */
+}
+</style>
+<style>/* ─── FABLES OF TET — SPACING & SHAPE TOKENS ──────────────────
+   Values lifted directly from the reader app's layout code. */
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-11: 48px;
+  --space-12: 56px;
+  --space-13: 60px;
+  --space-14: 64px;
+  --space-15: 72px;
+  --space-16: 80px;
+  --space-20: 100px;
+
+  /* Reading measure */
+  --content-max-width: 700px;
+  --content-padding-desktop: 72px 40px 100px;
+  --content-padding-default: 64px 28px 80px;
+  --content-padding-mobile: 48px 20px 72px;
+
+  /* Radii — used sparingly, only on photographic thumbnails, never on cards/buttons */
+  --radius-thumb-desktop: 10px;
+  --radius-thumb-mobile: 8px;
+  --radius-btn: 6px;
+
+  /* Shadow — one soft warm-black shadow, used only under floating thumbnails */
+  --shadow-thumb: 0 4px 16px rgba(19, 14, 5, 0.18);
+
+  /* Fixed chrome */
+  --header-height: 54px;
+  --toc-width: 320px;
+}
+</style>
+<style>*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-body);line-height:var(--leading-body)}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:var(--leading-tight);margin:0 0 var(--space-4)}
+p{margin:0 0 var(--space-4)}
+a{color:var(--link);text-decoration:underline;text-decoration-color:var(--hairline-strong);text-underline-offset:2px}
+a:hover{color:var(--link-hover);text-decoration-color:currentColor}
+img{max-width:100%;display:block}
+</style>
+<style>:root{
+  /* Paper & ink — institutional base (website, decks, one-pagers) */
+  --paper: #f6f1e6;
+  --paper-warm: #efe7d6;
+  --paper-deep: #e6dcc6;
+  --ink: #201c16;
+  --ink-soft: #45403a;
+  --ink-faint: #6f6a61;
+  --hairline: #d9cfb8;
+  --hairline-strong: #c3b799;
+
+  /* Jewel palette — drawn from the fable plates; use for accents, illustration surrounds, fable/literary contexts */
+  --jewel-indigo: #23324a;
+  --jewel-indigo-soft: #3c5170;
+  --jewel-moss: #445a37;
+  --jewel-moss-soft: #66805a;
+  --jewel-ochre: #b8862f;
+  --jewel-ochre-soft: #d7ac5c;
+  --jewel-sienna: #a04a24;
+  --jewel-sienna-soft: #c47046;
+  --jewel-plum: #5b3a52;
+  --jewel-plum-soft: #7d5878;
+  --tet-purple: #5e3a82;
+  --tet-purple-soft: #8064a8;
+  --tet-purple-tint: #f2eef7;
+  --fables-gold-tint: #faf3e3;
+
+  /* Semantic aliases */
+  --surface-page: var(--paper);
+  --surface-card: #fffdf7;
+  --surface-sunken: var(--paper-warm);
+  --surface-inverse: var(--jewel-indigo);
+
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: var(--ink-faint);
+  --text-on-inverse: var(--paper);
+
+  --accent-primary: var(--jewel-ochre);
+  --accent-primary-hover: #a3781f;
+  --accent-primary-active: #8f6a1c;
+  --accent-secondary: var(--jewel-sienna);
+  --accent-tertiary: var(--jewel-moss);
+
+  --border-default: var(--hairline);
+  --border-strong: var(--hairline-strong);
+  --border-focus: var(--jewel-indigo);
+
+  --link: var(--jewel-indigo);
+  --link-hover: var(--jewel-sienna);
+}
+
+:root{
+  --font-display: "Playfair Display", "EB Garamond", Georgia, serif;
+  --font-serif: "EB Garamond", Georgia, serif;
+  --font-sans: "Libre Franklin", -apple-system, "Segoe UI", sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-body: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2.125rem;
+  --text-3xl: 2.875rem;
+  --text-4xl: 3.75rem;
+  --text-5xl: 4.75rem;
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-body: 1.6;
+  --leading-loose: 1.8;
+
+  --tracking-wide: 0.06em;
+  --tracking-wider: 0.12em;
+}
+
+:root{
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --content-max: 720px;
+  --page-max: 1200px;
+  --gutter: clamp(20px, 5vw, 64px); /* @kind spacing */
+}
+
+:root{
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-full: 999px;
+
+  --shadow-card: 0 1px 2px rgba(32,28,22,0.06), 0 8px 24px rgba(32,28,22,0.07);
+  --shadow-raised: 0 2px 4px rgba(32,28,22,0.08), 0 16px 40px rgba(32,28,22,0.10);
+  --shadow-inset-hairline: inset 0 0 0 1px var(--hairline);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1); /* @kind other */
+  --duration-fast: 140ms; /* @kind other */
+  --duration-base: 220ms; /* @kind other */
+  --duration-slow: 420ms; /* @kind other */
+}
+
+:root{
+  --paper-base: var(--paper);
+  --paper-faint: var(--paper-warm);
+  --ink-base: var(--ink);
+  --muted-ink: var(--text-secondary);
+  --muted-ink-strong: var(--text-secondary);
+  --muted-ink-strongest: var(--text-primary);
+  --muted-ink-stronger: var(--text-primary);
+  --gold-base: var(--jewel-ochre);
+  --gold-faint: var(--jewel-ochre-soft);
+  --cream-base: var(--paper);
+  --cream-faint: var(--paper-warm);
+  --cream-dim-stronger: var(--text-muted);
+  --border-hairline: var(--hairline);
+  --surface-chrome-veil: var(--surface-card);
+  --cover-bg-base: var(--jewel-indigo);
+  --radius-btn: var(--radius-sm);
+  --shadow-thumb: var(--shadow-card);
+  --accent-crow-1: var(--jewel-indigo-soft);
+  --accent-fox-2: var(--jewel-sienna);
+  --accent-bat-1: var(--jewel-plum);
+  --accent-octopus-1: var(--jewel-moss-soft);
+  --accent-horse-1: var(--jewel-sienna-soft);
+  --accent-whale-1: var(--jewel-indigo);
+  --accent-elephant-1: var(--jewel-moss);
+  --accent-chameleon-2: var(--tet-purple);
+  --font-body: var(--font-serif); /* @kind font */
+}
+
+/* Webfonts: self-hosted locally, Latin subset only. See assets/css/fonts-products.css */
+
+/* ─── FABLES OF TET — COLOR TOKENS ───────────────────────────
+   Sourced verbatim from the reader app's :root palette
+   (fables-of-tet/index.html, Fables of TET.html, print templates).
+   A restrained, ink-on-paper literary palette + one warm gold accent. */
+
+:root {
+  /* Base values */
+  --ink-base: #1a1208;         /* primary text, near-black warm ink */
+  --paper-base: #faf9f5;       /* page background, warm off-white */
+  --cream-base: #f4ead4;       /* text-on-dark, warm parchment cream */
+  --gold-base: #c69a3a;        /* the one accent color: eyebrows, rules, active states */
+  --cover-bg-base: #130e05;    /* near-black cover/TOC background */
+
+  /* Derived / alpha values (copied exactly as used in source) */
+  --gold-dim: rgba(198, 154, 58, 0.18);   /* gold hover wash */
+  --gold-faint: rgba(198, 154, 58, 0.08); /* gold hover wash, subtler (toc links) */
+  --muted-ink: rgba(26, 18, 8, 0.5);      /* secondary text on paper */
+  --muted-ink-strong: rgba(26, 18, 8, 0.7);  /* citation notes */
+  --muted-ink-stronger: rgba(26, 18, 8, 0.8);/* image description body, story-close */
+  --muted-ink-strongest: rgba(26, 18, 8, 0.85); /* reflection question text */
+  --rule: rgba(26, 18, 8, 0.14);          /* hairline dividers on paper */
+  --cream-dim: rgba(244, 234, 212, 0.5);  /* secondary text on dark (cover subtitle) */
+  --cream-dim-strong: rgba(244, 234, 212, 0.65); /* chapter epigraph on dark plate */
+  --cream-dim-stronger: rgba(244, 234, 212, 0.75); /* toc link default */
+  --cream-faint: rgba(244, 234, 212, 0.4);   /* toc sub-label */
+  --cover-veil: rgba(19, 14, 5, 0.85);       /* header background over cover */
+  --cover-veil-light: rgba(19, 14, 5, 0.5);  /* toc overlay scrim */
+  --cover-veil-heavy: rgba(19, 14, 5, 0.84); /* chapter-opener text gradient base */
+  --plate-caption: rgba(244, 234, 212, 0.45); /* "After [Artist]" plate caption */
+
+  /* Semantic aliases */
+  --text-body: var(--ink-base);
+  --text-muted: var(--muted-ink);
+  --text-on-dark: var(--cream-base);
+  --text-on-dark-muted: var(--cream-dim);
+  --text-accent: var(--gold-base);
+
+  --surface-page: var(--paper-base);
+  --surface-dark: var(--cover-bg-base);
+  --surface-accent-wash: var(--gold-dim);
+
+  --border-hairline: var(--rule);
+  --border-accent: var(--gold-base);
+}
+
+/* ─── FABLES OF TET — LIGHT THEME (v2) ────────────────────────
+   Direction update: the reader moves from a dark cover/TOC to a
+   light, paper-forward theme throughout — no near-black chrome.
+   --ink-base is now used for TEXT ONLY, never as a background.
+   Cream is now a warm elevated-surface tone (cards, TOC, chips),
+   not "text on dark". Gold remains the one accent. */
+
+:root {
+  /* Chrome surfaces (replace the old dark cover-bg for backgrounds) */
+  --surface-chrome: var(--cream-base);         /* TOC drawer, cover section, elevated chrome */
+  --surface-chrome-veil: rgba(244, 234, 212, 0.9); /* header-over-cover veil, was --cover-veil (dark) */
+  --surface-chrome-border: rgba(198, 154, 58, 0.3);
+
+  /* Text on the light chrome surfaces (replaces --cream text-on-dark roles) */
+  --text-on-chrome: var(--ink-base);
+  --text-on-chrome-muted: var(--muted-ink);
+  --text-on-chrome-faint: rgba(26, 18, 8, 0.4);
+
+  /* Overlay scrim used behind chapter-opener titles — now light, fading up from paper */
+  --plate-scrim: linear-gradient(to bottom, transparent, rgba(250, 249, 245, 0.94)); /* @kind other */
+  --plate-caption-light: rgba(26, 18, 8, 0.55);
+}
+
+/* ─── FABLES OF TET — PER-CHAPTER WASH TINTS ───────────────────
+   Each chapter's iOS/Mac wallpaper (assets/wallpapers/*) carries a
+   distinct abstract color signature. These tokens are light,
+   low-saturation echoes of that signature — two-stop tint pairs
+   used behind a chapter's reading content at very low emphasis
+   (via the ChapterWash component), for per-chapter cohesion
+   without introducing any dark background. Not exact color
+   extractions — eyeballed from the source wallpapers. */
+
+:root {
+  --wash-crow-a: #eef3ea;      /* sage/green + gold grid */
+  --wash-crow-b: #f7ecd2;
+
+  --wash-fox-a: #eef1f7;       /* starry-night indigo + gold moon */
+  --wash-fox-b: #fbf0d9;
+
+  --wash-bat-a: #f2eef7;       /* faceted purple/charcoal crystal */
+  --wash-bat-b: #ece9ee;
+
+  --wash-octopus-a: #f5efe2;   /* sepia Escher-style isometric pattern */
+  --wash-octopus-b: #efe8d6;
+
+  --wash-horse-a: #f6ecd9;     /* parchment + radiating red-ember threads */
+  --wash-horse-b: #f8e2d3;
+
+  --wash-whale-a: #eef1f6;     /* deep navy + gold horizon */
+  --wash-whale-b: #f9e6d9;
+
+  --wash-elephant-a: #fbeee0;  /* red/ochre storm */
+  --wash-elephant-b: #f7dcd0;
+
+  --wash-chameleon-a: #f8f0da; /* gold + purple mosaic */
+  --wash-chameleon-b: #f1e9f3;
+
+  --wash-longnight-a: #eceef5; /* synthesis chapter — pale indigo/violet */
+  --wash-longnight-b: #eee9f2;
+}
+
+/* ─── FABLES OF TET — PER-CHAPTER ACCENT COLORS ────────────────
+   Direction 1b ("Paper & Gouache") adopted. Beyond the light wash
+   tints, each chapter now also gets a genuine ACCENT pair — pulled
+   from that chapter's own full illustration (not the abstract
+   wallpaper) — used for its eyebrow label, dividers, and reflection
+   bullets, so each chapter reads as visually its own.
+
+   The CHAMELEON pair doubles as --accent-primary-1/2 — the default,
+   system-wide brand accent for anything that isn't a specific
+   chapter (cover, header, TOC, marketing collateral, the wordmark).
+   The Chameleon fable is the flagship/general-communication story. */
+
+:root {
+  --accent-crow-1: #3d6b63;       /* deep teal, from the Klee-grid greens/blues */
+  --accent-crow-2: #b98a3e;       /* warm ochre-gold at the grid's center */
+
+  --accent-fox-1: #2f3b63;        /* Van Gogh starry-night indigo */
+  --accent-fox-2: #d1a13f;        /* moon / amber-gold fox coat */
+
+  --accent-bat-1: #6b4b8a;        /* violet glow at the bat's chest */
+  --accent-bat-2: #5a6072;        /* faceted slate-blue crystal wings */
+
+  --accent-octopus-1: #6b5f4f;    /* warm sepia ink, near-monochrome plate */
+  --accent-octopus-2: #8f8471;    /* lighter parchment-grey */
+
+  --accent-horse-1: #a8542f;      /* rust-red thread network */
+  --accent-horse-2: #c99a4a;      /* parchment gold */
+
+  --accent-whale-1: #1f3b5c;      /* deep navy dive */
+  --accent-whale-2: #d99a3a;      /* surface-light gold */
+
+  --accent-elephant-1: #c1502c;   /* burnt-orange storm */
+  --accent-elephant-2: #4a2f52;   /* deep plum undertone */
+
+  --accent-chameleon-1: #c9a227;  /* gold ground of the Klimt-style mosaic — THE flagship fable */
+  --accent-chameleon-2: #5e3a82;  /* the chameleon's mosaic purple */
+
+  --accent-longnight-1: #4a4a6b;  /* indigo synthesis */
+  --accent-longnight-2: #c69a3a;  /* the book's original gold, unchanged */
+
+  /* System default — general communication, not tied to a specific chapter.
+     Aliased to the Chameleon pair per direction: it becomes the flagship story. */
+  --accent-primary-1: var(--accent-chameleon-1);
+  --accent-primary-2: var(--accent-chameleon-2);
+}
+
+/* ─── FABLES OF TET — TYPE TOKENS ─────────────────────────────
+   Two Google-served serifs, no sans anywhere in the brand.
+   EB Garamond carries all reading copy; Playfair Display is
+   reserved for titles/headings only. */
+
+:root {
+  --font-body: 'EB Garamond', 'Garamond', 'Georgia', serif;
+  --font-display: 'Playfair Display', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-hand: 'Caveat', 'Segoe Script', cursive; /* direction 1b: hand-lettered epigraphs */
+
+  /* Base sizing — root font-size the reader sets, and the scale built on top of it */
+  --text-root-size: 18px;         /* html { font-size } on desktop */
+  --text-root-size-mobile: 17px;  /* html { font-size } under 620px */
+
+  --text-body-size: 1rem;
+  --text-body-line-height: 1.82;
+
+  /* Eyebrow / label (small caps-style uppercase tag above headings) */
+  --text-eyebrow-size: 0.7rem;
+  --text-eyebrow-tracking: 0.2em;
+
+  /* Display headings (Playfair Display, clamp for responsive) */
+  --text-cover-title-size: clamp(2.2rem, 6vw, 3.6rem);
+  --text-front-title-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  --text-chapter-title-size: clamp(1.6rem, 4vw, 2.5rem);
+  --text-display-line-height: 1.2;
+  --text-display-weight: 400; /* body/front-matter headings stay regular */
+  --text-chapter-title-weight: 700; /* direction 1b: chapter + cover titles set bolder, warmer */
+  --text-epigraph-size-hand: 1.3rem; /* Caveat renders smaller visually at the same px — sized up */
+
+  /* Supporting sizes */
+  --text-subtitle-size: 1.05rem;   /* cover subtitle, italic */
+  --text-epigraph-size: 1rem;      /* chapter epigraph, italic */
+  --text-questions-intro-size: 1.05rem;
+  --text-small-size: 0.88rem;      /* citation notes, rl-note */
+  --text-tiny-size: 0.68rem;       /* plate captions */
+  --text-nav-size: 0.85rem;        /* begin-btn, nav-btn */
+
+  --text-tracking-wide: 0.12em;    /* uppercase buttons */
+  --text-tracking-widest: 0.22em;  /* cover series label */
+}
+
+/* ─── FABLES OF TET — SPACING & SHAPE TOKENS ──────────────────
+   Values lifted directly from the reader app's layout code. */
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-11: 48px;
+  --space-12: 56px;
+  --space-13: 60px;
+  --space-14: 64px;
+  --space-15: 72px;
+  --space-16: 80px;
+  --space-20: 100px;
+
+  /* Reading measure */
+  --content-max-width: 700px;
+  --content-padding-desktop: 72px 40px 100px;
+  --content-padding-default: 64px 28px 80px;
+  --content-padding-mobile: 48px 20px 72px;
+
+  /* Radii — used sparingly, only on photographic thumbnails, never on cards/buttons */
+  --radius-thumb-desktop: 10px;
+  --radius-thumb-mobile: 8px;
+  --radius-btn: 6px;
+
+  /* Shadow — one soft warm-black shadow, used only under floating thumbnails */
+  --shadow-thumb: 0 4px 16px rgba(19, 14, 5, 0.18);
+
+  /* Fixed chrome */
+  --header-height: 54px;
+  --toc-width: 320px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-body);line-height:var(--leading-body)}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:var(--leading-tight);margin:0 0 var(--space-4)}
+p{margin:0 0 var(--space-4)}
+a{color:var(--link);text-decoration:underline;text-decoration-color:var(--hairline-strong);text-underline-offset:2px}
+a:hover{color:var(--link-hover);text-decoration-color:currentColor}
+img{max-width:100%;display:block}
+
+</style>
+<script src="assets/js/ds-bundle-home.js"></script>
+<style>
+body{margin:0;background:var(--paper);color:var(--ink)}
+a{color:var(--jewel-indigo)}
+a:hover{color:var(--jewel-sienna)}
+input,textarea{font-family:var(--font-serif);font-size:16px;color:var(--ink);background:var(--paper);border:1px solid var(--hairline-strong);border-radius:4px;padding:12px 14px;outline:none;width:100%;box-sizing:border-box}
+input:focus,textarea:focus{border-color:var(--jewel-indigo)}
+.field-label{font-family:var(--font-sans);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);display:flex;flex-direction:column;gap:8px}
+.way-btn{background:none;border:none;padding:0;margin:0;cursor:pointer;text-align:left;font:inherit;text-decoration:none;color:inherit}
+.nav-toggle{display:none;appearance:none}
+.nav-links{display:flex;align-items:center;gap:26px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.roadmap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px}
+@media (max-width:820px){
+  .nav-toggle{display:block}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--hairline);flex-direction:column;align-items:flex-start;gap:0;padding:8px 24px 16px;z-index:20}
+  .nav-links.open{display:flex}
+  .nav-links a{width:100%;padding:12px 0;border-bottom:1px solid var(--paper-deep)}
+}
+@media (max-width:760px){
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .roadmap-grid{grid-template-columns:1fr}
+}
+</style>
+</helmet>
+
+<header style="position:relative;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--hairline)" data-comment-anchor="2f71a30188-header">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="display:flex;align-items:baseline;font-family:var(--font-sans);font-weight:900;font-size:22px;line-height:1"><span style="color:var(--ink)">T</span><span style="color:var(--jewel-plum);display:inline-block;transform:scaleX(-1);margin:0 1px">E</span><span style="color:var(--ink)">T</span></div>
+<span style="font-family:var(--font-sans);font-weight:700;font-size:15px;line-height:1.15;color:var(--ink)">Talents for<br>Exceptional Times</span>
+</div>
+<button class="nav-toggle way-btn" style="width:auto;font-size:22px;line-height:1;padding:4px;color:var(--ink)" sc-camel-on-click="{{ toggleNav }}" aria-label="Menu">{{ navToggleIcon }}</button>
+<nav class="nav-links {{ navOpenClass }}" style="font-family:var(--font-sans);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft)">
+<a class="way-btn" href="index.html#constellation-section" style="width:auto;color:var(--jewel-ochre)" data-comment-anchor="513e85797d-a">Framework</a>
+<a class="way-btn" href="index.html#constellation-section" style="width:auto;color:var(--jewel-plum)" data-comment-anchor="9c333edbce-a">Fables</a>
+<a class="way-btn" href="#" style="width:auto;color:var(--ink-soft)">Products</a>
+<a class="way-btn" href="#" style="width:auto;color:var(--ink-soft)">About</a>
+<a href="https://doodle.com/bp/deepakmehta/professional-meeting" style="width:auto;background:var(--ink);color:var(--paper);padding:10px 20px;border-radius:999px;font-size:12px;text-decoration:none">Book a call →</a>
+</nav>
+</header>
+
+<section style="background:var(--jewel-plum);color:var(--cream-base);padding:0">
+<div class="hero-grid" style="max-width:1160px;margin:0 auto;padding:clamp(48px,8vw,80px) clamp(20px,5vw,48px)">
+<div>
+<div style="font-family:var(--font-sans);font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-base);margin-bottom:18px">The Fables · Book</div>
+<h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(2.2rem,4.2vw,3.4rem);line-height:1.1;margin:0 0 18px;color:var(--cream-base)">Fables for Exceptional Times</h1>
+<p style="font-family:var(--font-serif);font-style:italic;font-size:1.15rem;color:var(--cream-dim-stronger);margin:0 0 8px">Eight trait portraits, told in pictures.</p>
+<p style="font-family:var(--font-sans);font-size:13px;letter-spacing:0.04em;color:var(--cream-dim);margin:0 0 36px">by Deepak Mehta</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap">
+<a href="#ambassador" style="font-family:var(--font-sans);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;background:var(--gold-base);color:var(--cover-bg-base);padding:14px 26px;border-radius:3px;text-decoration:none">Become an ambassador</a>
+<a href="#about" style="font-family:var(--font-sans);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;border:1px solid var(--cream-dim);color:var(--cream-base);padding:14px 26px;border-radius:3px;text-decoration:none">About the book</a>
+</div>
+</div>
+<img src="assets/images/products/products-hero.webp" alt="Hardcover of Fables for Exceptional Times, showing a golden bird and a purple mosaic chameleon" style="width:100%;height:auto;display:block;filter:drop-shadow(0 30px 50px rgba(0,0,0,0.5))" data-comment-anchor="2cfc6f4250-img">
+</div>
+</section>
+
+<section id="about" style="max-width:760px;margin:0 auto;padding:clamp(56px,10vw,96px) 24px">
+<div style="font-family:var(--font-sans);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--jewel-ochre);margin-bottom:16px">About the book</div>
+<p style="font-family:var(--font-serif);font-size:1.3rem;line-height:1.6;color:var(--ink);margin:0 0 28px">Some capabilities only become visible when the system around them breaks.</p>
+<p style="font-family:var(--font-serif);font-size:1.15rem;line-height:1.75;color:var(--ink-soft);margin:0">Fables for Exceptional Times is a collection of eight fables, each built around a distinct way of thinking that stable, well-ordered environments tend to overlook, misfile, or actively penalise. A crow who cannot stop connecting what shouldn’t be connected. A fox who commits to a direction before the map is finished — and six more, each finding what only pressure makes visible.</p>
+</section>
+
+<section style="background:var(--paper-warm);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)">
+<div style="max-width:1040px;margin:0 auto;padding:clamp(56px,10vw,88px) 24px">
+<div style="font-family:var(--font-sans);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--jewel-plum);margin-bottom:16px">Roadmap · lens, not a finished list</div>
+<h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 12px;color:var(--ink)">More editions, so far</h2>
+<p style="font-family:var(--font-serif);font-size:1.05rem;line-height:1.7;color:var(--ink-soft);max-width:620px;margin:0 0 48px">The book you see above exists. Everything below is still forming — not yet dated, not yet priced.</p>
+<div class="roadmap-grid" style="background:var(--hairline);border:1px solid var(--hairline);border-radius:10px;overflow:hidden">
+<div style="background:var(--surface-card);padding:32px">
+<div style="margin-bottom:16px"><x-import component-from-global-scope="TETDesignSystem_660675.Badge" hint-size="auto,24px" tone="live">Call open</x-import></div>
+<div style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:10px;color:var(--ink)">Sponsor editions</div>
+<p style="font-family:var(--font-serif);font-size:0.98rem;line-height:1.6;color:var(--ink-soft);margin:0">Special printings backed by organisations supporting the mission. Details still forming.</p>
+</div>
+<div style="background:var(--surface-card);padding:32px">
+<div style="margin-bottom:16px"><x-import component-from-global-scope="TETDesignSystem_660675.Badge" hint-size="auto,24px" tone="forming">Forming</x-import></div>
+<div style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:10px;color:var(--ink)">Youth editions</div>
+<p style="font-family:var(--font-serif);font-size:0.98rem;line-height:1.6;color:var(--ink-soft);margin:0">A version of the fables built for bringing the stories to young readers as inspiration.</p>
+</div>
+<div style="background:var(--surface-card);padding:32px">
+<div style="margin-bottom:16px"><x-import component-from-global-scope="TETDesignSystem_660675.Badge" hint-size="auto,24px" tone="live">Call open</x-import></div>
+<div style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:10px;color:var(--ink)">Language editions</div>
+<p style="font-family:var(--font-serif);font-size:0.98rem;line-height:1.6;color:var(--ink-soft);margin:0">Translations beyond English, led by ambassadors reading and working in their own languages.</p>
+</div>
+<div style="background:var(--surface-card);padding:32px">
+<div style="margin-bottom:16px"><x-import component-from-global-scope="TETDesignSystem_660675.Badge" hint-size="auto,24px" tone="forming">Forming</x-import></div>
+<div style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:10px;color:var(--ink)">The Friction Journal</div>
+<p style="font-family:var(--font-serif);font-size:0.98rem;line-height:1.6;color:var(--ink-soft);margin:0">A companion workbook to the fables, for personally exploring the depth of these talents in your own life.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="ambassador" style="background:var(--jewel-plum);color:var(--cream-base)">
+<div style="max-width:820px;margin:0 auto;padding:clamp(56px,10vw,96px) 24px">
+<div style="font-family:var(--font-sans);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--jewel-ochre-soft);margin-bottom:16px">Call for ambassadors · limited</div>
+<h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(1.8rem,3.4vw,2.6rem);margin:0 0 22px;color:var(--cream-base)">Help carry these fables further</h2>
+<p style="font-family:var(--font-serif);font-size:1.1rem;line-height:1.75;color:var(--cream-dim-stronger);margin:0 0 22px">Ambassador editions are open, but they’re not a giveaway. They’re for people ready to actively help the book reach further — translating it into a local language, finding a publisher, booking a workshop or talk, finding sponsors, or supporting the mission in kind.</p>
+<p style="font-family:var(--font-serif);font-size:1.1rem;line-height:1.75;color:var(--cream-dim-stronger);margin:0 0 48px">In return, ambassadors get early access to the fable book before wider release — and a signed copy for anyone willing to meet Deepak in person.</p>
+
+<sc-if value="{{ showThanks }}" hint-placeholder-val="{{ false }}">
+<div style="border:1px solid var(--cream-dim);background:rgba(244,234,212,0.08);border-radius:8px;padding:32px;font-family:var(--font-serif);font-size:1.05rem;line-height:1.6;color:var(--cream-base)">
+Thank you — your application has been sent to fableambassador@deeeep.com. We’ll be in touch.
+</div>
+</sc-if>
+
+<sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+<form sc-camel-on-submit="{{ handleSubmit }}" style="display:flex;flex-direction:column;gap:22px" data-comment-anchor="2cce04e98c-form">
+<label class="field-label" style="color:var(--cream-dim-stronger)">Name
+<input type="text" name="name" required="" placeholder="Your full name">
+</label>
+<label class="field-label" style="color:var(--cream-dim-stronger)">Email
+<input type="email" name="email" required="" placeholder="you@example.com">
+</label>
+<label class="field-label" style="color:var(--cream-dim-stronger)">Motivation
+<textarea name="motivation" rows="5" required="" placeholder="What would you like to do — translate, host an event, find a publisher or sponsor, or something else?"></textarea>
+</label>
+<button type="submit" style="font-family:var(--font-sans);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;background:var(--gold-base);color:var(--cover-bg-base);border:none;padding:15px 26px;border-radius:3px;cursor:pointer;align-self:flex-start">Send application</button>
+</form>
+</sc-if>
+</div>
+</section>
+
+<footer style="background:var(--ink);color:#c9c4b6;padding:36px 48px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;font-family:var(--font-sans);font-size:12px">
+<span>About Deepak · Contact</span>
+<form action="https://twitter.us6.list-manage.com/subscribe/post?u=5bf5641e99686b66085f92571&amp;id=d434c7e248&amp;f_id=002722e2f0" method="post" target="_blank" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+<div style="display:flex;gap:8px">
+<input type="email" name="EMAIL" required="" placeholder="Your email" style="background:transparent;border:1px solid #4a4335;border-radius:6px;color:var(--paper);font-family:var(--font-sans);font-size:12px;padding:8px 10px;width:180px">
+<button type="submit" style="background:var(--gold-base);color:var(--ink);border:none;border-radius:6px;font-family:var(--font-sans);font-weight:700;font-size:12px;padding:8px 14px;cursor:pointer">Subscribe</button>
+</div>
+<span style="color:#8a8474;font-size:10.5px">Your email is used only to send occasional updates — never sold or shared.</span>
+</form>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;formActionUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://docs.google.com/forms/d/e/1FAIpQLSfjBN39mNztVy9e0NeX2zTGKpy8JIG8w1ohatc33mNg3WxAiQ/viewform?usp=publish-editor&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Ambassador form&quot;}}">
+class Component extends DCLogic {
+  state = { submitted: false, navOpen: false };
+
+  toggleNav = () => this.setState((s) => ({ navOpen: !s.navOpen }));
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.elements['name'].value.trim();
+    const email = form.elements['email'].value.trim();
+    const motivation = form.elements['motivation'].value.trim();
+    if (!name || !email || !motivation) return;
+
+    // NOTE: placeholder Google Form target — replace formActionUrl (prop) and the
+    // entry.* field names below with the real ones from your Google Form once created.
+    const rawUrl = this.props.formActionUrl || 'https://docs.google.com/forms/d/e/REPLACE_WITH_FORM_ID/formResponse';
+    // accept a viewform link too and convert it to the POST endpoint
+    const actionUrl = rawUrl.split('?')[0].replace(/\/(viewform|formResponse)$/, '') + '/formResponse';
+
+    let iframe = document.getElementById('tet-ambassador-hidden-iframe');
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.name = 'tet-ambassador-hidden-iframe';
+      iframe.id = 'tet-ambassador-hidden-iframe';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+
+    const gform = document.createElement('form');
+    gform.action = actionUrl;
+    gform.method = 'POST';
+    gform.target = 'tet-ambassador-hidden-iframe';
+    const fields = {
+      'entry.111111111': name,
+      'entry.222222222': email,
+      'entry.333333333': motivation
+    };
+    Object.keys(fields).forEach((key) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = fields[key];
+      gform.appendChild(input);
+    });
+    document.body.appendChild(gform);
+    gform.submit();
+    document.body.removeChild(gform);
+
+    this.setState({ submitted: true });
+  };
+
+  renderVals() {
+    return {
+      showThanks: this.state.submitted,
+      showForm: !this.state.submitted,
+      handleSubmit: this.handleSubmit,
+      toggleNav: this.toggleNav,
+      navOpenClass: this.state.navOpen ? 'open' : '',
+      navToggleIcon: this.state.navOpen ? '\u2715' : '\u2630'
+    };
+  }
+}
+</script>
+
+</body></html>

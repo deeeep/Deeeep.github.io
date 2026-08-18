@@ -1,9 +1,22 @@
 # TET site — restructured for static hosting
 
-This replaces the three standalone Claude Design exports (`index.html`,
-`Fable-Chameleon.html`, `FullFables.html`, each 12–13MB) with the same three
-pages split into real, cacheable files. Read `§4 Flags for Deepak` before
-publishing — two of them need a decision, not just a file change.
+This replaces standalone Claude Design exports with real, linked, cacheable
+static files. Current pages:
+
+- `index.html` — homepage
+- `products.html` — Fables book / editions page (new)
+- `fable-chameleon.html` — Chameleon fable landing page
+- `full-fables.html` — full reader (all 8 fables) — see §4.2, not for crawling
+
+Read `§4 Flags for Deepak` before publishing — some of them need a decision,
+not just a file change.
+
+**Update history:** this site has been rebuilt several times as new Claude
+Design exports came in (nav toggle, then the talent/fable "constellation"
+cross-linking feature, then the products page). Each rebuild reused
+already-optimized fonts/images/JS wherever the new export's assets were
+byte-identical to what was already here, rather than reprocessing from
+scratch — see asset comments below for what's shared vs. page-specific.
 
 ## 1. What changed and why
 
@@ -55,33 +68,45 @@ already cached instead of re-downloading a fresh 12MB blob.
 ```
 /
 ├── index.html                  Homepage
+├── products.html                Fables book / editions page
 ├── fable-chameleon.html        Chameleon fable landing page
 ├── full-fables.html            Full reader (all 8 fables) — see §4.2
 ├── robots.txt
 ├── README.md                   this file
 └── assets/
     ├── css/
-    │   ├── fonts-home.css      @font-face, Latin-only, homepage families
-    │   ├── fonts-reader.css    @font-face, Latin-only, reader families
-    │   └── styles-home.css     homepage design tokens (~5KB)
+    │   ├── fonts-home.css      @font-face, Latin-only — index.html
+    │   ├── fonts-products.css  @font-face, Latin-only — products.html (points at fonts/home/, same underlying files)
+    │   ├── fonts-reader.css    @font-face, Latin-only — reader pages
+    │   └── styles-home.css     homepage + shared design tokens
     ├── fonts/
     │   ├── home/                7 WOFF2 files (Libre Franklin, Playfair Display, EB Garamond, Caveat)
+    │   │                         — also used by products.html (verified byte-identical, not duplicated)
     │   └── reader/               5 WOFF2 files (Caveat, EB Garamond, Playfair Display)
     ├── images/
-    │   ├── hero-tet.webp
-    │   ├── fable-logos/          8 talent illustrations (WebP)
-    │   └── talent-marks/         8 talent icon SVGs
+    │   ├── hero-tet.webp                  homepage hero
+    │   ├── fable-logos-small/             8 talent illustrations, homepage cards (WebP)
+    │   ├── talent-marks/                  8 talent icon SVGs
+    │   └── products/
+    │       └── products-hero.webp          book mockup, alpha-transparent
     ├── plates/                  shared by both reader pages
     │   ├── covers/                8 chapter cover thumbnails + 8 "locked" variants
     │   ├── title-page/            2 images
     │   └── chapters/              24 images (wallpaper/plate/lock × 8 fables)
     └── js/
-        ├── dc-runtime.js          used by index.html + full-fables.html
+        ├── dc-runtime.js          used by index.html, products.html, full-fables.html
         ├── dc-runtime-legacy.js   used by fable-chameleon.html (different build — see note below)
-        ├── ds-bundle-reader.js    shared by both reader pages (index.html uses no DS components, so no homepage bundle is shipped)
+        ├── ds-bundle-home.js      used by products.html (Badge component, tone="live"/"forming")
+        ├── ds-bundle-reader.js    shared by both reader pages
         ├── react.production.min.js
         └── react-dom.production.min.js
 ```
+
+**Note on `ds-bundle-home.js`:** on the homepage this file is unused (no
+Badge/Button/Card/etc. in `index.html`'s markup) — it's only loaded by
+`products.html`, which genuinely uses the `Badge` component. The name is a
+holdover from where it first appeared; it's project-wide shared design-system
+code, not literally "for the homepage."
 
 **Note on the two `dc-runtime` builds:** your exported files weren't all
 built from the same version of this component runtime — `index.html` and
@@ -135,6 +160,23 @@ I didn't make that call for you since it changes what the page is for.
 ### 4.4 Fonts: `dc-runtime` legacy build
 See §3 note above — flagging again here since it's a "don't merge these"
 decision, not just a file-organization one.
+
+### 4.5 Fixed: homepage was linking off-site for the fable
+The Claude Design export for `index.html` had "Read the full fable →"
+pointing at `https://deeeep.github.io/Fable-Chameleon.html` — the old,
+externally-hosted, capitalized filename — instead of the local
+`fable-chameleon.html` now living in this same folder. Fixed to a relative
+link. Worth a quick look next time a new homepage export comes in, in case
+Claude Design regenerates that absolute URL again.
+
+### 4.6 Homepage image set changed — old fable-logos removed
+The latest homepage export switched entirely from the original full-size
+fable illustrations to smaller `fable-logos-small/` thumbnails (both for the
+card list and, it looks like, the detail view too — the template no longer
+references the full-size versions anywhere). I removed the now-orphaned
+full-size files rather than ship unused weight. If a future export brings
+back a use for the larger versions, they'll need re-extracting from that
+export's manifest — I didn't keep a separate archive of them in this package.
 
 ## 5. What I did *not* do
 
