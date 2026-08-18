@@ -3,7 +3,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assets/css/fonts-home.css">
-<link rel="stylesheet" href="assets/css/styles-home.css">
 <script>
 window.__resources = {
   "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "assets/js/react.production.min.js",
@@ -15,351 +14,1235 @@ window.__resources = {
 </head>
 <body>
 <x-dc>
-<!-- @template name="TET Consumer Homepage" description="Consumer-track homepage: T Ǝ T scroll-flip hero, two-ways-in split, animated talent constellation, consolidated fable/workshop/book block — per the Consumer Site Design System Brief" -->
-<helmet><style></style>
-<style>
-body{margin:0;background:#faf9f5;padding-bottom:env(safe-area-inset-bottom)}
-a{color:#5e3a82}
-a:hover{color:#1a1208}
-.talent-card{background:#fffdf7;border:1px solid #e6dcc6;border-radius:14px;box-shadow:none;appearance:none;-webkit-appearance:none;transition:background 320ms ease,border-color 320ms ease}
-.talent-card.t1:hover,.talent-card.t1.hl{background:#dfeae8}
-.talent-card.t2:hover,.talent-card.t2.hl{background:#f0e4d7}
-.talent-card.t3:hover,.talent-card.t3.hl{background:#e9dfe5}
-.talent-card.t4:hover,.talent-card.t4.hl{background:#dfe6ed}
-.talent-card.t5:hover,.talent-card.t5.hl{background:#f0e2d5}
-.talent-card.t6:hover,.talent-card.t6.hl{background:#dce4ee}
-.talent-card.t7:hover,.talent-card.t7.hl{background:#e3e9dc}
-.talent-card.t8:hover,.talent-card.t8.hl{background:#e8dee7}
-@media (prefers-reduced-motion:reduce){.talent-card{transition:none}}
-.pill-gold{color:#8a6414;border-color:#c9a24a !important;background:#faf3e2}
-.pill-gold:hover{background:#c9a24a;color:#1a1208}
-.pill-purple{color:#5e3a82;border-color:#b79ccf !important;background:#f3ecf7}
-.pill-purple:hover{background:#5e3a82;color:#faf9f5}
-.talent-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media (max-width:720px){.talent-grid{grid-template-columns:repeat(2,1fr)}}
-.mode-view{display:none}
-.mode-view.active{display:block}
-.way-btn{background:none;border:none;padding:0;margin:0;cursor:pointer;text-align:left;font:inherit;display:block;width:100%;text-decoration:none;color:inherit}
-.story-card{display:flex;gap:0}
-.story-card img{width:42%;object-fit:cover;flex-shrink:0;min-height:0}
-.nav-toggle{display:none}
-.nav-links{display:flex;align-items:center;gap:26px}
-@media (max-width:900px){
-  .story-card{flex-direction:column;height:auto;max-height:none}
-  .story-card img{width:100%;height:280px;min-height:280px;flex:none;aspect-ratio:auto;object-fit:cover}
-  .story-card>div{flex:none;overflow-y:visible;max-height:none}
-  .nav-toggle{display:block}
-  .talent-detail-grid{grid-template-columns:1fr !important}
-  .talent-detail-grid img{max-width:160px;margin:0 auto}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#faf9f5;border-bottom:1px solid #e6dcc6;flex-direction:column;align-items:flex-start;gap:0;padding:8px 24px 16px;z-index:20}
-  .nav-links.open{display:flex}
-  .nav-links a,.nav-links span{width:100%;padding:12px 0;border-bottom:1px solid #f0ebd0}
-  .talent-card img{width:38px !important;height:38px !important;margin-bottom:10px !important}
-  section[style*="grid-template-columns:1fr 1fr"][style*="align-items:end"]{grid-template-columns:1fr !important;align-items:start !important;gap:16px !important}
+<helmet>
+<style>:root{
+  /* Paper & ink — institutional base (website, decks, one-pagers) */
+  --paper: #f6f1e6;
+  --paper-warm: #efe7d6;
+  --paper-deep: #e6dcc6;
+  --ink: #201c16;
+  --ink-soft: #45403a;
+  --ink-faint: #6f6a61;
+  --hairline: #d9cfb8;
+  --hairline-strong: #c3b799;
+
+  /* Jewel palette — drawn from the fable plates; use for accents, illustration surrounds, fable/literary contexts */
+  --jewel-indigo: #23324a;
+  --jewel-indigo-soft: #3c5170;
+  --jewel-moss: #445a37;
+  --jewel-moss-soft: #66805a;
+  --jewel-ochre: #b8862f;
+  --jewel-ochre-soft: #d7ac5c;
+  --jewel-sienna: #a04a24;
+  --jewel-sienna-soft: #c47046;
+  --jewel-plum: #5b3a52;
+  --jewel-plum-soft: #7d5878;
+  --tet-purple: #5e3a82;
+  --tet-purple-soft: #8064a8;
+  --tet-purple-tint: #f2eef7;
+  --fables-gold-tint: #faf3e3;
+
+  /* Semantic aliases */
+  --surface-page: var(--paper);
+  --surface-card: #fffdf7;
+  --surface-sunken: var(--paper-warm);
+  --surface-inverse: var(--jewel-indigo);
+
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: var(--ink-faint);
+  --text-on-inverse: var(--paper);
+
+  --accent-primary: var(--jewel-ochre);
+  --accent-primary-hover: #a3781f;
+  --accent-primary-active: #8f6a1c;
+  --accent-secondary: var(--jewel-sienna);
+  --accent-tertiary: var(--jewel-moss);
+
+  --border-default: var(--hairline);
+  --border-strong: var(--hairline-strong);
+  --border-focus: var(--jewel-indigo);
+
+  --link: var(--jewel-indigo);
+  --link-hover: var(--jewel-sienna);
 }
+</style>
+<style>:root{
+  --font-display: "Playfair Display", "EB Garamond", Georgia, serif;
+  --font-serif: "EB Garamond", Georgia, serif;
+  --font-sans: "Libre Franklin", -apple-system, "Segoe UI", sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-body: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2.125rem;
+  --text-3xl: 2.875rem;
+  --text-4xl: 3.75rem;
+  --text-5xl: 4.75rem;
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-body: 1.6;
+  --leading-loose: 1.8;
+
+  --tracking-wide: 0.06em;
+  --tracking-wider: 0.12em;
+}
+</style>
+<style>:root{
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --content-max: 720px;
+  --page-max: 1200px;
+  --gutter: clamp(20px, 5vw, 64px); /* @kind spacing */
+}
+</style>
+<style>:root{
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-full: 999px;
+
+  --shadow-card: 0 1px 2px rgba(32,28,22,0.06), 0 8px 24px rgba(32,28,22,0.07);
+  --shadow-raised: 0 2px 4px rgba(32,28,22,0.08), 0 16px 40px rgba(32,28,22,0.10);
+  --shadow-inset-hairline: inset 0 0 0 1px var(--hairline);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1); /* @kind other */
+  --duration-fast: 140ms; /* @kind other */
+  --duration-base: 220ms; /* @kind other */
+  --duration-slow: 420ms; /* @kind other */
+}
+</style>
+<style>:root{
+  --paper-base: var(--paper);
+  --paper-faint: var(--paper-warm);
+  --ink-base: var(--ink);
+  --muted-ink: var(--text-secondary);
+  --muted-ink-strong: var(--text-secondary);
+  --muted-ink-strongest: var(--text-primary);
+  --muted-ink-stronger: var(--text-primary);
+  --gold-base: var(--jewel-ochre);
+  --gold-faint: var(--jewel-ochre-soft);
+  --cream-base: var(--paper);
+  --cream-faint: var(--paper-warm);
+  --cream-dim-stronger: var(--text-muted);
+  --border-hairline: var(--hairline);
+  --surface-chrome-veil: var(--surface-card);
+  --cover-bg-base: var(--jewel-indigo);
+  --radius-btn: var(--radius-sm);
+  --shadow-thumb: var(--shadow-card);
+  --accent-crow-1: var(--jewel-indigo-soft);
+  --accent-fox-2: var(--jewel-sienna);
+  --accent-bat-1: var(--jewel-plum);
+  --accent-octopus-1: var(--jewel-moss-soft);
+  --accent-horse-1: var(--jewel-sienna-soft);
+  --accent-whale-1: var(--jewel-indigo);
+  --accent-elephant-1: var(--jewel-moss);
+  --accent-chameleon-2: var(--tet-purple);
+  --font-body: var(--font-serif); /* @kind font */
+}
+</style>
+<style>/* Webfonts: self-hosted locally, Latin subset only. See assets/css/fonts-home.css */
+
+</style>
+<style>/* ─── FABLES OF TET — COLOR TOKENS ───────────────────────────
+   Sourced verbatim from the reader app's :root palette
+   (fables-of-tet/index.html, Fables of TET.html, print templates).
+   A restrained, ink-on-paper literary palette + one warm gold accent. */
+
+:root {
+  /* Base values */
+  --ink-base: #1a1208;         /* primary text, near-black warm ink */
+  --paper-base: #faf9f5;       /* page background, warm off-white */
+  --cream-base: #f4ead4;       /* text-on-dark, warm parchment cream */
+  --gold-base: #c69a3a;        /* the one accent color: eyebrows, rules, active states */
+  --cover-bg-base: #130e05;    /* near-black cover/TOC background */
+
+  /* Derived / alpha values (copied exactly as used in source) */
+  --gold-dim: rgba(198, 154, 58, 0.18);   /* gold hover wash */
+  --gold-faint: rgba(198, 154, 58, 0.08); /* gold hover wash, subtler (toc links) */
+  --muted-ink: rgba(26, 18, 8, 0.5);      /* secondary text on paper */
+  --muted-ink-strong: rgba(26, 18, 8, 0.7);  /* citation notes */
+  --muted-ink-stronger: rgba(26, 18, 8, 0.8);/* image description body, story-close */
+  --muted-ink-strongest: rgba(26, 18, 8, 0.85); /* reflection question text */
+  --rule: rgba(26, 18, 8, 0.14);          /* hairline dividers on paper */
+  --cream-dim: rgba(244, 234, 212, 0.5);  /* secondary text on dark (cover subtitle) */
+  --cream-dim-strong: rgba(244, 234, 212, 0.65); /* chapter epigraph on dark plate */
+  --cream-dim-stronger: rgba(244, 234, 212, 0.75); /* toc link default */
+  --cream-faint: rgba(244, 234, 212, 0.4);   /* toc sub-label */
+  --cover-veil: rgba(19, 14, 5, 0.85);       /* header background over cover */
+  --cover-veil-light: rgba(19, 14, 5, 0.5);  /* toc overlay scrim */
+  --cover-veil-heavy: rgba(19, 14, 5, 0.84); /* chapter-opener text gradient base */
+  --plate-caption: rgba(244, 234, 212, 0.45); /* "After [Artist]" plate caption */
+
+  /* Semantic aliases */
+  --text-body: var(--ink-base);
+  --text-muted: var(--muted-ink);
+  --text-on-dark: var(--cream-base);
+  --text-on-dark-muted: var(--cream-dim);
+  --text-accent: var(--gold-base);
+
+  --surface-page: var(--paper-base);
+  --surface-dark: var(--cover-bg-base);
+  --surface-accent-wash: var(--gold-dim);
+
+  --border-hairline: var(--rule);
+  --border-accent: var(--gold-base);
+}
+</style>
+<style>/* ─── FABLES OF TET — LIGHT THEME (v2) ────────────────────────
+   Direction update: the reader moves from a dark cover/TOC to a
+   light, paper-forward theme throughout — no near-black chrome.
+   --ink-base is now used for TEXT ONLY, never as a background.
+   Cream is now a warm elevated-surface tone (cards, TOC, chips),
+   not "text on dark". Gold remains the one accent. */
+
+:root {
+  /* Chrome surfaces (replace the old dark cover-bg for backgrounds) */
+  --surface-chrome: var(--cream-base);         /* TOC drawer, cover section, elevated chrome */
+  --surface-chrome-veil: rgba(244, 234, 212, 0.9); /* header-over-cover veil, was --cover-veil (dark) */
+  --surface-chrome-border: rgba(198, 154, 58, 0.3);
+
+  /* Text on the light chrome surfaces (replaces --cream text-on-dark roles) */
+  --text-on-chrome: var(--ink-base);
+  --text-on-chrome-muted: var(--muted-ink);
+  --text-on-chrome-faint: rgba(26, 18, 8, 0.4);
+
+  /* Overlay scrim used behind chapter-opener titles — now light, fading up from paper */
+  --plate-scrim: linear-gradient(to bottom, transparent, rgba(250, 249, 245, 0.94)); /* @kind other */
+  --plate-caption-light: rgba(26, 18, 8, 0.55);
+}
+</style>
+<style>/* ─── FABLES OF TET — PER-CHAPTER WASH TINTS ───────────────────
+   Each chapter's iOS/Mac wallpaper (assets/wallpapers/*) carries a
+   distinct abstract color signature. These tokens are light,
+   low-saturation echoes of that signature — two-stop tint pairs
+   used behind a chapter's reading content at very low emphasis
+   (via the ChapterWash component), for per-chapter cohesion
+   without introducing any dark background. Not exact color
+   extractions — eyeballed from the source wallpapers. */
+
+:root {
+  --wash-crow-a: #eef3ea;      /* sage/green + gold grid */
+  --wash-crow-b: #f7ecd2;
+
+  --wash-fox-a: #eef1f7;       /* starry-night indigo + gold moon */
+  --wash-fox-b: #fbf0d9;
+
+  --wash-bat-a: #f2eef7;       /* faceted purple/charcoal crystal */
+  --wash-bat-b: #ece9ee;
+
+  --wash-octopus-a: #f5efe2;   /* sepia Escher-style isometric pattern */
+  --wash-octopus-b: #efe8d6;
+
+  --wash-horse-a: #f6ecd9;     /* parchment + radiating red-ember threads */
+  --wash-horse-b: #f8e2d3;
+
+  --wash-whale-a: #eef1f6;     /* deep navy + gold horizon */
+  --wash-whale-b: #f9e6d9;
+
+  --wash-elephant-a: #fbeee0;  /* red/ochre storm */
+  --wash-elephant-b: #f7dcd0;
+
+  --wash-chameleon-a: #f8f0da; /* gold + purple mosaic */
+  --wash-chameleon-b: #f1e9f3;
+
+  --wash-longnight-a: #eceef5; /* synthesis chapter — pale indigo/violet */
+  --wash-longnight-b: #eee9f2;
+}
+</style>
+<style>/* ─── FABLES OF TET — PER-CHAPTER ACCENT COLORS ────────────────
+   Direction 1b ("Paper & Gouache") adopted. Beyond the light wash
+   tints, each chapter now also gets a genuine ACCENT pair — pulled
+   from that chapter's own full illustration (not the abstract
+   wallpaper) — used for its eyebrow label, dividers, and reflection
+   bullets, so each chapter reads as visually its own.
+
+   The CHAMELEON pair doubles as --accent-primary-1/2 — the default,
+   system-wide brand accent for anything that isn't a specific
+   chapter (cover, header, TOC, marketing collateral, the wordmark).
+   The Chameleon fable is the flagship/general-communication story. */
+
+:root {
+  --accent-crow-1: #3d6b63;       /* deep teal, from the Klee-grid greens/blues */
+  --accent-crow-2: #b98a3e;       /* warm ochre-gold at the grid's center */
+
+  --accent-fox-1: #2f3b63;        /* Van Gogh starry-night indigo */
+  --accent-fox-2: #d1a13f;        /* moon / amber-gold fox coat */
+
+  --accent-bat-1: #6b4b8a;        /* violet glow at the bat's chest */
+  --accent-bat-2: #5a6072;        /* faceted slate-blue crystal wings */
+
+  --accent-octopus-1: #6b5f4f;    /* warm sepia ink, near-monochrome plate */
+  --accent-octopus-2: #8f8471;    /* lighter parchment-grey */
+
+  --accent-horse-1: #a8542f;      /* rust-red thread network */
+  --accent-horse-2: #c99a4a;      /* parchment gold */
+
+  --accent-whale-1: #1f3b5c;      /* deep navy dive */
+  --accent-whale-2: #d99a3a;      /* surface-light gold */
+
+  --accent-elephant-1: #c1502c;   /* burnt-orange storm */
+  --accent-elephant-2: #4a2f52;   /* deep plum undertone */
+
+  --accent-chameleon-1: #c9a227;  /* gold ground of the Klimt-style mosaic — THE flagship fable */
+  --accent-chameleon-2: #5e3a82;  /* the chameleon's mosaic purple */
+
+  --accent-longnight-1: #4a4a6b;  /* indigo synthesis */
+  --accent-longnight-2: #c69a3a;  /* the book's original gold, unchanged */
+
+  /* System default — general communication, not tied to a specific chapter.
+     Aliased to the Chameleon pair per direction: it becomes the flagship story. */
+  --accent-primary-1: var(--accent-chameleon-1);
+  --accent-primary-2: var(--accent-chameleon-2);
+}
+</style>
+<style>/* ─── FABLES OF TET — TYPE TOKENS ─────────────────────────────
+   Two Google-served serifs, no sans anywhere in the brand.
+   EB Garamond carries all reading copy; Playfair Display is
+   reserved for titles/headings only. */
+
+:root {
+  --font-body: 'EB Garamond', 'Garamond', 'Georgia', serif;
+  --font-display: 'Playfair Display', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-hand: 'Caveat', 'Segoe Script', cursive; /* direction 1b: hand-lettered epigraphs */
+
+  /* Base sizing — root font-size the reader sets, and the scale built on top of it */
+  --text-root-size: 18px;         /* html { font-size } on desktop */
+  --text-root-size-mobile: 17px;  /* html { font-size } under 620px */
+
+  --text-body-size: 1rem;
+  --text-body-line-height: 1.82;
+
+  /* Eyebrow / label (small caps-style uppercase tag above headings) */
+  --text-eyebrow-size: 0.7rem;
+  --text-eyebrow-tracking: 0.2em;
+
+  /* Display headings (Playfair Display, clamp for responsive) */
+  --text-cover-title-size: clamp(2.2rem, 6vw, 3.6rem);
+  --text-front-title-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  --text-chapter-title-size: clamp(1.6rem, 4vw, 2.5rem);
+  --text-display-line-height: 1.2;
+  --text-display-weight: 400; /* body/front-matter headings stay regular */
+  --text-chapter-title-weight: 700; /* direction 1b: chapter + cover titles set bolder, warmer */
+  --text-epigraph-size-hand: 1.3rem; /* Caveat renders smaller visually at the same px — sized up */
+
+  /* Supporting sizes */
+  --text-subtitle-size: 1.05rem;   /* cover subtitle, italic */
+  --text-epigraph-size: 1rem;      /* chapter epigraph, italic */
+  --text-questions-intro-size: 1.05rem;
+  --text-small-size: 0.88rem;      /* citation notes, rl-note */
+  --text-tiny-size: 0.68rem;       /* plate captions */
+  --text-nav-size: 0.85rem;        /* begin-btn, nav-btn */
+
+  --text-tracking-wide: 0.12em;    /* uppercase buttons */
+  --text-tracking-widest: 0.22em;  /* cover series label */
+}
+</style>
+<style>/* ─── FABLES OF TET — SPACING & SHAPE TOKENS ──────────────────
+   Values lifted directly from the reader app's layout code. */
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-11: 48px;
+  --space-12: 56px;
+  --space-13: 60px;
+  --space-14: 64px;
+  --space-15: 72px;
+  --space-16: 80px;
+  --space-20: 100px;
+
+  /* Reading measure */
+  --content-max-width: 700px;
+  --content-padding-desktop: 72px 40px 100px;
+  --content-padding-default: 64px 28px 80px;
+  --content-padding-mobile: 48px 20px 72px;
+
+  /* Radii — used sparingly, only on photographic thumbnails, never on cards/buttons */
+  --radius-thumb-desktop: 10px;
+  --radius-thumb-mobile: 8px;
+  --radius-btn: 6px;
+
+  /* Shadow — one soft warm-black shadow, used only under floating thumbnails */
+  --shadow-thumb: 0 4px 16px rgba(19, 14, 5, 0.18);
+
+  /* Fixed chrome */
+  --header-height: 54px;
+  --toc-width: 320px;
+}
+</style>
+<style>*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-body);line-height:var(--leading-body)}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:var(--leading-tight);margin:0 0 var(--space-4)}
+p{margin:0 0 var(--space-4)}
+a{color:var(--link);text-decoration:underline;text-decoration-color:var(--hairline-strong);text-underline-offset:2px}
+a:hover{color:var(--link-hover);text-decoration-color:currentColor}
+img{max-width:100%;display:block}
+</style>
+<style>:root{
+  /* Paper & ink — institutional base (website, decks, one-pagers) */
+  --paper: #f6f1e6;
+  --paper-warm: #efe7d6;
+  --paper-deep: #e6dcc6;
+  --ink: #201c16;
+  --ink-soft: #45403a;
+  --ink-faint: #6f6a61;
+  --hairline: #d9cfb8;
+  --hairline-strong: #c3b799;
+
+  /* Jewel palette — drawn from the fable plates; use for accents, illustration surrounds, fable/literary contexts */
+  --jewel-indigo: #23324a;
+  --jewel-indigo-soft: #3c5170;
+  --jewel-moss: #445a37;
+  --jewel-moss-soft: #66805a;
+  --jewel-ochre: #b8862f;
+  --jewel-ochre-soft: #d7ac5c;
+  --jewel-sienna: #a04a24;
+  --jewel-sienna-soft: #c47046;
+  --jewel-plum: #5b3a52;
+  --jewel-plum-soft: #7d5878;
+  --tet-purple: #5e3a82;
+  --tet-purple-soft: #8064a8;
+  --tet-purple-tint: #f2eef7;
+  --fables-gold-tint: #faf3e3;
+
+  /* Semantic aliases */
+  --surface-page: var(--paper);
+  --surface-card: #fffdf7;
+  --surface-sunken: var(--paper-warm);
+  --surface-inverse: var(--jewel-indigo);
+
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: var(--ink-faint);
+  --text-on-inverse: var(--paper);
+
+  --accent-primary: var(--jewel-ochre);
+  --accent-primary-hover: #a3781f;
+  --accent-primary-active: #8f6a1c;
+  --accent-secondary: var(--jewel-sienna);
+  --accent-tertiary: var(--jewel-moss);
+
+  --border-default: var(--hairline);
+  --border-strong: var(--hairline-strong);
+  --border-focus: var(--jewel-indigo);
+
+  --link: var(--jewel-indigo);
+  --link-hover: var(--jewel-sienna);
+}
+
+:root{
+  --font-display: "Playfair Display", "EB Garamond", Georgia, serif;
+  --font-serif: "EB Garamond", Georgia, serif;
+  --font-sans: "Libre Franklin", -apple-system, "Segoe UI", sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-body: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2.125rem;
+  --text-3xl: 2.875rem;
+  --text-4xl: 3.75rem;
+  --text-5xl: 4.75rem;
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-body: 1.6;
+  --leading-loose: 1.8;
+
+  --tracking-wide: 0.06em;
+  --tracking-wider: 0.12em;
+}
+
+:root{
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --content-max: 720px;
+  --page-max: 1200px;
+  --gutter: clamp(20px, 5vw, 64px); /* @kind spacing */
+}
+
+:root{
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-full: 999px;
+
+  --shadow-card: 0 1px 2px rgba(32,28,22,0.06), 0 8px 24px rgba(32,28,22,0.07);
+  --shadow-raised: 0 2px 4px rgba(32,28,22,0.08), 0 16px 40px rgba(32,28,22,0.10);
+  --shadow-inset-hairline: inset 0 0 0 1px var(--hairline);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1); /* @kind other */
+  --duration-fast: 140ms; /* @kind other */
+  --duration-base: 220ms; /* @kind other */
+  --duration-slow: 420ms; /* @kind other */
+}
+
+:root{
+  --paper-base: var(--paper);
+  --paper-faint: var(--paper-warm);
+  --ink-base: var(--ink);
+  --muted-ink: var(--text-secondary);
+  --muted-ink-strong: var(--text-secondary);
+  --muted-ink-strongest: var(--text-primary);
+  --muted-ink-stronger: var(--text-primary);
+  --gold-base: var(--jewel-ochre);
+  --gold-faint: var(--jewel-ochre-soft);
+  --cream-base: var(--paper);
+  --cream-faint: var(--paper-warm);
+  --cream-dim-stronger: var(--text-muted);
+  --border-hairline: var(--hairline);
+  --surface-chrome-veil: var(--surface-card);
+  --cover-bg-base: var(--jewel-indigo);
+  --radius-btn: var(--radius-sm);
+  --shadow-thumb: var(--shadow-card);
+  --accent-crow-1: var(--jewel-indigo-soft);
+  --accent-fox-2: var(--jewel-sienna);
+  --accent-bat-1: var(--jewel-plum);
+  --accent-octopus-1: var(--jewel-moss-soft);
+  --accent-horse-1: var(--jewel-sienna-soft);
+  --accent-whale-1: var(--jewel-indigo);
+  --accent-elephant-1: var(--jewel-moss);
+  --accent-chameleon-2: var(--tet-purple);
+  --font-body: var(--font-serif); /* @kind font */
+}
+
+/* Webfonts: self-hosted locally, Latin subset only. See assets/css/fonts-home.css */
+
+/* ─── FABLES OF TET — COLOR TOKENS ───────────────────────────
+   Sourced verbatim from the reader app's :root palette
+   (fables-of-tet/index.html, Fables of TET.html, print templates).
+   A restrained, ink-on-paper literary palette + one warm gold accent. */
+
+:root {
+  /* Base values */
+  --ink-base: #1a1208;         /* primary text, near-black warm ink */
+  --paper-base: #faf9f5;       /* page background, warm off-white */
+  --cream-base: #f4ead4;       /* text-on-dark, warm parchment cream */
+  --gold-base: #c69a3a;        /* the one accent color: eyebrows, rules, active states */
+  --cover-bg-base: #130e05;    /* near-black cover/TOC background */
+
+  /* Derived / alpha values (copied exactly as used in source) */
+  --gold-dim: rgba(198, 154, 58, 0.18);   /* gold hover wash */
+  --gold-faint: rgba(198, 154, 58, 0.08); /* gold hover wash, subtler (toc links) */
+  --muted-ink: rgba(26, 18, 8, 0.5);      /* secondary text on paper */
+  --muted-ink-strong: rgba(26, 18, 8, 0.7);  /* citation notes */
+  --muted-ink-stronger: rgba(26, 18, 8, 0.8);/* image description body, story-close */
+  --muted-ink-strongest: rgba(26, 18, 8, 0.85); /* reflection question text */
+  --rule: rgba(26, 18, 8, 0.14);          /* hairline dividers on paper */
+  --cream-dim: rgba(244, 234, 212, 0.5);  /* secondary text on dark (cover subtitle) */
+  --cream-dim-strong: rgba(244, 234, 212, 0.65); /* chapter epigraph on dark plate */
+  --cream-dim-stronger: rgba(244, 234, 212, 0.75); /* toc link default */
+  --cream-faint: rgba(244, 234, 212, 0.4);   /* toc sub-label */
+  --cover-veil: rgba(19, 14, 5, 0.85);       /* header background over cover */
+  --cover-veil-light: rgba(19, 14, 5, 0.5);  /* toc overlay scrim */
+  --cover-veil-heavy: rgba(19, 14, 5, 0.84); /* chapter-opener text gradient base */
+  --plate-caption: rgba(244, 234, 212, 0.45); /* "After [Artist]" plate caption */
+
+  /* Semantic aliases */
+  --text-body: var(--ink-base);
+  --text-muted: var(--muted-ink);
+  --text-on-dark: var(--cream-base);
+  --text-on-dark-muted: var(--cream-dim);
+  --text-accent: var(--gold-base);
+
+  --surface-page: var(--paper-base);
+  --surface-dark: var(--cover-bg-base);
+  --surface-accent-wash: var(--gold-dim);
+
+  --border-hairline: var(--rule);
+  --border-accent: var(--gold-base);
+}
+
+/* ─── FABLES OF TET — LIGHT THEME (v2) ────────────────────────
+   Direction update: the reader moves from a dark cover/TOC to a
+   light, paper-forward theme throughout — no near-black chrome.
+   --ink-base is now used for TEXT ONLY, never as a background.
+   Cream is now a warm elevated-surface tone (cards, TOC, chips),
+   not "text on dark". Gold remains the one accent. */
+
+:root {
+  /* Chrome surfaces (replace the old dark cover-bg for backgrounds) */
+  --surface-chrome: var(--cream-base);         /* TOC drawer, cover section, elevated chrome */
+  --surface-chrome-veil: rgba(244, 234, 212, 0.9); /* header-over-cover veil, was --cover-veil (dark) */
+  --surface-chrome-border: rgba(198, 154, 58, 0.3);
+
+  /* Text on the light chrome surfaces (replaces --cream text-on-dark roles) */
+  --text-on-chrome: var(--ink-base);
+  --text-on-chrome-muted: var(--muted-ink);
+  --text-on-chrome-faint: rgba(26, 18, 8, 0.4);
+
+  /* Overlay scrim used behind chapter-opener titles — now light, fading up from paper */
+  --plate-scrim: linear-gradient(to bottom, transparent, rgba(250, 249, 245, 0.94)); /* @kind other */
+  --plate-caption-light: rgba(26, 18, 8, 0.55);
+}
+
+/* ─── FABLES OF TET — PER-CHAPTER WASH TINTS ───────────────────
+   Each chapter's iOS/Mac wallpaper (assets/wallpapers/*) carries a
+   distinct abstract color signature. These tokens are light,
+   low-saturation echoes of that signature — two-stop tint pairs
+   used behind a chapter's reading content at very low emphasis
+   (via the ChapterWash component), for per-chapter cohesion
+   without introducing any dark background. Not exact color
+   extractions — eyeballed from the source wallpapers. */
+
+:root {
+  --wash-crow-a: #eef3ea;      /* sage/green + gold grid */
+  --wash-crow-b: #f7ecd2;
+
+  --wash-fox-a: #eef1f7;       /* starry-night indigo + gold moon */
+  --wash-fox-b: #fbf0d9;
+
+  --wash-bat-a: #f2eef7;       /* faceted purple/charcoal crystal */
+  --wash-bat-b: #ece9ee;
+
+  --wash-octopus-a: #f5efe2;   /* sepia Escher-style isometric pattern */
+  --wash-octopus-b: #efe8d6;
+
+  --wash-horse-a: #f6ecd9;     /* parchment + radiating red-ember threads */
+  --wash-horse-b: #f8e2d3;
+
+  --wash-whale-a: #eef1f6;     /* deep navy + gold horizon */
+  --wash-whale-b: #f9e6d9;
+
+  --wash-elephant-a: #fbeee0;  /* red/ochre storm */
+  --wash-elephant-b: #f7dcd0;
+
+  --wash-chameleon-a: #f8f0da; /* gold + purple mosaic */
+  --wash-chameleon-b: #f1e9f3;
+
+  --wash-longnight-a: #eceef5; /* synthesis chapter — pale indigo/violet */
+  --wash-longnight-b: #eee9f2;
+}
+
+/* ─── FABLES OF TET — PER-CHAPTER ACCENT COLORS ────────────────
+   Direction 1b ("Paper & Gouache") adopted. Beyond the light wash
+   tints, each chapter now also gets a genuine ACCENT pair — pulled
+   from that chapter's own full illustration (not the abstract
+   wallpaper) — used for its eyebrow label, dividers, and reflection
+   bullets, so each chapter reads as visually its own.
+
+   The CHAMELEON pair doubles as --accent-primary-1/2 — the default,
+   system-wide brand accent for anything that isn't a specific
+   chapter (cover, header, TOC, marketing collateral, the wordmark).
+   The Chameleon fable is the flagship/general-communication story. */
+
+:root {
+  --accent-crow-1: #3d6b63;       /* deep teal, from the Klee-grid greens/blues */
+  --accent-crow-2: #b98a3e;       /* warm ochre-gold at the grid's center */
+
+  --accent-fox-1: #2f3b63;        /* Van Gogh starry-night indigo */
+  --accent-fox-2: #d1a13f;        /* moon / amber-gold fox coat */
+
+  --accent-bat-1: #6b4b8a;        /* violet glow at the bat's chest */
+  --accent-bat-2: #5a6072;        /* faceted slate-blue crystal wings */
+
+  --accent-octopus-1: #6b5f4f;    /* warm sepia ink, near-monochrome plate */
+  --accent-octopus-2: #8f8471;    /* lighter parchment-grey */
+
+  --accent-horse-1: #a8542f;      /* rust-red thread network */
+  --accent-horse-2: #c99a4a;      /* parchment gold */
+
+  --accent-whale-1: #1f3b5c;      /* deep navy dive */
+  --accent-whale-2: #d99a3a;      /* surface-light gold */
+
+  --accent-elephant-1: #c1502c;   /* burnt-orange storm */
+  --accent-elephant-2: #4a2f52;   /* deep plum undertone */
+
+  --accent-chameleon-1: #c9a227;  /* gold ground of the Klimt-style mosaic — THE flagship fable */
+  --accent-chameleon-2: #5e3a82;  /* the chameleon's mosaic purple */
+
+  --accent-longnight-1: #4a4a6b;  /* indigo synthesis */
+  --accent-longnight-2: #c69a3a;  /* the book's original gold, unchanged */
+
+  /* System default — general communication, not tied to a specific chapter.
+     Aliased to the Chameleon pair per direction: it becomes the flagship story. */
+  --accent-primary-1: var(--accent-chameleon-1);
+  --accent-primary-2: var(--accent-chameleon-2);
+}
+
+/* ─── FABLES OF TET — TYPE TOKENS ─────────────────────────────
+   Two Google-served serifs, no sans anywhere in the brand.
+   EB Garamond carries all reading copy; Playfair Display is
+   reserved for titles/headings only. */
+
+:root {
+  --font-body: 'EB Garamond', 'Garamond', 'Georgia', serif;
+  --font-display: 'Playfair Display', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-hand: 'Caveat', 'Segoe Script', cursive; /* direction 1b: hand-lettered epigraphs */
+
+  /* Base sizing — root font-size the reader sets, and the scale built on top of it */
+  --text-root-size: 18px;         /* html { font-size } on desktop */
+  --text-root-size-mobile: 17px;  /* html { font-size } under 620px */
+
+  --text-body-size: 1rem;
+  --text-body-line-height: 1.82;
+
+  /* Eyebrow / label (small caps-style uppercase tag above headings) */
+  --text-eyebrow-size: 0.7rem;
+  --text-eyebrow-tracking: 0.2em;
+
+  /* Display headings (Playfair Display, clamp for responsive) */
+  --text-cover-title-size: clamp(2.2rem, 6vw, 3.6rem);
+  --text-front-title-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  --text-chapter-title-size: clamp(1.6rem, 4vw, 2.5rem);
+  --text-display-line-height: 1.2;
+  --text-display-weight: 400; /* body/front-matter headings stay regular */
+  --text-chapter-title-weight: 700; /* direction 1b: chapter + cover titles set bolder, warmer */
+  --text-epigraph-size-hand: 1.3rem; /* Caveat renders smaller visually at the same px — sized up */
+
+  /* Supporting sizes */
+  --text-subtitle-size: 1.05rem;   /* cover subtitle, italic */
+  --text-epigraph-size: 1rem;      /* chapter epigraph, italic */
+  --text-questions-intro-size: 1.05rem;
+  --text-small-size: 0.88rem;      /* citation notes, rl-note */
+  --text-tiny-size: 0.68rem;       /* plate captions */
+  --text-nav-size: 0.85rem;        /* begin-btn, nav-btn */
+
+  --text-tracking-wide: 0.12em;    /* uppercase buttons */
+  --text-tracking-widest: 0.22em;  /* cover series label */
+}
+
+/* ─── FABLES OF TET — SPACING & SHAPE TOKENS ──────────────────
+   Values lifted directly from the reader app's layout code. */
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-11: 48px;
+  --space-12: 56px;
+  --space-13: 60px;
+  --space-14: 64px;
+  --space-15: 72px;
+  --space-16: 80px;
+  --space-20: 100px;
+
+  /* Reading measure */
+  --content-max-width: 700px;
+  --content-padding-desktop: 72px 40px 100px;
+  --content-padding-default: 64px 28px 80px;
+  --content-padding-mobile: 48px 20px 72px;
+
+  /* Radii — used sparingly, only on photographic thumbnails, never on cards/buttons */
+  --radius-thumb-desktop: 10px;
+  --radius-thumb-mobile: 8px;
+  --radius-btn: 6px;
+
+  /* Shadow — one soft warm-black shadow, used only under floating thumbnails */
+  --shadow-thumb: 0 4px 16px rgba(19, 14, 5, 0.18);
+
+  /* Fixed chrome */
+  --header-height: 54px;
+  --toc-width: 320px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-body);line-height:var(--leading-body)}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:var(--leading-tight);margin:0 0 var(--space-4)}
+p{margin:0 0 var(--space-4)}
+a{color:var(--link);text-decoration:underline;text-decoration-color:var(--hairline-strong);text-underline-offset:2px}
+a:hover{color:var(--link-hover);text-decoration-color:currentColor}
+img{max-width:100%;display:block}
+
+</style>
+<script src="assets/js/ds-bundle-home.js"></script>
+<style>
+body{margin:0;background:var(--paper)}
+a{color:var(--link)}
+a:hover{color:var(--link-hover)}
 </style>
 </helmet>
 
-<div style="background:#faf9f5;color:#1a1208">
+<div style="background:var(--paper);color:var(--ink);font-family:var(--font-serif)">
 
-<header style="position:relative;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid #e6dcc6">
+<header style="display:flex;align-items:center;justify-content:space-between;padding:22px 5vw;border-bottom:1px solid var(--hairline)">
   <div style="display:flex;align-items:center;gap:12px">
-    <div style="display:flex;align-items:baseline;font-family:'Libre Franklin',sans-serif;font-weight:900;font-size:22px;line-height:1"><span style="color:#1a1208">T</span><span style="color:#5e3a82;display:inline-block;transform:scaleX(-1);margin:0 1px">E</span><span style="color:#1a1208">T</span></div>
-    <span style="font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:15px;line-height:1.15;color:#1a1208">Talents for<br>Exceptional Times</span>
+    <div style="font-family:var(--font-sans);font-weight:900;font-size:22px;line-height:1"><span>T</span><span style="color:var(--tet-purple);display:inline-block;transform:scaleX(-1);margin:0 1px">E</span><span>T</span></div>
+    <span style="font-family:var(--font-sans);font-weight:700;font-size:13px;line-height:1.2;color:var(--text-secondary)">Talents for<br>Exceptional Times</span>
   </div>
-  <button class="nav-toggle way-btn" style="width:auto;font-size:22px;line-height:1;padding:4px" sc-camel-on-click="{{ toggleNav }}" aria-label="Menu">{{ navToggleIcon }}</button>
-  <nav class="nav-links {{ navOpenClass }}" style="font-family:'Libre Franklin',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:#45403a">
-    <a class="way-btn" href="#constellation-section" style="width:auto" sc-camel-on-click="{{ showTalentsMode }}" data-comment-anchor="0e37a3facb-a">Framework</a>
-    <a class="way-btn" href="#constellation-section" style="width:auto" sc-camel-on-click="{{ showFablesMode }}">Fables</a>
-    <a class="way-btn" href="products.html" style="width:auto" data-comment-anchor="79a14c8cac-span">Products</a>
-    <span>About</span>
-    <a href="https://doodle.com/bp/deepakmehta/professional-meeting" style="background:#1a1208;color:#faf9f5;padding:10px 20px;border-radius:999px;font-size:12px;text-decoration:none">Book a call →</a>
+  <nav style="{{ navStyle }}">
+    <a href="#recognition" style="text-decoration:none">Recognition</a>
+    <a href="#constellation" style="text-decoration:none">Constellation</a>
+    <a href="#companions" style="text-decoration:none">Companions</a>
+    <a href="https://doodle.com/bp/deepakmehta/professional-meeting" style="background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:var(--radius-full);text-decoration:none">Book a call →</a>
   </nav>
+  <button sc-camel-on-click="{{ toggleMenu }}" aria-label="Menu" style="{{ hamburgerStyle }}">
+    <span style="display:block;width:20px;height:2px;background:var(--ink)"></span>
+    <span style="display:block;width:20px;height:2px;background:var(--ink)"></span>
+    <span style="display:block;width:20px;height:2px;background:var(--ink)"></span>
+  </button>
 </header>
 
-<section style="text-align:center;padding:56px 24px 0">
-  <div style="font-family:'Libre Franklin',sans-serif;font-weight:900;font-size:clamp(1.7rem,5vw,2.9rem);line-height:1.15;margin:0 auto 14px" data-comment-anchor="a5a6af6490-div">The talent was never wrong.<br><span style="color:#5e3a82">The frame was.</span></div>
-</section>
-
-<div ref="{{ trackRef }}" style="height:{{trackHeightVh}}vh;position:relative">
-  <div style="position:sticky;top:0;height:100vh;height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden">
-    <div style="perspective:1800px;display:flex;align-items:center;justify-content:center">
-      <div style="transform:{{stageTransform}};display:flex;flex-direction:column;align-items:center;gap:20px">
-        <div style="display:inline-flex;align-items:baseline;transform:scaleX({{eScaleX}});font-family:'Libre Franklin',sans-serif;font-weight:900;font-size:min(18vw,190px);line-height:1">
-          <span style="color:#1a1208">T</span><span style="color:{{eColor}};margin:0 0.01em">E</span><span style="color:#1a1208">T</span>
-        </div>
-        <div style="display:inline-block;transform:scaleX({{capScaleX}});font-family:'Libre Franklin',sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:0.22em;font-size:clamp(13px,1.6vw,18px);color:#1a1208;white-space:nowrap">Talents for Exceptional Times</div>
-      </div>
-    </div>
-    <div style="position:absolute;bottom:12%;left:50%;transform:translate(-50%,{{taglineTranslateY}}px);opacity:{{taglineOpacity}};font-family:'EB Garamond',serif;font-style:italic;font-size:clamp(16px,2.2vw,26px);color:#1a1208;text-align:center;max-width:82vw">Some talents only reveal when the context changes.</div>
-  </div>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;left:0;right:0;top:65px;z-index:250;background:var(--paper);border-bottom:1px solid var(--hairline);padding:22px 24px 28px;display:flex;flex-direction:column;gap:18px;font-family:var(--font-sans);font-size:14px;font-weight:600;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-secondary);box-shadow:0 16px 32px rgba(0,0,0,.08)">
+  <a href="#recognition" sc-camel-on-click="{{ closeMenu }}" style="text-decoration:none;color:inherit">Recognition</a>
+  <a href="#constellation" sc-camel-on-click="{{ closeMenu }}" style="text-decoration:none;color:inherit">Constellation</a>
+  <a href="#companions" sc-camel-on-click="{{ closeMenu }}" style="text-decoration:none;color:inherit">Companions</a>
+  <a href="https://doodle.com/bp/deepakmehta/professional-meeting" sc-camel-on-click="{{ closeMenu }}" style="text-decoration:none;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:var(--radius-full);text-align:center">Book a call →</a>
 </div>
+</sc-if>
 
-<section style="max-width:900px;margin:0 auto 96px;padding:0 24px;text-align:center">
-  <div style="font-family:'Libre Franklin',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#6f6a61;margin-bottom:12px">Two ways in</div>
-  <h2 style="font-family:'EB Garamond',serif;font-weight:600;font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 14px">Begin with what draws you.</h2>
-  <p style="font-family:'EB Garamond',serif;font-size:16px;color:#45403a;max-width:520px;margin:0 auto 40px;line-height:1.6">No test and no fixed type. Meet the ideas through the language of talents,<br>or let a story make the first connection.</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #e6dcc6;border-radius:14px;overflow:hidden;text-align:left">
-    <a class="way-btn" href="#constellation-section" style="padding:32px;background:#f2eef7;border-right:1px solid #e6dcc6" sc-camel-on-click="{{ showFablesMode }}">
-      <div style="font-family:'Libre Franklin',sans-serif;font-size:11px;font-style:italic;color:#5e3a82;margin-bottom:14px">01 / Story</div>
-      <div style="font-family:'EB Garamond',serif;font-size:20px;font-weight:600;margin-bottom:10px">Enter through a fable</div>
-      <p style="font-family:'EB Garamond',serif;font-size:14px;color:#45403a;line-height:1.55;margin:0 0 16px">Recognise a familiar struggle in a story, then notice the capability hidden inside it.</p>
-      <span style="font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:#5e3a82">Browse the fables ↓</span>
-    </a>
-    <a class="way-btn" href="#constellation-section" style="padding:32px;background:#faf3e3" sc-camel-on-click="{{ showTalentsMode }}">
-      <div style="font-family:'Libre Franklin',sans-serif;font-size:11px;font-style:italic;color:#b8862f;margin-bottom:14px">02 / Language</div>
-      <div style="font-family:'EB Garamond',serif;font-size:20px;font-weight:600;margin-bottom:10px">Meet the eight talents</div>
-      <p style="font-family:'EB Garamond',serif;font-size:14px;color:#45403a;line-height:1.55;margin:0 0 16px">Explore a vocabulary for ways of sensing, thinking and acting that conventional frames can overlook.</p>
-      <span style="font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:#b8862f">See the constellation ↓</span>
-    </a>
+<section style="max-width:800px;margin:0 auto;padding:14vh 24px 10vh;text-align:center">
+  <div style="font-family:var(--font-sans);font-size:12px;font-weight:800;letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--text-muted);margin-bottom:22px" data-comment-anchor="4541450ab7-div">Eight fables · Eight talents · No test</div>
+  <h1 style="font-family:var(--font-serif);font-weight:600;font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.05;letter-spacing:-0.02em;margin:0">Something feels<br><em style="display:block;color:var(--tet-purple);font-style:italic;font-size:clamp(5rem,15vw,11rem);line-height:1;margin-top:10px">off</em></h1>
+  <p style="font-family:var(--font-serif);font-size:clamp(1.15rem,1.8vw,1.4rem);line-height:1.45;color:var(--text-secondary);max-width:600px;margin:28px auto 0">Not broken. Not secretly a type waiting to be discovered. Just a mind meeting situations that do not always know what to do with it.</p>
+  <div style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:0.02em;color:var(--text-muted);margin-top:22px" data-comment-anchor="ed0a42bb45-div">You do not need a diagnosis to recognise a pattern.</div>
+</section>
+
+<section id="recognition" style="{{ recognitionGridStyle }}">
+  <div>
+    <h2 style="font-family:var(--font-serif);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.15;margin:0">Before talent,<br>there is often friction.</h2>
+    <p style="font-family:var(--font-serif);font-size:17px;line-height:1.5;color:var(--text-secondary);margin-top:24px">The fables begin there: at the awkward edge where something useful can look excessive, difficult, strange or simply misplaced.</p>
+  </div>
+  <div>
+    <div style="border-top:1px solid var(--hairline)">
+      <sc-for list="{{ frictions }}" as="f" hint-placeholder-count="6">
+      <div style="padding:20px 0;border-bottom:1px solid var(--hairline);font-family:var(--font-serif);font-size:18px;line-height:1.3" style-hover="padding-left:14px;color:var(--jewel-sienna)">
+        <span style="opacity:0.45;font-size:0.75em;margin-right:10px">{{ f.n }}</span>{{ f.text }}
+      </div>
+      </sc-for>
+    </div>
+    <div style="font-family:var(--font-sans);font-size:12px;font-weight:800;color:var(--text-muted);margin-top:20px" data-comment-anchor="142ee9c640-div">Not symptoms. Not criteria. Places to become curious.</div>
   </div>
 </section>
 
-<section id="constellation-section" style="background:#f2eee4;padding:72px 24px">
-  <div class="{{ talentsModeClass }}">
-  <div style="max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:36px;align-items:start">
-    <div>
-      <div style="font-family:'Libre Franklin',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#6f6a61;margin-bottom:12px">Eight talents, so far</div>
-      <h2 style="font-family:'EB Garamond',serif;font-weight:600;font-size:clamp(1.6rem,3vw,2.2rem);margin:0;line-height:1.25">Not a box.<br>A constellation.</h2>
+<section id="constellation" style="background:var(--jewel-indigo);padding:9vh 24px 8vh;position:relative;overflow:hidden">
+  <div style="max-width:1040px;margin:0 auto 8px;text-align:center">
+    <h2 style="font-family:var(--font-serif);font-weight:600;font-size:clamp(1.4rem,3vw,2.3rem);margin:0;line-height:1.2;color:var(--paper);white-space:nowrap" data-comment-anchor="5353e80f08-h2">There is no first talent and no final result.</h2>
+    <p style="max-width:560px;margin:20px auto 0;font-family:var(--font-serif);font-size:16px;color:rgba(246,241,230,.75);line-height:1.55">Choose whatever draws your attention. Every fable opens into other fables.</p>
+  </div>
+
+  <div ref="{{ setMapRef }}" style="position:relative;width:min(1000px,94vw);height:clamp(560px,62vw,760px);margin:6vh auto 0;touch-action:none">
+    <svg sc-camel-view-box="0 0 1000 700" sc-camel-preserve-aspect-ratio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">
+      <line x1="{{ lines.cb.x1 }}" y1="{{ lines.cb.y1 }}" x2="{{ lines.cb.x2 }}" y2="{{ lines.cb.y2 }}" style="{{ lines.cb.style }}"></line>
+      <line x1="{{ lines.fh.x1 }}" y1="{{ lines.fh.y1 }}" x2="{{ lines.fh.x2 }}" y2="{{ lines.fh.y2 }}" style="{{ lines.fh.style }}"></line>
+      <line x1="{{ lines.fo.x1 }}" y1="{{ lines.fo.y1 }}" x2="{{ lines.fo.x2 }}" y2="{{ lines.fo.y2 }}" style="{{ lines.fo.style }}"></line>
+      <line x1="{{ lines.be.x1 }}" y1="{{ lines.be.y1 }}" x2="{{ lines.be.x2 }}" y2="{{ lines.be.y2 }}" style="{{ lines.be.style }}"></line>
+      <line x1="{{ lines.he.x1 }}" y1="{{ lines.he.y1 }}" x2="{{ lines.he.x2 }}" y2="{{ lines.he.y2 }}" style="{{ lines.he.style }}"></line>
+      <line x1="{{ lines.oc.x1 }}" y1="{{ lines.oc.y1 }}" x2="{{ lines.oc.x2 }}" y2="{{ lines.oc.y2 }}" style="{{ lines.oc.style }}"></line>
+      <line x1="{{ lines.wc.x1 }}" y1="{{ lines.wc.y1 }}" x2="{{ lines.wc.x2 }}" y2="{{ lines.wc.y2 }}" style="{{ lines.wc.style }}"></line>
+      <line x1="{{ lines.chc.x1 }}" y1="{{ lines.chc.y1 }}" x2="{{ lines.chc.x2 }}" y2="{{ lines.chc.y2 }}" style="{{ lines.chc.style }}"></line>
+      <line x1="{{ lines.chb.x1 }}" y1="{{ lines.chb.y1 }}" x2="{{ lines.chb.x2 }}" y2="{{ lines.chb.y2 }}" style="{{ lines.chb.style }}"></line>
+    </svg>
+
+    <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:230px;text-align:center;font-family:var(--font-serif);font-style:italic;font-size:1.3rem;color:rgba(246,241,230,.65);pointer-events:none">
+      "You are not one of these."
+      <div style="font-family:var(--font-sans);font-style:normal;font-size:0.62rem;letter-spacing:.14em;text-transform:uppercase;margin-top:12px;color:rgba(246,241,230,.4)">You may recognise several</div>
     </div>
-    <p style="font-family:'EB Garamond',serif;font-size:15px;color:#45403a;line-height:1.6;margin:0">Each talent only fully emerges in the right context — which is why one person can carry several. Explore all eight and start to see yourself as a unique, shifting constellation, not a single fixed point.</p>
-  </div>
 
-  <div class="talent-grid" style="max-width:1040px;margin:0 auto">
-    <sc-for list="{{ talentCards }}" as="c" hint-placeholder-count="8">
-    <button class="talent-card {{ c.tClass }} {{ c.hlClass }}" style="padding:26px 22px;display:flex;flex-direction:column;align-items:flex-start" sc-camel-on-click="{{ c.onClick }}">
-      <img src="{{ c.mark }}" alt="" style="width:52px;height:52px;border-radius:14px;margin-bottom:16px">
-      <div class="{{ c.colorClass }}" style="font-family:'Libre Franklin',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;text-align:right;align-self:flex-end">{{ c.eyebrow }}</div>
-      <div style="font-family:'EB Garamond',serif;font-size:17px;font-weight:600;margin-bottom:6px;text-align:right;align-self:flex-end">{{ c.name }}</div>
-      <p style="font-family:'EB Garamond',serif;font-size:13px;color:#45403a;line-height:1.5;margin:0">{{ c.slogan }}</p>
+    <button sc-camel-on-click="{{ openFable0 }}" sc-camel-on-pointer-down="{{ down0 }}" sc-camel-on-pointer-move="{{ onMove }}" sc-camel-on-pointer-up="{{ onUp }}" sc-camel-on-pointer-enter="{{ hover0 }}" sc-camel-on-pointer-leave="{{ clearHover }}" style="position:absolute;left:{{ pos0.left }}%;top:{{ pos0.top }}%;transform:translate(-50%,-50%);width:{{ fableIconWidth }};background:none;border:none;padding:0;cursor:grab;font:inherit;color:inherit;text-align:center;touch-action:none" style-hover="filter:brightness(1.12)">
+      <img src="assets/images/fable-logos-small/01-crow-integrative-thinking.webp" alt="Crow" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:26%;box-shadow:0 14px 34px rgba(0,0,0,.45);pointer-events:none">
+      <div style="margin-top:12px;font-family:var(--font-serif);font-weight:500;font-size:15px;color:var(--paper);pointer-events:none">Crow</div>
+      <div style="font-family:var(--font-sans);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55);margin-top:2px;pointer-events:none">Across domains</div>
     </button>
-    </sc-for>
-  </div>
-  </div>
-
-  <div class="{{ fablesModeClass }}">
-  <div style="max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:36px;align-items:end">
-    <div>
-      <div style="font-family:'Libre Franklin',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#6f6a61;margin-bottom:12px">Eight fables, so far</div>
-      <h2 style="font-family:'EB Garamond',serif;font-weight:600;font-size:clamp(1.6rem,3vw,2.2rem);margin:0;line-height:1.25">One story each.<br>Pick where you land.</h2>
-    </div>
-    <p style="font-family:'EB Garamond',serif;font-size:15px;color:#45403a;line-height:1.6;margin:0">Each fable carries one talent into a scene of friction — recognise the struggle first, meet the capability inside it after.</p>
-  </div>
-
-  <div class="talent-grid" style="max-width:1040px;margin:0 auto">
-    <sc-for list="{{ fableCards }}" as="f" hint-placeholder-count="8">
-    <button class="talent-card {{ f.tClass }} {{ f.hlClass }}" style="padding:22px" sc-camel-on-click="{{ f.onClick }}">
-      <img src="{{ f.mark }}" alt="{{ f.animal }}" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;margin-bottom:14px">
-      <div style="font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:14px;line-height:1.35;color:#1a1208">{{ f.title }}</div>
+    <button sc-camel-on-click="{{ openFable1 }}" sc-camel-on-pointer-down="{{ down1 }}" sc-camel-on-pointer-move="{{ onMove }}" sc-camel-on-pointer-up="{{ onUp }}" sc-camel-on-pointer-enter="{{ hover1 }}" sc-camel-on-pointer-leave="{{ clearHover }}" style="position:absolute;left:{{ pos1.left }}%;top:{{ pos1.top }}%;transform:translate(-50%,-50%);width:{{ fableIconWidth }};background:none;border:none;padding:0;cursor:grab;font:inherit;color:inherit;text-align:center;touch-action:none" style-hover="filter:brightness(1.12)">
+      <img src="assets/images/fable-logos-small/02-fox-creative-implementation.webp" alt="Fox" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:26%;box-shadow:0 14px 34px rgba(0,0,0,.45);pointer-events:none">
+      <div style="margin-top:12px;font-family:var(--font-serif);font-weight:500;font-size:15px;color:var(--paper);pointer-events:none">Fox</div>
+      <div style="font-family:var(--font-sans);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55);margin-top:2px;pointer-events:none">Making real</div>
     </button>
-    </sc-for>
-  </div>
+    <button sc-camel-on-click="{{ openFable2 }}" sc-camel-on-pointer-down="{{ down2 }}" sc-camel-on-pointer-move="{{ onMove }}" sc-camel-on-pointer-up="{{ onUp }}" sc-camel-on-pointer-enter="{{ hover2 }}" sc-camel-on-pointer-leave="{{ clearHover }}" style="position:absolute;left:{{ pos2.left }}%;top:{{ pos2.top }}%;transform:translate(-50%,-50%);width:{{ fableIconWidth }};background:none;border:none;padding:0;cursor:grab;font:inherit;color:inherit;text-align:center;touch-action:none" style-hover="filter:brightness(1.12)">
+      <img src="assets/images/fable-logos-small/03-bat-strategic-empathy.webp" alt="Bat" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:26%;box-shadow:0 14px 34px rgba(0,0,0,.45);pointer-events:none">
+      <div style="margin-top:12px;font-family:var(--font-serif);font-weight:500;font-size:15px;color:var(--paper);pointer-events:none">Bat</div>
+      <div style="font-family:var(--font-sans);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55);margin-top:2px;pointer-events:none">Seeing with</div>
+    </button>
+    <button sc-camel-on-click="{{ openFable3 }}" sc-camel-on-pointer-down="{{ down3 }}" sc-camel-on-pointer-move="{{ onMove }}" sc-camel-on-pointer-up="{{ onUp }}" sc-camel-on-pointer-enter="{{ hover3 }}" sc-camel-on-pointer-leave="{{ clearHover }}" style="position:absolute;left:{{ pos3.left }}%;top:{{ pos3.top }}%;transform:translate(-50%,-50%);width:{{ fableIconWidth }};background:none;border:none;padding:0;cursor:grab;font:inherit;color:inherit;text-align:center;touch-action:none" style-hover="filter:brightness(1.12)" data-comment-anchor="810ead097a-button">
+      <img src="assets/images/fable-logos-small/04-octopus-cognitive-dexterity.webp" alt="Octopus" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:26%;box-shadow:0 14px 34px rgba(0,0,0,.45);pointer-events:none">
+      <div style="margin-top:12px;font-family:var(--font-serif);font-weight:500;font-size:15px;color:var(--paper);pointer-events:none">Octopus</div>
+      <div style="font-family:var(--font-sans);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55);margin-top:2px;pointer-events:none">Changing lenses</div>
+    </button>
+    <button sc-camel-on-click="{{ openFable4 }}" sc-camel-on-pointer-down="{{ down4 }}" sc-camel-on-pointer-move="{{ onMove }}" sc-camel-on-pointer-up="{{ onUp }}" sc-camel-on-pointer-enter="{{ hover4 }}" sc-camel-on-pointer-leave="{{ clearHover }}" style="position:absolute;left:{{ pos4.left }}%;top:{{ pos4.top }}%;transform:translate(-50%,-50%);width:{{ fableIconWidth }};background:none;border:none;padding:0;cursor:grab;font:inherit;color:inherit;text-align:center;touch-action:none" style-hover="filter:brightness(1.12)">
+      <img src="assets/images/fable-logos-small/05-horse-embodiment.webp" alt="Horse" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:26%;box-shadow:0 14px 34px rgba(0,0,0,.45);pointer-events:none">
+      <div style="margin-top:12px;font-family:var(--font-serif);font-weight:500;font-size:15px;color:var(--paper);pointer-events:none">Horse</div>
+      <div style="font-family:var(--font-sans);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55);margin-top:2px;pointer-events:none">Knowing bodily</div>
+    </button>
+    <button sc-camel-on-click="{{ openFable5 }}" sc-camel-on-pointer-down="{{ down5 }}" sc-camel-on-pointer-move="{{ onMove }}" sc-camel-on-pointer-up="{{ onUp }}" sc-camel-on-pointer-enter="{{ hover5 }}" sc-camel-on-pointer-leave="{{ clearHover }}" style="position:absolute;left:{{ pos5.left }}%;top:{{ pos5.top }}%;transform:translate(-50%,-50%);width:{{ fableIconWidth }};background:none;border:none;padding:0;cursor:grab;font:inherit;color:inherit;text-align:center;touch-action:none" style-hover="filter:brightness(1.12)">
+      <img src="assets/images/fable-logos-small/06-whale-deep-focus.webp" alt="Whale" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:26%;box-shadow:0 14px 34px rgba(0,0,0,.45);pointer-events:none">
+      <div style="margin-top:12px;font-family:var(--font-serif);font-weight:500;font-size:15px;color:var(--paper);pointer-events:none">Whale</div>
+      <div style="font-family:var(--font-sans);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55);margin-top:2px;pointer-events:none">Going beneath</div>
+    </button>
+    <button sc-camel-on-click="{{ openFable6 }}" sc-camel-on-pointer-down="{{ down6 }}" sc-camel-on-pointer-move="{{ onMove }}" sc-camel-on-pointer-up="{{ onUp }}" sc-camel-on-pointer-enter="{{ hover6 }}" sc-camel-on-pointer-leave="{{ clearHover }}" style="position:absolute;left:{{ pos6.left }}%;top:{{ pos6.top }}%;transform:translate(-50%,-50%);width:{{ fableIconWidth }};background:none;border:none;padding:0;cursor:grab;font:inherit;color:inherit;text-align:center;touch-action:none" style-hover="filter:brightness(1.12)">
+      <img src="assets/images/fable-logos-small/07-elephant-emotional-intelligence.webp" alt="Elephant" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:26%;box-shadow:0 14px 34px rgba(0,0,0,.45);pointer-events:none">
+      <div style="margin-top:12px;font-family:var(--font-serif);font-weight:500;font-size:15px;color:var(--paper);pointer-events:none">Elephant</div>
+      <div style="font-family:var(--font-sans);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55);margin-top:2px;pointer-events:none">Reading the field</div>
+    </button>
+    <button sc-camel-on-click="{{ openFable7 }}" sc-camel-on-pointer-down="{{ down7 }}" sc-camel-on-pointer-move="{{ onMove }}" sc-camel-on-pointer-up="{{ onUp }}" sc-camel-on-pointer-enter="{{ hover7 }}" sc-camel-on-pointer-leave="{{ clearHover }}" style="position:absolute;left:{{ pos7.left }}%;top:{{ pos7.top }}%;transform:translate(-50%,-50%);width:{{ fableIconWidth }};background:none;border:none;padding:0;cursor:grab;font:inherit;color:inherit;text-align:center;touch-action:none" style-hover="filter:brightness(1.12)">
+      <img src="assets/images/fable-logos-small/08-chameleon-adaptive-masking.webp" alt="Chameleon" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:26%;box-shadow:0 14px 34px rgba(0,0,0,.45);pointer-events:none">
+      <div style="margin-top:12px;font-family:var(--font-serif);font-weight:500;font-size:15px;color:var(--paper);pointer-events:none">Chameleon</div>
+      <div style="font-family:var(--font-sans);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55);margin-top:2px;pointer-events:none">Choosing the self</div>
+    </button>
   </div>
 
-  <div class="{{ detailPanelClass }}" ref="{{ detailRef }}" style="max-width:1040px;margin:36px auto 0">
-    <div class="talent-detail-grid" style="background:#fffdf7;border:1px solid #e6dcc6;border-radius:14px;padding:36px;display:grid;grid-template-columns:160px 1fr;gap:28px;align-items:start" data-comment-anchor="cebad373ab-div">
-      <img src="{{ detail.image }}" style="width:100%;border-radius:12px;aspect-ratio:1;object-fit:cover">
+  <div style="max-width:1000px;margin:3vh auto 0;display:flex;align-items:center">
+    <div style="flex:1;text-align:center;font-family:var(--font-sans);font-size:11px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:rgba(246,241,230,.45)">Click a character · drag to rearrange · open its fable</div>
+    <button sc-camel-on-click="{{ resetConstellation }}" style="margin-left:16px;flex:none;font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(246,241,230,.7);background:transparent;border:1px solid rgba(255,255,255,.25);border-radius:var(--radius-full);padding:9px 18px;cursor:pointer" style-hover="background:rgba(255,255,255,.08);color:var(--paper)">Reset constellation</button>
+  </div>
+</section>
+
+<sc-if value="{{ overlay }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:300;overflow:auto;background:{{ overlay.bg }}">
+  <button sc-camel-on-click="{{ closeOverlay }}" aria-label="Close" style="position:fixed;top:24px;right:28px;z-index:10;background:rgba(20,18,15,.5);border:1px solid rgba(255,255,255,.25);border-radius:50%;width:44px;height:44px;color:var(--paper);font-size:18px;cursor:pointer">✕</button>
+  <div style="min-height:100vh;display:flex;align-items:center;padding:10vh 6vw">
+    <div style="{{ overlayGridStyle }}">
       <div>
-        <div class="{{ detail.colorClass }}" style="font-family:'Libre Franklin',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px">{{ detail.eyebrow }}</div>
-        <div style="font-family:'EB Garamond',serif;font-size:20px;font-weight:600;margin-bottom:10px">{{ detail.title }}</div>
-        <p style="font-family:'EB Garamond',serif;font-size:17px;color:#45403a;line-height:1.65;margin:0 0 16px">{{ detail.body }}</p>
-        <div style="display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap" hint-placeholder-count="2">
-          <sc-for list="{{ detail.constellation }}" as="c" hint-placeholder-count="2">
-            <a href="javascript:void(0)" sc-camel-on-click="{{ c.onClick }}" class="{{ detail.pillClass }}" style="font-family:'Libre Franklin',sans-serif;font-size:11px;letter-spacing:0.04em;border-radius:999px;padding:5px 12px;text-decoration:none;white-space:nowrap;border:1px solid transparent">{{ c.name }} →</a>
+<sc-if value="{{ isFable0 }}" hint-placeholder-val="{{ false }}"><img src="assets/images/fable-wide/crow.webp" alt="Crow" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-md);margin-bottom:24px;box-shadow:0 14px 40px rgba(0,0,0,.4)"></sc-if>
+        <sc-if value="{{ isFable1 }}" hint-placeholder-val="{{ false }}"><img src="assets/images/fable-wide/fox.webp" alt="Fox" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-md);margin-bottom:24px;box-shadow:0 14px 40px rgba(0,0,0,.4)"></sc-if>
+        <sc-if value="{{ isFable2 }}" hint-placeholder-val="{{ false }}"><img src="assets/images/fable-wide/bat.webp" alt="Bat" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-md);margin-bottom:24px;box-shadow:0 14px 40px rgba(0,0,0,.4)"></sc-if>
+        <sc-if value="{{ isFable3 }}" hint-placeholder-val="{{ false }}"><img src="assets/images/fable-wide/octopus.webp" alt="Octopus" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-md);margin-bottom:24px;box-shadow:0 14px 40px rgba(0,0,0,.4)"></sc-if>
+        <sc-if value="{{ isFable4 }}" hint-placeholder-val="{{ false }}"><img src="assets/images/fable-wide/horse.webp" alt="Horse" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-md);margin-bottom:24px;box-shadow:0 14px 40px rgba(0,0,0,.4)"></sc-if>
+        <sc-if value="{{ isFable5 }}" hint-placeholder-val="{{ false }}"><img src="assets/images/fable-wide/whale.webp" alt="Whale" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-md);margin-bottom:24px;box-shadow:0 14px 40px rgba(0,0,0,.4)"></sc-if>
+        <sc-if value="{{ isFable6 }}" hint-placeholder-val="{{ false }}"><img src="assets/images/fable-wide/elephant.webp" alt="Elephant" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-md);margin-bottom:24px;box-shadow:0 14px 40px rgba(0,0,0,.4)"></sc-if>
+        <sc-if value="{{ isFable7 }}" hint-placeholder-val="{{ false }}"><img src="assets/images/fable-wide/chameleon.webp" alt="Chameleon" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-md);margin-bottom:24px;box-shadow:0 14px 40px rgba(0,0,0,.4)"></sc-if>
+        <h2 style="font-family:var(--font-serif);font-weight:500;font-size:clamp(2rem,4vw,3.2rem);line-height:1;margin:0 0 24px;color:var(--paper)">{{ overlay.title }}</h2>
+        <p style="font-family:var(--font-serif);font-size:18px;line-height:1.5;color:rgba(246,241,230,.88);margin:0 0 28px">{{ overlay.body }}</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px">
+          <sc-for list="{{ overlay.related }}" as="r" hint-placeholder-count="2">
+            <a href="javascript:void(0)" sc-camel-on-click="{{ r.onClick }}" style="font-family:var(--font-sans);font-size:12px;font-weight:600;letter-spacing:.03em;border-radius:var(--radius-full);padding:8px 16px;text-decoration:none;border:1px solid rgba(255,255,255,.3);color:var(--paper)" style-hover="background:rgba(255,255,255,.12)">{{ r.name }} →</a>
           </sc-for>
         </div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap">
+          <a href="#companions" style="display:inline-block;border-bottom:1px solid var(--jewel-ochre-soft);padding-bottom:4px;font-family:var(--font-sans);font-size:12px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--jewel-ochre-soft);text-decoration:none">Read all the fables →</a>
+          <sc-if value="{{ overlay.readHref }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ overlay.readHref }}" target="_blank" rel="noopener" style="display:inline-block;border-bottom:1px solid rgba(246,241,230,.5);padding-bottom:4px;font-family:var(--font-sans);font-size:12px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:rgba(246,241,230,.8);text-decoration:none">Read the full fable →</a>
+          </sc-if>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-md);padding:30px">
+        <div style="font-family:var(--font-sans);font-size:10.5px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:rgba(246,241,230,.5);margin-bottom:14px">The talent inside it</div>
+        <div style="margin-bottom:10px">
+          <span style="font-family:var(--font-serif);font-weight:600;font-size:19px;color:var(--paper)">{{ overlay.talentName }}</span>
+          <span style="font-family:var(--font-sans);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--jewel-ochre-soft);margin-left:10px">{{ overlay.talentTag }}</span>
+        </div>
+        <p style="font-family:var(--font-serif);font-size:15px;line-height:1.55;color:rgba(246,241,230,.8);margin:0 0 20px">{{ overlay.talentDef }}</p>
+        <div style="display:grid;gap:0;border-top:1px solid rgba(255,255,255,.16)">
+          <div style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16);display:grid;grid-template-columns:88px 1fr;gap:12px">
+            <b style="font-family:var(--font-sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55)">Friction</b>
+            <span style="font-family:var(--font-serif);font-size:14.5px;line-height:1.4;color:rgba(246,241,230,.85)">{{ overlay.talentFriction }}</span>
+          </div>
+          <div style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16);display:grid;grid-template-columns:88px 1fr;gap:12px">
+            <b style="font-family:var(--font-sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55)">Capability</b>
+            <span style="font-family:var(--font-serif);font-size:14.5px;line-height:1.4;color:rgba(246,241,230,.85)">{{ overlay.talentCapability }}</span>
+          </div>
+          <div style="padding:14px 0;display:grid;grid-template-columns:88px 1fr;gap:12px">
+            <b style="font-family:var(--font-sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55)">Conditions</b>
+            <span style="font-family:var(--font-serif);font-size:14.5px;line-height:1.4;color:rgba(246,241,230,.85)">{{ overlay.talentConditions }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
+</sc-if>
+
+<section id="companions" style="max-width:1040px;margin:0 auto;padding:10vh 24px">
+  <div style="font-family:var(--font-sans);font-size:12px;letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--text-muted);margin-bottom:14px">Physical companions to the journey</div>
+  <h2 style="font-family:var(--font-serif);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.6rem);margin:0;line-height:1.2">First recognise. Then stay with what you found.</h2>
+  <p style="font-family:var(--font-serif);font-size:17px;color:var(--text-secondary);line-height:1.55;margin:24px 0 56px">The fables help you recognise what might be there. The Friction Journals help you discover what it needs. <strong style="color:var(--ink)">Neither tells you what you are.</strong></p>
+
+  <div style="{{ companionsGridStyle }}">
+    <article data-comment-anchor="ec051ef0dc-article" style="background:var(--surface-sunken);border-radius:var(--radius-md);padding:24px">
+      <div style="width:100%;aspect-ratio:1.5;background:var(--surface-sunken);border-radius:var(--radius-md);margin-bottom:24px;display:flex;align-items:center;justify-content:center">
+        <img src="assets/images/products/fables-book-cover.webp" alt="Fables for Exceptional Times, book cover" style="max-width:100%;max-height:100%;object-fit:contain">
+      </div>
+      <x-import component-from-global-scope="TETDesignSystem_660675.Badge" tone="development" hint-size="auto,26px">Nearly ready · Early access</x-import>
+      <div style="font-family: var(--font-sans); font-size: 11px; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--jewel-plum); margin: 16px 0 10px; font-weight: 400">Recognition through story</div><h3 style="font-family:var(--font-serif);font-weight:600;font-size:26px;margin:0 0 16px">Fables for Exceptional Times</h3>
+      <p style="font-family:var(--font-serif);font-size:16px;color:var(--text-secondary);line-height:1.55;margin:0 0 12px">Eight stories about capabilities that are often first experienced as friction. You may recognise yourself. You may recognise someone you work with, teach, raise or love.</p>
+      <p style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--ink);line-height:1.5;margin:0 0 20px">You do not have to decide what that means. Start by noticing.</p>
+      <x-import component-from-global-scope="TETDesignSystem_660675.Button" variant="ghost" size="sm" sc-camel-on-click="{{ openAmbassador }}" hint-size="auto,32px">Get the Ambassador Edition ↗</x-import>
+    </article>
+
+    <article data-comment-anchor="c452a0ea7e-article" style="background:var(--surface-sunken);border-radius:var(--radius-md);padding:24px">
+      <div style="width:100%;aspect-ratio:1.5;background:var(--surface-sunken);border-radius:var(--radius-md);margin-bottom:24px;display:flex;align-items:center;justify-content:center">
+        <img src="assets/images/products/friction-journal-cover.webp" alt="The Friction Journal, book and open pages" style="max-width:100%;max-height:100%;object-fit:contain">
+      </div>
+      <x-import component-from-global-scope="TETDesignSystem_660675.Badge" tone="development" hint-size="auto,26px">Nearly ready · Early access soon</x-import>
+      <div style="font-family:var(--font-sans);font-size:11px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--jewel-plum);margin:16px 0 10px">Exploration through reflection</div>
+      <h3 style="font-family:var(--font-serif);font-weight:600;font-size:26px;margin:0 0 16px">The Friction Journals</h3>
+      <p style="font-family:var(--font-serif);font-size:16px;color:var(--text-secondary);line-height:1.55;margin:0 0 12px">Take a talent out of the fable and look for it in your own life: where it helps, where it collides with context, what conditions let it work, and what others may misunderstand about it.</p>
+      <p style="font-family:var(--font-serif);font-size:16px;color:var(--text-secondary);line-height:1.55;margin:0 0 20px">The aim is not a profile. It is enough confidence to explain what you bring, what you need, and how the people around you can meet the capability rather than only the friction.</p>
+      <span style="font-family:var(--font-sans);font-size:12px;color:var(--text-muted);border-bottom:1px solid var(--hairline-strong);padding-bottom:3px">Friction Journal early access opens soon</span>
+    </article>
+  </div>
+
+  <div style="display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin-top:60px;font-family:var(--font-sans);font-size:12px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--text-muted)">
+    <span>Recognise</span><span style="color:var(--hairline-strong)">→</span><span>Explore</span><span style="color:var(--hairline-strong)">→</span><span>Understand the conditions</span><span style="color:var(--hairline-strong)">→</span><span>Express with confidence</span>
+  </div>
 </section>
 
-<section style="max-width:1040px;margin:80px auto;padding:0 24px;display:grid;grid-template-columns:1.1fr 1fr;gap:24px">
-  <div class="story-card" style="background:#1a1208;color:#faf9f5;border-radius:16px;overflow:hidden">
-    <img src="assets/images/hero-tet.webp" alt="The Chameleon and the Colour of Twilight">
-    <div style="padding:32px 28px" data-comment-anchor="e50fc8674d-div">
-      <div style="font-family:'Libre Franklin',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#d7ac5c;margin-bottom:12px">A full story to begin</div>
-      <div style="font-family:'EB Garamond',serif;font-style:italic;font-size:21px;line-height:1.4;margin-bottom:14px">The Chameleon and the Colour of Twilight</div>
-      <p style="font-family:'EB Garamond',serif;font-size:14px;color:#d8d2c4;line-height:1.6;margin-bottom:16px">Selecting which self to show is a skill, not a betrayal of an authentic one. This story carries that weight all the way through.</p>
-      <a href="fable-chameleon.html" style="font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:#d7ac5c;text-decoration:none">Read the full fable →</a>
+<section id="paths" style="background:var(--paper-warm);padding:10vh 24px">
+  <div style="max-width:1040px;margin:0 auto">
+    <h2 style="font-family:var(--font-serif);font-weight:600;font-size:clamp(1.5rem,3.1vw,2.5rem);margin:0;line-height:1.2" data-comment-anchor="211cac8cad-h2">The same constellation. Different places to meet it.</h2>
+    <p style="font-family:var(--font-serif);font-size:16px;color:var(--text-secondary);line-height:1.55;margin:20px 0 48px" data-comment-anchor="f1c7c0b98e-p">TƎT does not sort people. It gives different conversations a shared language for noticing what may be happening between a mind and its environment.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--hairline);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)">
+      <a href="#constellation" style="background:var(--paper-warm);padding:36px 30px;text-decoration:none;color:var(--ink)" style-hover="background:var(--surface-card)">
+        <h3 style="font-family:var(--font-serif);font-weight:600;font-size:22px;margin:0 0 14px">In myself</h3>
+        <p style="font-family:var(--font-serif);font-size:14px;color:var(--text-secondary);line-height:1.5;margin:0 0 28px">When being capable and feeling mismatched somehow coexist. Explore without first deciding what category you belong to.</p>
+        <span style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--jewel-plum)">Start with the Fables →</span>
+      </a>
+      <a href="https://doodle.com/bp/deepakmehta/professional-meeting" target="_blank" rel="noopener" style="background:var(--paper-warm);padding:36px 30px;text-decoration:none;color:var(--ink)" style-hover="background:var(--surface-card)">
+        <h3 style="font-family:var(--font-serif);font-weight:600;font-size:22px;margin:0 0 14px">In a team</h3>
+        <p style="font-family:var(--font-serif);font-size:14px;color:var(--text-secondary);line-height:1.5;margin:0 0 28px">When useful cognition is hiding inside behaviour the role, process or culture has learned to call difficult.</p>
+        <span style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--jewel-ochre)">Book a workshop →</span>
+      </a>
+      <a href="https://doodle.com/bp/deepakmehta/professional-meeting" target="_blank" rel="noopener" style="background:var(--paper-warm);padding:36px 30px;text-decoration:none;color:var(--ink)" style-hover="background:var(--surface-card)">
+        <h3 style="font-family:var(--font-serif);font-weight:600;font-size:22px;margin:0 0 14px">With a young person</h3>
+        <p style="font-family:var(--font-serif);font-size:14px;color:var(--text-secondary);line-height:1.5;margin:0 0 28px">Before difficulty hardens into identity, stay curious about what their mind may be trying to do.</p>
+        <span style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--jewel-sienna)">Sponsor our youth outreach · Book a call →</span>
+      </a>
     </div>
   </div>
-  <div style="display:flex;flex-direction:column;gap:24px">
-    <div style="border:1px solid #ecdcb8;background:#faf3e3;border-radius:16px;padding:28px">
-      <div style="font-family:'Libre Franklin',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#8a6a2e;margin-bottom:10px">For groups</div>
-      <div style="font-family:'EB Garamond',serif;font-size:19px;font-weight:600;margin-bottom:8px">Bring TET into the room</div>
-      <p style="font-family:'EB Garamond',serif;font-size:14px;color:#45403a;line-height:1.55;margin:0 0 14px">A workshop introduces the talents through story and gives people language for what they already carry.</p>
-      <a href="https://doodle.com/bp/deepakmehta/professional-meeting" style="font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:#b8862f;text-decoration:none" data-comment-anchor="6e91bb90e0-span">Book a call →</a>
-    </div>
-    <div style="border:1px solid #ddd0e8;background:#f2eef7;border-radius:16px;padding:28px">
-      <div style="font-family:'Libre Franklin',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#6f6a61;margin-bottom:10px">Read further</div>
-      <div style="font-family:'EB Garamond',serif;font-size:19px;font-weight:600;margin-bottom:8px">Fables for Exceptional Times</div>
-      <p style="font-family:'EB Garamond',serif;font-size:14px;color:#45403a;line-height:1.55;margin:0 0 14px">Eight stories that carry the eight talents further than a framework page can.</p>
-      <a href="products.html" style="font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:#5e3a82;text-decoration:none" data-comment-anchor="97cf1ca8f7-span">Discover the book →</a>
-    </div>
+</section>
+
+<section style="{{ finalSectionGridStyle }}" data-comment-anchor="03e3c1c459-section">
+  <h2 style="font-family:var(--font-serif);font-weight:600;font-size:clamp(1.9rem,3.4vw,2.4rem);margin:0;line-height:1.2">Recognition,<br>not classification.</h2>
+  <div style="font-family:var(--font-serif);font-size:16px;color:var(--text-secondary);line-height:1.6">
+    <p style="margin:0 0 18px">TƎT is deliberately unfinished when it reaches you. There is no score, no dominant talent and no correct constellation.</p>
+    <p style="margin:0 0 18px">It does not claim every difficulty is secretly a gift. It asks a smaller question: <strong style="color:var(--ink)">what else might be present — and what changes when the context changes?</strong></p>
+    <p style="margin:0">A fable gives you somewhere to recognise yourself. The framework gives you language to talk about what you noticed.</p>
   </div>
 </section>
 
-<section style="max-width:640px;margin:0 auto 80px;padding:0 24px;text-align:center">
-  <div style="font-family:'Libre Franklin',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#6f6a61;margin-bottom:12px">Recognition, not classification</div>
-  <h2 style="font-family:'EB Garamond',serif;font-weight:600;font-size:clamp(1.5rem,2.8vw,1.9rem);margin:0 0 16px">Why stories, not tests</h2>
-  <p style="font-family:'EB Garamond',serif;font-size:16px;color:#45403a;line-height:1.6;margin:0 0 14px">No scored quiz. No percentage match. No "which talent are you?" result screen.<br>You recognise yourself in a story — and remain free to be more than one thing.</p>
-  <p style="font-family:'Libre Franklin',sans-serif;font-size:12px;color:#6f6a61;margin:0">Grounded in Sen &amp; Nussbaum's capability approach, and Hong &amp; Page on cognitive diversity.</p>
+<section style="background:var(--surface-inverse);color:var(--text-on-inverse);text-align:center;padding:14vh 24px">
+  <h2 style="font-family:var(--font-serif);font-weight:600;font-size:clamp(1.9rem,4vw,3.4rem);margin:0 auto;max-width:960px;white-space:nowrap">You do not need a label to begin.</h2>
+  <p style="font-family:var(--font-serif);font-style:italic;font-size:18px;opacity:0.85;margin:24px auto 0;max-width:460px">Start with the animal that keeps looking back at you.</p>
+  <a href="#constellation" style="display:inline-block;margin-top:34px;padding-bottom:6px;border-bottom:1px solid var(--jewel-ochre-soft);font-family:var(--font-sans);font-size:12px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--jewel-ochre-soft);text-decoration:none">Return to the constellation ↑</a>
 </section>
 
-<footer style="background:#1a1208;color:#c9c4b6;padding:36px 48px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;font-family:'Libre Franklin',sans-serif;font-size:12px">
-  <span data-comment-anchor="8aeed18333-span">About &amp; Contact</span>
-  <form action="https://twitter.us6.list-manage.com/subscribe/post?u=5bf5641e99686b66085f92571&amp;id=d434c7e248&amp;f_id=002722e2f0" method="post" target="_blank" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-    <div style="display:flex;gap:8px">
-      <input type="email" name="EMAIL" required="" placeholder="Your email" style="background:transparent;border:1px solid #4a4335;border-radius:6px;color:#faf9f5;font-family:'Libre Franklin',sans-serif;font-size:12px;padding:8px 10px;width:180px">
-      <button type="submit" style="background:#c9a24a;color:#1a1208;border:none;border-radius:6px;font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:12px;padding:8px 14px;cursor:pointer">Subscribe</button>
-    </div>
-    <span style="color:#8a8474;font-size:10.5px">Your email is used only to send occasional updates — never sold or shared.</span>
-  </form>
+<footer style="background:var(--ink);color:var(--text-muted);padding:72px 5vw 44px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:56px;font-family:var(--font-sans);font-size:12px;border-top:1px solid rgba(255,255,255,.08)" data-comment-anchor="49e73127df-footer">
+  <div style="max-width:440px">
+    <div style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--jewel-ochre-soft);margin-bottom:16px">Stay close to the constellation</div>
+    <p style="font-family:var(--font-serif);font-size:18px;color:var(--paper);line-height:1.4;margin:0 0 14px">New stories, journals and ways to explore.</p>
+    <p style="font-family:var(--font-serif);font-size:14px;color:rgba(246,241,230,.72);line-height:1.6;margin:0">TƎT is still growing. Subscribe to hear when the books come online, where you can test the Discovery Game, speak at or attend our TƎT Talks, and stay close as new stories, tools and gatherings emerge.</p>
+  </div>
+  <div style="min-width:260px">
+    <form action="https://twitter.us6.list-manage.com/subscribe/post?u=5bf5641e99686b66085f92571&amp;id=d434c7e248&amp;f_id=002722e2f0" method="post" target="_blank" style="display:flex;flex-direction:column;gap:10px">
+      <span style="font-family:var(--font-sans);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)">Subscribe</span>
+      <div style="display:flex;gap:8px">
+        <input type="email" name="EMAIL" required="" placeholder="Your email" style="background:transparent;border:1px solid var(--hairline-strong);border-radius:6px;color:var(--paper);font-family:var(--font-sans);font-size:12px;padding:9px 10px;width:190px">
+        <button type="submit" style="background:var(--jewel-ochre);color:var(--ink);border:none;border-radius:6px;font-family:var(--font-sans);font-weight:700;font-size:12px;padding:9px 14px;cursor:pointer;white-space:nowrap">Subscribe</button>
+      </div>
+      <span style="color:var(--text-muted);font-size:10.5px">Occasional updates only. No profile, no quiz, no funnel.</span>
+    </form>
+    <span style="display:inline-block;margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);color:var(--text-muted);font-size:11px">About &amp; Contact</span>
+  </div>
 </footer>
+
+<sc-if value="{{ showAmbassador }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:400;background:rgba(20,18,15,.72);display:flex;align-items:center;justify-content:center;padding:5vh 4vw;overflow:auto">
+  <div style="position:relative;width:min(560px,100%);max-height:88vh;overflow:auto;background:var(--paper);border-radius:var(--radius-md);box-shadow:0 40px 100px rgba(0,0,0,.4);padding:40px 36px">
+    <button sc-camel-on-click="{{ closeAmbassador }}" aria-label="Close" style="position:absolute;top:14px;right:14px;background:var(--surface-card);border:1px solid var(--hairline);border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:14px">✕</button>
+    <div style="font-family:var(--font-sans);font-size:11px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--jewel-ochre);margin-bottom:14px">Early access · Ambassador Edition</div>
+    <h2 style="font-family:var(--font-serif);font-weight:600;font-size:clamp(1.7rem,3vw,2.2rem);margin:0 0 18px">Help the fables travel.</h2>
+    <p style="font-family:var(--font-serif);font-size:15px;line-height:1.55;color:var(--text-secondary);margin:0 0 26px">The first copies are for people willing to do a little more than read them. You get early access to buy the Ambassador Edition; in return, tell me how you could help the stories reach the people, teams or young minds who might recognise something in them.</p>
+    <form action="https://docs.google.com/forms/u/1/d/e/1FAIpQLSfjBN39mNztVy9e0NeX2zTGKpy8JIG8w1ohatc33mNg3WxAiQ/formResponse" method="POST" target="ambassadorFrame" sc-camel-on-submit="{{ submitAmbassador }}" style="display:flex;flex-direction:column;gap:18px">
+      <label style="display:block">
+        <span style="display:block;font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Your name</span>
+        <input type="text" name="entry.1162102303" required="" placeholder="How should I address you?" style="width:100%;box-sizing:border-box;border:none;border-bottom:1px solid var(--hairline-strong);background:var(--surface-card);padding:11px 10px;font-family:var(--font-serif);font-size:15px;color:var(--ink)">
+      </label>
+      <label style="display:block">
+        <span style="display:block;font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Email</span>
+        <input type="email" name="entry.2001919023" required="" placeholder="you@example.com" style="width:100%;box-sizing:border-box;border:none;border-bottom:1px solid var(--hairline-strong);background:var(--surface-card);padding:11px 10px;font-family:var(--font-serif);font-size:15px;color:var(--ink)">
+      </label>
+      <label style="display:block">
+        <span style="display:block;font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Why would you like an Ambassador Edition?</span>
+        <textarea name="entry.402786780" rows="5" required="" placeholder="What caught your attention, who do you imagine sharing the fables with, or how might you help the stories travel? Could you help find a sponsor, an ambassador, a translator, or a publisher?" style="width:100%;box-sizing:border-box;border:1px solid var(--hairline-strong);background:var(--surface-card);padding:11px 10px;font-family:var(--font-serif);font-size:15px;color:var(--ink);resize:vertical"></textarea>
+      </label>
+      <button type="submit" style="background:var(--ink);color:var(--paper);border:none;border-radius:var(--radius-sm);padding:15px 18px;font-family:var(--font-sans);font-weight:600;font-size:13px;letter-spacing:.02em;cursor:pointer;display:flex;justify-content:space-between;align-items:center">Ask for Ambassador Edition access <span>→</span></button>
+      <p style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin:0;min-height:1.3em">{{ ambassadorStatus }}</p>
+    </form>
+    <iframe name="ambassadorFrame" title="Ambassador form submission" style="display:none"></iframe>
+  </div>
+</div>
+</sc-if>
 
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script="">
-const R = (id, fallback) => (window.__resources && window.__resources[id]) || fallback;
-const HOME_TALENT_DATA=[
-{name:'Integrative Thinking',eyebrow:'Across domains',color:'#246361',mark:R('tm1','assets/images/talent-marks/01-integrative-thinking.svg'),definition:'The capacity to identify patterns and meaningful connections across domains, and to synthesise diverse, sometimes contradictory inputs into a coherent read on a problem — without collapsing that problem\u2019s real complexity into a single discipline\u2019s terms.',slogan:'Crossing disciplinary surfaces to find the shortest route through a problem.',constellation:[2,3]},
-{name:'Creative Implementation',eyebrow:'Making real',color:'#a54827',mark:R('tm2','assets/images/talent-marks/02-creative-implementation.svg'),definition:'The capacity to commit to small, reversible action inside genuine uncertainty and let the environment\u2019s response do the framing work a planning process can\u2019t do fast enough.',slogan:'Giving imaginative ideas enough structure to enter the world.',constellation:[3,4]},
-{name:'Strategic Empathy',eyebrow:'Seeing with',color:'#693653',mark:R('tm3','assets/images/talent-marks/03-strategic-empathy.svg'),definition:'The capacity to accurately reconstruct and translate the position of a party the room can\u2019t yet hear, without adopting that position as one\u2019s own.',slogan:'Understanding another perspective without losing sight of the whole.',constellation:[0,6]},
-{name:'Cognitive Dexterity',eyebrow:'Changing lenses',color:'#354f76',mark:R('tm4','assets/images/talent-marks/04-cognitive-dexterity.svg'),definition:'The capacity to hold opposing or competing frames of one problem simultaneously and switch cleanly between them as conditions change.',slogan:'Moving fluently between frames, scales and ways of knowing.',constellation:[1,5]},
-{name:'Embodiment',eyebrow:'Knowing bodily',color:'#b25a34',mark:R('tm5','assets/images/talent-marks/05-embodiment.svg'),definition:'The capacity to register situational wrongness through bodily signal ahead of verbal justification.',slogan:'Letting sensation, movement and presence participate in thought.',constellation:[6,1]},
-{name:'Deep Focus',eyebrow:'Going beneath',color:'#202e48',mark:R('tm6','assets/images/talent-marks/06-deep-focus.svg'),definition:'The capacity to sustain singular, uninterrupted attention long enough for a pattern to fully assemble.',slogan:'Staying with what matters beyond distraction and easy reward.',constellation:[0,3]},
-{name:'Emotional Intelligence',eyebrow:'Reading the field',color:'#4f7342',mark:R('tm7','assets/images/talent-marks/07-emotional-intelligence.svg'),definition:'The capacity to absorb and metabolise a group\u2019s collective emotional state from within it, without transmitting that state back to the group amplified.',slogan:'Noticing what feeling reveals in oneself, in others and between them.',constellation:[4,2]},
-{name:'Adaptive Masking',eyebrow:'Choosing the self',color:'#70446b',mark:R('tm8','assets/images/talent-marks/08-adaptive-masking.svg'),definition:'The conscious adjustment of communication style, visible behaviour, and self-presentation to match the norms of different contexts — without losing one\u2019s substantive position.',slogan:'Selecting how to show up as a practiced capability, not a betrayal.',constellation:[0,2]}
+<script type="text/x-dc" data-dc-script="" data-props="{}">
+const TALENTS=[
+{name:'Integrative Thinking',eyebrow:'Across domains',color:'#23324a',mark:'assets/images/talent-marks/01-integrative-thinking.svg',def:'The capacity to identify patterns and meaningful connections across domains, and to synthesise diverse, sometimes contradictory inputs into a coherent read on a problem.',slogan:'Crossing disciplinary surfaces to find the shortest route through a problem.',friction:'You see the whole web while everyone else is discussing one thread.',conditions:'Needs room to roam across a problem before being asked for a single answer.',related:[1,2]},
+{name:'Creative Implementation',eyebrow:'Making real',color:'#a04a24',mark:'assets/images/talent-marks/02-creative-implementation.svg',def:'The capacity to commit to small, reversible action inside genuine uncertainty and let the environment\u2019s response do the framing work a planning process can\u2019t do fast enough.',slogan:'Giving imaginative ideas enough structure to enter the world.',friction:'You move while others are still trying to make uncertainty disappear.',conditions:'Needs permission for small, reversible moves — not a finished plan first.',related:[2,3]},
+{name:'Strategic Empathy',eyebrow:'Seeing with',color:'#5b3a52',mark:'assets/images/talent-marks/03-strategic-empathy.svg',def:'The capacity to accurately reconstruct and translate the position of a party the room can\u2019t yet hear, without adopting that position as one\u2019s own.',slogan:'Understanding another perspective without losing sight of the whole.',friction:'You read the room so quickly that your own outline sometimes disappears.',conditions:'Needs to be asked for the other side\u2019s view, not assumed to already hold it.',related:[0,6]},
+{name:'Cognitive Dexterity',eyebrow:'Changing lenses',color:'#3c5170',mark:'assets/images/talent-marks/04-cognitive-dexterity.svg',def:'The capacity to hold opposing or competing frames of one problem simultaneously and switch cleanly between them as conditions change.',slogan:'Moving fluently between frames, scales and ways of knowing.',friction:'You hold several true answers at once, when the room only has space for one.',conditions:'Needs time to hold multiple frames before the room forces a single one.',related:[1,5]},
+{name:'Embodiment',eyebrow:'Knowing bodily',color:'#c47046',mark:'assets/images/talent-marks/05-embodiment.svg',def:'The capacity to register situational wrongness through bodily signal ahead of verbal justification.',slogan:'Letting sensation, movement and presence participate in thought.',friction:'Your body reaches a conclusion before your words arrive.',conditions:'Needs its signal trusted before it can be explained in words.',related:[6,1]},
+{name:'Deep Focus',eyebrow:'Going beneath',color:'#23324a',mark:'assets/images/talent-marks/06-deep-focus.svg',def:'The capacity to sustain singular, uninterrupted attention long enough for a pattern to fully assemble.',slogan:'Staying with what matters beyond distraction and easy reward.',friction:'You can dive impossibly deep, but cannot pretend the shallow end is interesting.',conditions:'Needs long, uninterrupted stretches — not constant, shallow check-ins.',related:[0,3]},
+{name:'Emotional Intelligence',eyebrow:'Reading the field',color:'#445a37',mark:'assets/images/talent-marks/07-emotional-intelligence.svg',def:'The capacity to absorb and metabolise a group\u2019s collective emotional state from within it, without transmitting that state back to the group amplified.',slogan:'Noticing what feeling reveals in oneself, in others and between them.',friction:'You carry what the group feels, even when nobody asked you to.',conditions:'Needs its own feeling separated from the group\u2019s, or it amplifies what it absorbs.',related:[4,2]},
+{name:'Adaptive Masking',eyebrow:'Choosing the self',color:'#5e3a82',mark:'assets/images/talent-marks/08-adaptive-masking.svg',def:'The conscious adjustment of communication style, visible behaviour and self-presentation to match the norms of different contexts — without losing one\u2019s substantive position.',slogan:'Selecting how to show up as a practiced capability, not a betrayal.',friction:'You become exactly what a room needs, until it is asked of you twice in one day.',conditions:'Needs to choose the shift consciously, not perform it under permanent pressure.',related:[0,2]}
 ];
-const HOME_FABLE_DATA=[
-{animal:'Crow',title:'The Crow Who Saw the Bridges',mark:R('fl1','assets/images/fable-logos-small/01-crow-integrative-thinking.webp'),body:"A crow who cannot stop connecting things across domains is quietly building the one pattern his community will need — long before anyone knows to ask him for it.",constellation:[2,3]},
-{animal:'Fox',title:'The Fox Who Moved Before the Map Was Ready',mark:R('fl2','assets/images/fable-logos-small/02-fox-creative-implementation.webp'),body:"A fox feels the forest changing faster than her community can agree on a plan for it — and has to decide what to do with that gap.",constellation:[3,5]},
-{animal:'Bat',title:'The Bat Who Heard Both Sides',mark:R('fl3','assets/images/fable-logos-small/03-bat-strategic-empathy.webp'),body:"A bat can hear the fear underneath what two warring sides are shouting at each other — and one day, both sides ask her to stand in the middle.",constellation:[0,6]},
-{animal:'Octopus',title:'The Octopus Who Stayed With the Question',mark:R('fl4','assets/images/fable-logos-small/04-octopus-cognitive-dexterity.webp'),body:"An octopus feels every problem as several true answers at once, and has to decide what happens when the room only has space for one.",constellation:[1,4]},
-{animal:'Horse',title:'The Horse Whose Body Knew First',mark:R('fl5','assets/images/fable-logos-small/05-horse-embodiment.webp'),body:"A horse's body knows a room has gone wrong before anyone can explain why — and the forest already has a name ready for that: too much.",constellation:[6,1]},
-{animal:'Whale',title:'The Whale Who Could Not Dive Shallow',mark:R('fl6','assets/images/fable-logos-small/06-whale-deep-focus.webp'),body:"A whale is the only one who can dive deep enough to find real answers — but the calls for those answers keep arriving faster than a real dive allows.",constellation:[0,3]},
-{animal:'Elephant',title:'The Elephant Who Held the Herd',mark:R('fl7','assets/images/fable-logos-small/07-elephant-emotional-intelligence.webp'),body:"An elephant feels the herd's fear first and longest, and has quietly learned there's a right way and a wrong way to let anyone know it.",constellation:[5,2]},
-{animal:'Chameleon',title:'The Chameleon and the Colour of Twilight',mark:R('fl8','assets/images/fable-logos-small/08-chameleon-adaptive-masking.webp'),body:"A chameleon can become exactly what anyone around him needs — until the day he's asked to become several things at once.",constellation:[0,2]}
+const R = (id, fallback) => (window.__resources && window.__resources[id]) || fallback;
+const FABLES=[
+{animal:'Crow',title:'The Crow Who Saw the Bridges',bg:R('bgCrow','assets/fable-bgs/crow.webp'),plate:'assets/plates/crow-integrative-thinking.png',body:'A crow who cannot stop connecting things across domains is quietly building the one pattern his community will need — long before anyone knows to ask him for it.',related:[2],slug:'Crow'},
+{animal:'Fox',title:'The Fox Who Moved Before the Map Was Ready',bg:R('bgFox','assets/fable-bgs/fox.webp'),plate:'assets/plates/fox-creative-implementation.png',body:'A fox feels the forest changing faster than her community can agree on a plan for it — and has to decide what to do with that gap.',related:[4,3],slug:'Fox'},
+{animal:'Bat',title:'The Bat Who Heard Both Sides',bg:R('bgBat','assets/fable-bgs/bat.webp'),plate:'assets/plates/bat-strategic-empathy.png',body:'A bat can hear the fear underneath what two warring sides are shouting at each other — and one day, both sides ask her to stand in the middle.',related:[0,6],slug:'Bat'},
+{animal:'Octopus',title:'The Octopus Who Stayed With the Question',bg:R('bgOctopus','assets/fable-bgs/octopus.webp'),plate:'assets/plates/octopus-cognitive-dexterity.png',body:'An octopus feels every problem as several true answers at once, and has to decide what happens when the room only has space for one.',related:[1,0],slug:'Octopus'},
+{animal:'Horse',title:'The Horse Whose Body Knew First',bg:R('bgHorse','assets/fable-bgs/horse.webp'),plate:'assets/plates/horse-embodiment.png',body:'A horse\u2019s body knows a room has gone wrong before anyone can explain why — and the forest already has a name ready for that: too much.',related:[1,6],slug:'Horse'},
+{animal:'Whale',title:'The Whale Who Could Not Dive Shallow',bg:R('bgWhale','assets/fable-bgs/whale.webp'),plate:'assets/plates/whale-deep-focus.png',body:'A whale is the only one who can dive deep enough to find real answers — but the calls for those answers keep arriving faster than a real dive allows.',related:[0],slug:'Whale'},
+{animal:'Elephant',title:'The Elephant Who Held the Herd',bg:R('bgElephant','assets/fable-bgs/elephant.webp'),plate:'assets/plates/elephant-emotional-intelligence.png',body:'An elephant feels the herd\u2019s fear first and longest, and has quietly learned there\u2019s a right way and a wrong way to let anyone know it.',related:[4,2],slug:'Elephant'},
+{animal:'Chameleon',title:'The Chameleon and the Colour of Twilight',bg:R('bgChameleon','assets/fable-bgs/chameleon.webp'),plate:'assets/plates/chameleon-adaptive-masking.png',body:'A chameleon can become exactly what anyone around him needs — until the day he\u2019s asked to become several things at once.',related:[0,2],slug:'Chameleon'}
+];
+const DEFAULT_POS=[{left:49,top:10},{left:77,top:24},{left:89,top:53},{left:72,top:79},{left:42,top:88},{left:16,top:72},{left:10,top:39},{left:29,top:24}];
+const PAIRS={cb:[0,2],fh:[1,4],fo:[1,3],be:[2,6],he:[4,6],oc:[3,0],wc:[5,0],chc:[7,0],chb:[7,2]};
+const FRICTIONS=[
+'You see the whole web while everyone else is discussing one thread.',
+'You can dive impossibly deep, but cannot pretend the shallow end is interesting.',
+'You read the room so quickly that your own outline sometimes disappears.',
+'Your body reaches a conclusion before your words arrive.',
+'You move while others are still trying to make uncertainty disappear.',
+'You carry what the group feels, even when nobody asked you to.'
 ];
 class Component extends DCLogic {
-  constructor(props) {
-    super(props);
-    this.state = { progress: 0, hl: [0, 3], mode: 'talents', selectedTalent: null, selectedFable: null, navOpen: false };
-    this.trackNode = null;
-    this.setTrackRef = (node) => { this.trackNode = node; };
-    this.detailNode = null;
-    this.setDetailRef = (node) => { this.detailNode = node; };
-    this.scrollToDetail = () => {
-      requestAnimationFrame(() => {
-        if (this.detailNode) {
-          const top = this.detailNode.getBoundingClientRect().top + window.scrollY - 24;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
-      });
-    };
-    this.tick = this.tick.bind(this);
-  }
+  state = { openFableIdx: null, showAmbassador: false, ambassadorStatus: '', positions: DEFAULT_POS.map(p => ({ ...p })), dragIdx: null, hoverIdx: null, isMobile: false, menuOpen: false };
+  mapNode = null;
+  setMapRef = (node) => { this.mapNode = node; };
   componentDidMount() {
-    this.rafId = requestAnimationFrame(this.tick);
-    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduce) {
-      this.hlInterval = setInterval(() => {
-        const n = 2 + Math.floor(Math.random() * 2);
-        const pool = [0,1,2,3,4,5,6,7];
-        const picked = [];
-        for (let i = 0; i < n; i++) {
-          const idx = Math.floor(Math.random() * pool.length);
-          picked.push(pool.splice(idx, 1)[0]);
-        }
-        this.setState({ hl: picked });
-      }, 2600);
-    }
+    this._onResize = () => this.setState({ isMobile: window.innerWidth < 780 });
+    this._onResize();
+    window.addEventListener('resize', this._onResize);
   }
   componentWillUnmount() {
-    if (this.rafId) cancelAnimationFrame(this.rafId);
-    if (this.hlInterval) clearInterval(this.hlInterval);
+    if (this._onResize) window.removeEventListener('resize', this._onResize);
   }
-  tick() {
-    const el = this.trackNode;
-    if (el) {
-      const rect = el.getBoundingClientRect();
-      const total = rect.height - window.innerHeight;
-      let p = total > 0 ? (-rect.top) / total : 0;
-      p = Math.max(0, Math.min(1, p));
-      if (Math.abs(p - this.state.progress) > 0.0008) this.setState({ progress: p });
+  handleMove(e) {
+    const i = this.state.dragIdx;
+    if (i === null || !this.mapNode) return;
+    if (this._dragStart) {
+      const dx = e.clientX - this._dragStart.x, dy = e.clientY - this._dragStart.y;
+      if (Math.abs(dx) + Math.abs(dy) > 6) this._dragMoved = true;
     }
-    this.rafId = requestAnimationFrame(this.tick);
+    const rect = this.mapNode.getBoundingClientRect();
+    let left = ((e.clientX - rect.left) / rect.width) * 100;
+    let top = ((e.clientY - rect.top) / rect.height) * 100;
+    left = Math.max(3, Math.min(97, left));
+    top = Math.max(3, Math.min(97, top));
+    const positions = this.state.positions.slice();
+    positions[i] = { left, top };
+    this.setState({ positions });
   }
-  lerp(a, b, t) { return a + (b - a) * t; }
-  seg(p, a, b) { if (p <= a) return 0; if (p >= b) return 1; return (p - a) / (b - a); }
   renderVals() {
-    const p = this.state.progress;
-    const accent = '#5e3a82';
-    const trackHeightVh = 240;
-    let eScaleX;
-    if (p < 0.10) eScaleX = -1;
-    else if (p < 0.25) eScaleX = this.lerp(-1, 1, this.seg(p, 0.10, 0.25));
-    else if (p < 0.72) eScaleX = 1;
-    else if (p < 0.82) eScaleX = this.lerp(1, -1, this.seg(p, 0.72, 0.82));
-    else eScaleX = -1;
-    let rotate;
-    if (p < 0.35) rotate = 0;
-    else if (p < 0.55) rotate = this.lerp(0, 180, this.seg(p, 0.35, 0.55));
-    else if (p < 0.62) rotate = 180;
-    else if (p < 0.82) rotate = this.lerp(180, 360, this.seg(p, 0.62, 0.82));
-    else rotate = 360;
-    const stageTransform = `rotate(${rotate}deg)`;
-    const eColor = accent;
-    const capScaleX = -eScaleX;
-    const taglineOpacity = this.seg(p, 0.88, 1.0);
-    const taglineTranslateY = this.lerp(16, 0, this.seg(p, 0.88, 1.0));
-    const hl = this.state.hl || [];
-    const hlClass = (i) => hl.includes(i) ? 'hl' : '';
-    const { mode, selectedTalent, selectedFable } = this.state;
-    const talentCards = HOME_TALENT_DATA.map((t, i) => ({
-      ...t, tClass: 't' + (i + 1), colorClass: 't-' + i, hlClass: hlClass(i),
-      onClick: () => { this.setState({ selectedTalent: i, selectedFable: null }); this.scrollToDetail(); }
-    }));
-    const fableCards = HOME_FABLE_DATA.map((f, i) => ({
-      ...f, tClass: 't' + (i + 1), colorClass: 't-' + i,
-      hlClass: selectedFable === i ? 'hl' : '',
-      onClick: () => { this.setState({ selectedFable: i, selectedTalent: null }); this.scrollToDetail(); }
-    }));
-    let detail = null;
-    if (selectedTalent !== null) {
-      const t = HOME_TALENT_DATA[selectedTalent];
-      const constellation = (t.constellation || []).map(idx => ({
-        name: HOME_TALENT_DATA[idx].name,
-        onClick: () => { this.setState({ selectedTalent: idx, selectedFable: null }); this.scrollToDetail(); }
-      }));
-      detail = { image: talentCards[selectedTalent].mark, colorClass: 't-' + selectedTalent, eyebrow: t.eyebrow, title: t.name, body: t.definition, constellation, isFable: false, pillClass: 'pill-gold' };
-    } else if (selectedFable !== null) {
-      const f = HOME_FABLE_DATA[selectedFable];
-      const constellation = (f.constellation || []).map(idx => ({
-        name: HOME_FABLE_DATA[idx].animal,
-        onClick: () => { this.setState({ selectedFable: idx, selectedTalent: null }); this.scrollToDetail(); }
-      }));
-      detail = { image: f.mark, colorClass: 't-' + selectedFable, eyebrow: HOME_TALENT_DATA[selectedFable].name, title: f.title, body: f.body, constellation, isFable: true, pillClass: 'pill-purple' };
+    const { openFableIdx, showAmbassador, ambassadorStatus, positions, isMobile, menuOpen } = this.state;
+    const navStyle = isMobile ? 'display:none' : 'display:flex;align-items:center;gap:28px;font-family:var(--font-sans);font-size:12px;font-weight:600;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-secondary)';
+    const hamburgerStyle = isMobile ? 'display:flex;flex-direction:column;gap:5px;justify-content:center;align-items:center;width:40px;height:40px;background:none;border:1px solid var(--hairline-strong);border-radius:6px;cursor:pointer' : 'display:none';
+    const recognitionGridStyle = `max-width:1040px;margin:0 auto;padding:8vh 24px 10vh;display:grid;grid-template-columns:${isMobile ? '1fr' : '1fr 1fr'};gap:${isMobile ? '40px' : '60px'}`;
+    const companionsGridStyle = `display:grid;grid-template-columns:${isMobile ? '1fr' : '1fr 1fr'};gap:${isMobile ? '36px' : '40px'}`;
+    const finalSectionGridStyle = `max-width:1100px;margin:0 auto;padding:12vh 24px;display:grid;grid-template-columns:${isMobile ? '1fr' : '1fr 1.3fr'};gap:${isMobile ? '24px' : '100px'}`;
+    const overlayGridStyle = `max-width:1000px;display:grid;grid-template-columns:${isMobile ? '1fr' : '1.1fr 1fr'};gap:${isMobile ? '32px' : '56px'};align-items:start`;
+    const fableIconWidth = isMobile ? 'clamp(64px,18vw,88px)' : 'clamp(120px,14vw,170px)';
+    const pickF = (i) => () => { if (this._dragMoved) { this._dragMoved = false; return; } this.setState({ openFableIdx: i }); };
+    const down = (i) => (e) => {
+      try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}
+      this._dragStart = { x: e.clientX, y: e.clientY };
+      this._dragMoved = false;
+      this.setState({ dragIdx: i });
+    };
+    let overlay = null;
+    if (openFableIdx !== null) {
+      const f = FABLES[openFableIdx];
+      const t = TALENTS[openFableIdx];
+      overlay = {
+        bg: `linear-gradient(120deg, rgba(15,14,12,.88), rgba(15,14,12,.94) 60%), url(${f.bg}) center/cover no-repeat`,
+        plate: f.plate,
+        title: f.title,
+        body: f.body,
+        talentName: t.name,
+        talentTag: t.eyebrow,
+        talentDef: t.def,
+        talentFriction: t.friction,
+        talentCapability: t.slogan,
+        talentConditions: t.conditions,
+        readHref: f.slug === 'Chameleon' ? 'fable-chameleon.html' : null,
+        related: (f.related || []).map(idx => ({ name: FABLES[idx].animal, onClick: () => this.setState({ openFableIdx: idx }) }))
+      };
     }
+    const { hoverIdx } = this.state;
+    const pt = (i) => ({ x: positions[i].left * 10, y: positions[i].top * 7 });
+    const lines = {};
+    for (const key in PAIRS) {
+      const [a, b] = PAIRS[key];
+      const pa = pt(a), pb = pt(b);
+      const active = hoverIdx !== null && (a === hoverIdx || b === hoverIdx);
+      lines[key] = {
+        x1: pa.x, y1: pa.y, x2: pb.x, y2: pb.y,
+        style: active
+          ? 'stroke:var(--jewel-ochre-soft);opacity:.9;stroke-width:1.6;stroke-dasharray:5 5'
+          : 'stroke:var(--jewel-ochre-soft);opacity:.28;stroke-width:1;stroke-dasharray:2 8'
+      };
+    }
+    const hover = (i) => () => this.setState({ hoverIdx: i });
     return {
-      trackRef: this.setTrackRef, detailRef: this.setDetailRef, trackHeightVh, stageTransform, eScaleX, eColor, capScaleX,
-      taglineOpacity, taglineTranslateY,
-      hl0: hlClass(0), hl1: hlClass(1), hl2: hlClass(2), hl3: hlClass(3),
-      hl4: hlClass(4), hl5: hlClass(5), hl6: hlClass(6), hl7: hlClass(7),
-      talentCards, fableCards, detail,
-      talentsModeClass: 'mode-view' + (mode === 'talents' ? ' active' : ''),
-      fablesModeClass: 'mode-view' + (mode === 'fables' ? ' active' : ''),
-      detailPanelClass: 'mode-view' + (detail ? ' active' : ''),
-      showFablesMode: () => this.setState({ mode: 'fables', navOpen: false }),
-      showTalentsMode: () => this.setState({ mode: 'talents', navOpen: false }),
-      navOpenClass: this.state.navOpen ? 'open' : '',
-      navToggleIcon: this.state.navOpen ? '✕' : '☰',
-      toggleNav: () => this.setState({ navOpen: !this.state.navOpen })
+      isFable0: openFableIdx === 0, isFable1: openFableIdx === 1, isFable2: openFableIdx === 2, isFable3: openFableIdx === 3,
+      isFable4: openFableIdx === 4, isFable5: openFableIdx === 5, isFable6: openFableIdx === 6, isFable7: openFableIdx === 7,
+      frictions: FRICTIONS.map((text, i) => ({ n: String(i + 1).padStart(2, '0'), text })),
+      openFable0: pickF(0), openFable1: pickF(1), openFable2: pickF(2), openFable3: pickF(3),
+      openFable4: pickF(4), openFable5: pickF(5), openFable6: pickF(6), openFable7: pickF(7),
+      down0: down(0), down1: down(1), down2: down(2), down3: down(3),
+      down4: down(4), down5: down(5), down6: down(6), down7: down(7),
+      hover0: hover(0), hover1: hover(1), hover2: hover(2), hover3: hover(3),
+      hover4: hover(4), hover5: hover(5), hover6: hover(6), hover7: hover(7),
+      clearHover: () => this.setState({ hoverIdx: null }),
+      onMove: (e) => this.handleMove(e),
+      onUp: () => this.setState({ dragIdx: null }),
+      pos0: positions[0], pos1: positions[1], pos2: positions[2], pos3: positions[3],
+      pos4: positions[4], pos5: positions[5], pos6: positions[6], pos7: positions[7],
+      setMapRef: this.setMapRef,
+      lines,
+      resetConstellation: () => this.setState({ positions: DEFAULT_POS.map(p => ({ ...p })), hoverIdx: null }),
+      closeOverlay: () => this.setState({ openFableIdx: null }),
+      overlay,
+      showAmbassador,
+      ambassadorStatus,
+      openAmbassador: () => this.setState({ showAmbassador: true, ambassadorStatus: '' }),
+      closeAmbassador: () => this.setState({ showAmbassador: false }),
+      navStyle, hamburgerStyle, recognitionGridStyle, companionsGridStyle, finalSectionGridStyle, overlayGridStyle, fableIconWidth,
+      menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }),
+      submitAmbassador: () => {
+        setTimeout(() => this.setState({ ambassadorStatus: 'Thank you — your Ambassador Edition request has been sent.' }), 400);
+      }
     };
   }
 }
-
 </script>
 
 </body></html>

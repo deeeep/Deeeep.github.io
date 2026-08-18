@@ -179,6 +179,50 @@ back a use for the larger versions, they'll need re-extracting from that
 export's manifest — I didn't keep a separate archive of them in this package.
 
 ### 4.7 Fixed: Ambassador form was pointing at dummy data
+The version of `products.html` processed at the time had a **non-functional**
+sign-up form: the submission target was the Google Form's `viewform` URL
+(the page a person visits, not a submission endpoint) and all three field
+IDs were obvious placeholders (`entry.111111111`, `entry.222222222`,
+`entry.333333333`). It would not have worked if someone had submitted it.
+
+That was fixed in a later export: the target became the real `formResponse`
+endpoint, and the field IDs (`entry.1162102303` for name, `entry.2001919023`
+for email, `entry.402786780` for motivation) matched the real Google Form.
+The Ambassador form has since moved from its own page into a modal on the
+homepage (§4.6/4.9) — same endpoint and field IDs, carried through and
+re-verified at each rebuild since. Worth one real test submission after
+deploying, since Claude can't submit the actual form to confirm from here.
+
+### 4.8 Mobile nav + responsive layout added, and a copy fix
+This update added a proper mobile experience to the homepage: a hamburger
+menu (`toggleMenu`/`menuOpen` state, hidden above 780px), and several grid
+layouts that switch from two-column to single-column on narrow screens via
+a `window.resize` listener (`isMobile` state). All preserved and verified —
+checked the resize listener is added in `componentDidMount` and cleaned up
+in `componentWillUnmount` so it doesn't leak.
+
+Also fixed: two places on the page read "TET does not sort people..." /
+"TET is deliberately unfinished..." — now correctly render the mirrored-E
+wordmark "TƎT", matching the locked brand identity. Good catch on Claude
+Design's part; nothing for me to do here except confirm it carried through.
+
+### 4.9 Homepage imagery regenerated (again)
+All 18 non-shared images on the homepage (8 wide fable-detail shots, 8
+background textures, 2 book/journal covers) were replaced with newer
+versions — different art, generally smaller source files this time. The 8
+small draggable "constellation" icons stayed the same image content (just
+re-embedded under new UUIDs by the export), so those were reused rather
+than reprocessed. Files were overwritten in place at their existing paths,
+so no new orphans this round.
+
+### 4.10 Known-harmless: `plate` field still points nowhere
+Flagged in the previous rebuild (§ update log below) and still true here:
+each fable's data object carries a `plate: 'assets/plates/{name}.png'`
+field that's assigned but never read by any `{{ }}` binding in the
+homepage's markup — confirmed again by tracing every `.plate` occurrence.
+Not rendered, so not a real broken image, but if a future export adds a
+visible use for it, those 8 files will need extracting fresh from that
+export's manifest.
 The version of `products.html` processed earlier had a **non-functional**
 sign-up form: the submission target was the Google Form's `viewform` URL
 (the page a person visits, not a submission endpoint) and all three field
