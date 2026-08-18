@@ -30,6 +30,10 @@ a:hover{color:#1a1208}
 .talent-card.t7:hover,.talent-card.t7.hl{background:#e3e9dc}
 .talent-card.t8:hover,.talent-card.t8.hl{background:#e8dee7}
 @media (prefers-reduced-motion:reduce){.talent-card{transition:none}}
+.pill-gold{color:#8a6414;border-color:#c9a24a !important;background:#faf3e2}
+.pill-gold:hover{background:#c9a24a;color:#1a1208}
+.pill-purple{color:#5e3a82;border-color:#b79ccf !important;background:#f3ecf7}
+.pill-purple:hover{background:#5e3a82;color:#faf9f5}
 .talent-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 @media (max-width:720px){.talent-grid{grid-template-columns:repeat(2,1fr)}}
 .mode-view{display:none}
@@ -124,7 +128,7 @@ a:hover{color:#1a1208}
       <img src="{{ c.mark }}" alt="" style="width:52px;height:52px;border-radius:14px;margin-bottom:16px">
       <div class="{{ c.colorClass }}" style="font-family:'Libre Franklin',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;text-align:right;align-self:flex-end">{{ c.eyebrow }}</div>
       <div style="font-family:'EB Garamond',serif;font-size:17px;font-weight:600;margin-bottom:6px;text-align:right;align-self:flex-end">{{ c.name }}</div>
-      <p style="font-family:'EB Garamond',serif;font-size:13px;color:#45403a;line-height:1.5;margin:0">{{ c.definition }}</p>
+      <p style="font-family:'EB Garamond',serif;font-size:13px;color:#45403a;line-height:1.5;margin:0">{{ c.slogan }}</p>
     </button>
     </sc-for>
   </div>
@@ -155,7 +159,12 @@ a:hover{color:#1a1208}
       <div>
         <div class="{{ detail.colorClass }}" style="font-family:'Libre Franklin',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px">{{ detail.eyebrow }}</div>
         <div style="font-family:'EB Garamond',serif;font-size:20px;font-weight:600;margin-bottom:10px">{{ detail.title }}</div>
-        <p style="font-family:'EB Garamond',serif;font-size:17px;color:#45403a;line-height:1.65;max-width:520px;margin:0">{{ detail.body }}</p>
+        <p style="font-family:'EB Garamond',serif;font-size:17px;color:#45403a;line-height:1.65;margin:0 0 16px">{{ detail.body }}</p>
+        <div style="display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap" hint-placeholder-count="2">
+          <sc-for list="{{ detail.constellation }}" as="c" hint-placeholder-count="2">
+            <a href="javascript:void(0)" sc-camel-on-click="{{ c.onClick }}" class="{{ detail.pillClass }}" style="font-family:'Libre Franklin',sans-serif;font-size:11px;letter-spacing:0.04em;border-radius:999px;padding:5px 12px;text-decoration:none;white-space:nowrap;border:1px solid transparent">{{ c.name }} →</a>
+          </sc-for>
+        </div>
       </div>
     </div>
   </div>
@@ -211,24 +220,24 @@ a:hover{color:#1a1208}
 <script type="text/x-dc" data-dc-script="">
 const R = (id, fallback) => (window.__resources && window.__resources[id]) || fallback;
 const HOME_TALENT_DATA=[
-{name:'Integrative Thinking',eyebrow:'Across domains',color:'#246361',mark:R('tm1','assets/images/talent-marks/01-integrative-thinking.svg'),definition:'Crossing disciplinary surfaces to find the shortest route through a problem.'},
-{name:'Creative Implementation',eyebrow:'Making real',color:'#a54827',mark:R('tm2','assets/images/talent-marks/02-creative-implementation.svg'),definition:'Giving imaginative ideas enough structure to enter the world.'},
-{name:'Strategic Empathy',eyebrow:'Seeing with',color:'#693653',mark:R('tm3','assets/images/talent-marks/03-strategic-empathy.svg'),definition:'Understanding another perspective without losing sight of the whole.'},
-{name:'Cognitive Dexterity',eyebrow:'Changing lenses',color:'#354f76',mark:R('tm4','assets/images/talent-marks/04-cognitive-dexterity.svg'),definition:'Moving fluently between frames, scales and ways of knowing.'},
-{name:'Embodiment',eyebrow:'Knowing bodily',color:'#b25a34',mark:R('tm5','assets/images/talent-marks/05-embodiment.svg'),definition:'Letting sensation, movement and presence participate in thought.'},
-{name:'Deep Focus',eyebrow:'Going beneath',color:'#202e48',mark:R('tm6','assets/images/talent-marks/06-deep-focus.svg'),definition:'Staying with what matters beyond distraction and easy reward.'},
-{name:'Emotional Intelligence',eyebrow:'Reading the field',color:'#4f7342',mark:R('tm7','assets/images/talent-marks/07-emotional-intelligence.svg'),definition:'Noticing what feeling reveals in oneself, in others and between them.'},
-{name:'Adaptive Masking',eyebrow:'Choosing the self',color:'#70446b',mark:R('tm8','assets/images/talent-marks/08-adaptive-masking.svg'),definition:'Selecting how to show up as a practiced capability, not a betrayal.'}
+{name:'Integrative Thinking',eyebrow:'Across domains',color:'#246361',mark:R('tm1','assets/images/talent-marks/01-integrative-thinking.svg'),definition:'The capacity to identify patterns and meaningful connections across domains, and to synthesise diverse, sometimes contradictory inputs into a coherent read on a problem — without collapsing that problem\u2019s real complexity into a single discipline\u2019s terms.',slogan:'Crossing disciplinary surfaces to find the shortest route through a problem.',constellation:[2,3]},
+{name:'Creative Implementation',eyebrow:'Making real',color:'#a54827',mark:R('tm2','assets/images/talent-marks/02-creative-implementation.svg'),definition:'The capacity to commit to small, reversible action inside genuine uncertainty and let the environment\u2019s response do the framing work a planning process can\u2019t do fast enough.',slogan:'Giving imaginative ideas enough structure to enter the world.',constellation:[3,4]},
+{name:'Strategic Empathy',eyebrow:'Seeing with',color:'#693653',mark:R('tm3','assets/images/talent-marks/03-strategic-empathy.svg'),definition:'The capacity to accurately reconstruct and translate the position of a party the room can\u2019t yet hear, without adopting that position as one\u2019s own.',slogan:'Understanding another perspective without losing sight of the whole.',constellation:[0,6]},
+{name:'Cognitive Dexterity',eyebrow:'Changing lenses',color:'#354f76',mark:R('tm4','assets/images/talent-marks/04-cognitive-dexterity.svg'),definition:'The capacity to hold opposing or competing frames of one problem simultaneously and switch cleanly between them as conditions change.',slogan:'Moving fluently between frames, scales and ways of knowing.',constellation:[1,5]},
+{name:'Embodiment',eyebrow:'Knowing bodily',color:'#b25a34',mark:R('tm5','assets/images/talent-marks/05-embodiment.svg'),definition:'The capacity to register situational wrongness through bodily signal ahead of verbal justification.',slogan:'Letting sensation, movement and presence participate in thought.',constellation:[6,1]},
+{name:'Deep Focus',eyebrow:'Going beneath',color:'#202e48',mark:R('tm6','assets/images/talent-marks/06-deep-focus.svg'),definition:'The capacity to sustain singular, uninterrupted attention long enough for a pattern to fully assemble.',slogan:'Staying with what matters beyond distraction and easy reward.',constellation:[0,3]},
+{name:'Emotional Intelligence',eyebrow:'Reading the field',color:'#4f7342',mark:R('tm7','assets/images/talent-marks/07-emotional-intelligence.svg'),definition:'The capacity to absorb and metabolise a group\u2019s collective emotional state from within it, without transmitting that state back to the group amplified.',slogan:'Noticing what feeling reveals in oneself, in others and between them.',constellation:[4,2]},
+{name:'Adaptive Masking',eyebrow:'Choosing the self',color:'#70446b',mark:R('tm8','assets/images/talent-marks/08-adaptive-masking.svg'),definition:'The conscious adjustment of communication style, visible behaviour, and self-presentation to match the norms of different contexts — without losing one\u2019s substantive position.',slogan:'Selecting how to show up as a practiced capability, not a betrayal.',constellation:[0,2]}
 ];
 const HOME_FABLE_DATA=[
-{animal:'Crow',title:'The Crow Who Saw the Bridges',mark:R('fl1','assets/images/fable-logos/01-crow-integrative-thinking.webp'),body:"There was once a crow who could not see one thing without seeing where it would fit in another."},
-{animal:'Fox',title:'The Fox Who Moved Before the Map Was Ready',mark:R('fl2','assets/images/fable-logos/02-fox-creative-implementation.webp'),body:"There was once a fox who moved while the others were still drawing the map."},
-{animal:'Bat',title:'The Bat Who Heard Both Sides',mark:R('fl3','assets/images/fable-logos/03-bat-strategic-empathy.webp'),body:"There was once a bat who could hang from either side of an argument and hear it clearly from both."},
-{animal:'Octopus',title:'The Octopus Who Stayed With the Question',mark:R('fl4','assets/images/fable-logos/04-octopus-cognitive-dexterity.webp'),body:"There was once an octopus who would not let a question close before its time."},
-{animal:'Horse',title:'The Horse Whose Body Knew First',mark:R('fl5','assets/images/fable-logos/05-horse-embodiment.webp'),body:"There was once a horse whose body understood the field was wrong before anyone had said a word."},
-{animal:'Whale',title:'The Whale Who Could Not Dive Shallow',mark:R('fl6','assets/images/fable-logos/06-whale-deep-focus.webp'),body:"There was once a whale who tried the shallows, and found there was nothing there worth finding."},
-{animal:'Elephant',title:'The Elephant Who Held the Herd',mark:R('fl7','assets/images/fable-logos/07-elephant-emotional-intelligence.webp'),body:"There was once an elephant who carried the herd's grief until the herd was ready to carry it themselves."},
-{animal:'Chameleon',title:'The Chameleon and the Colour of Twilight',mark:R('fl8','assets/images/fable-logos/08-chameleon-adaptive-masking.webp'),body:"There was once a chameleon who chose her colour, at twilight, and it was chosen, not worn."}
+{animal:'Crow',title:'The Crow Who Saw the Bridges',mark:R('fl1','assets/images/fable-logos/01-crow-integrative-thinking.webp'),body:"A crow who cannot stop connecting things across domains is quietly building the one pattern his community will need — long before anyone knows to ask him for it.",constellation:[2,3]},
+{animal:'Fox',title:'The Fox Who Moved Before the Map Was Ready',mark:R('fl2','assets/images/fable-logos/02-fox-creative-implementation.webp'),body:"A fox feels the forest changing faster than her community can agree on a plan for it — and has to decide what to do with that gap.",constellation:[3,5]},
+{animal:'Bat',title:'The Bat Who Heard Both Sides',mark:R('fl3','assets/images/fable-logos/03-bat-strategic-empathy.webp'),body:"A bat can hear the fear underneath what two warring sides are shouting at each other — and one day, both sides ask her to stand in the middle.",constellation:[0,6]},
+{animal:'Octopus',title:'The Octopus Who Stayed With the Question',mark:R('fl4','assets/images/fable-logos/04-octopus-cognitive-dexterity.webp'),body:"An octopus feels every problem as several true answers at once, and has to decide what happens when the room only has space for one.",constellation:[1,4]},
+{animal:'Horse',title:'The Horse Whose Body Knew First',mark:R('fl5','assets/images/fable-logos/05-horse-embodiment.webp'),body:"A horse's body knows a room has gone wrong before anyone can explain why — and the forest already has a name ready for that: too much.",constellation:[6,1]},
+{animal:'Whale',title:'The Whale Who Could Not Dive Shallow',mark:R('fl6','assets/images/fable-logos/06-whale-deep-focus.webp'),body:"A whale is the only one who can dive deep enough to find real answers — but the calls for those answers keep arriving faster than a real dive allows.",constellation:[0,3]},
+{animal:'Elephant',title:'The Elephant Who Held the Herd',mark:R('fl7','assets/images/fable-logos/07-elephant-emotional-intelligence.webp'),body:"An elephant feels the herd's fear first and longest, and has quietly learned there's a right way and a wrong way to let anyone know it.",constellation:[5,2]},
+{animal:'Chameleon',title:'The Chameleon and the Colour of Twilight',mark:R('fl8','assets/images/fable-logos/08-chameleon-adaptive-masking.webp'),body:"A chameleon can become exactly what anyone around him needs — until the day he's asked to become several things at once.",constellation:[0,2]}
 ];
 class Component extends DCLogic {
   constructor(props) {
@@ -317,10 +326,18 @@ class Component extends DCLogic {
     let detail = null;
     if (selectedTalent !== null) {
       const t = HOME_TALENT_DATA[selectedTalent];
-      detail = { image: talentCards[selectedTalent].mark, colorClass: 't-' + selectedTalent, eyebrow: t.eyebrow, title: t.name, body: t.definition };
+      const constellation = (t.constellation || []).map(idx => ({
+        name: HOME_TALENT_DATA[idx].name,
+        onClick: () => { this.setState({ selectedTalent: idx, selectedFable: null }); this.scrollToDetail(); }
+      }));
+      detail = { image: talentCards[selectedTalent].mark, colorClass: 't-' + selectedTalent, eyebrow: t.eyebrow, title: t.name, body: t.definition, constellation, isFable: false, pillClass: 'pill-gold' };
     } else if (selectedFable !== null) {
       const f = HOME_FABLE_DATA[selectedFable];
-      detail = { image: f.mark, colorClass: 't-' + selectedFable, eyebrow: HOME_TALENT_DATA[selectedFable].name, title: f.title, body: f.body };
+      const constellation = (f.constellation || []).map(idx => ({
+        name: HOME_FABLE_DATA[idx].animal,
+        onClick: () => { this.setState({ selectedFable: idx, selectedTalent: null }); this.scrollToDetail(); }
+      }));
+      detail = { image: f.mark, colorClass: 't-' + selectedFable, eyebrow: HOME_TALENT_DATA[selectedFable].name, title: f.title, body: f.body, constellation, isFable: true, pillClass: 'pill-purple' };
     }
     return {
       trackRef: this.setTrackRef, detailRef: this.setDetailRef, trackHeightVh, stageTransform, eScaleX, eColor, capScaleX,

@@ -204,6 +204,356 @@
   --font-body: var(--font-serif); /* @kind font */
 }
 
+/* ─── FABLES OF TET — WEBFONTS ────────────────────────────────
+   The reader app loads these two families straight from Google
+   Fonts (see the <link> tags in index.html / Fables of TET.html).
+   No local font binaries were shipped with the source project,
+   so we declare @font-face pointed at the same Google-hosted
+   files the app already depends on — this keeps consumers of
+   this design system pixel-identical to the real product
+   without inventing a substitute typeface. */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+
+
+/* ─── FABLES OF TET — COLOR TOKENS ───────────────────────────
+   Sourced verbatim from the reader app's :root palette
+   (fables-of-tet/index.html, Fables of TET.html, print templates).
+   A restrained, ink-on-paper literary palette + one warm gold accent. */
+
+:root {
+  /* Base values */
+  --ink-base: #1a1208;         /* primary text, near-black warm ink */
+  --paper-base: #faf9f5;       /* page background, warm off-white */
+  --cream-base: #f4ead4;       /* text-on-dark, warm parchment cream */
+  --gold-base: #c69a3a;        /* the one accent color: eyebrows, rules, active states */
+  --cover-bg-base: #130e05;    /* near-black cover/TOC background */
+
+  /* Derived / alpha values (copied exactly as used in source) */
+  --gold-dim: rgba(198, 154, 58, 0.18);   /* gold hover wash */
+  --gold-faint: rgba(198, 154, 58, 0.08); /* gold hover wash, subtler (toc links) */
+  --muted-ink: rgba(26, 18, 8, 0.5);      /* secondary text on paper */
+  --muted-ink-strong: rgba(26, 18, 8, 0.7);  /* citation notes */
+  --muted-ink-stronger: rgba(26, 18, 8, 0.8);/* image description body, story-close */
+  --muted-ink-strongest: rgba(26, 18, 8, 0.85); /* reflection question text */
+  --rule: rgba(26, 18, 8, 0.14);          /* hairline dividers on paper */
+  --cream-dim: rgba(244, 234, 212, 0.5);  /* secondary text on dark (cover subtitle) */
+  --cream-dim-strong: rgba(244, 234, 212, 0.65); /* chapter epigraph on dark plate */
+  --cream-dim-stronger: rgba(244, 234, 212, 0.75); /* toc link default */
+  --cream-faint: rgba(244, 234, 212, 0.4);   /* toc sub-label */
+  --cover-veil: rgba(19, 14, 5, 0.85);       /* header background over cover */
+  --cover-veil-light: rgba(19, 14, 5, 0.5);  /* toc overlay scrim */
+  --cover-veil-heavy: rgba(19, 14, 5, 0.84); /* chapter-opener text gradient base */
+  --plate-caption: rgba(244, 234, 212, 0.45); /* "After [Artist]" plate caption */
+
+  /* Semantic aliases */
+  --text-body: var(--ink-base);
+  --text-muted: var(--muted-ink);
+  --text-on-dark: var(--cream-base);
+  --text-on-dark-muted: var(--cream-dim);
+  --text-accent: var(--gold-base);
+
+  --surface-page: var(--paper-base);
+  --surface-dark: var(--cover-bg-base);
+  --surface-accent-wash: var(--gold-dim);
+
+  --border-hairline: var(--rule);
+  --border-accent: var(--gold-base);
+}
+
+/* ─── FABLES OF TET — LIGHT THEME (v2) ────────────────────────
+   Direction update: the reader moves from a dark cover/TOC to a
+   light, paper-forward theme throughout — no near-black chrome.
+   --ink-base is now used for TEXT ONLY, never as a background.
+   Cream is now a warm elevated-surface tone (cards, TOC, chips),
+   not "text on dark". Gold remains the one accent. */
+
+:root {
+  /* Chrome surfaces (replace the old dark cover-bg for backgrounds) */
+  --surface-chrome: var(--cream-base);         /* TOC drawer, cover section, elevated chrome */
+  --surface-chrome-veil: rgba(244, 234, 212, 0.9); /* header-over-cover veil, was --cover-veil (dark) */
+  --surface-chrome-border: rgba(198, 154, 58, 0.3);
+
+  /* Text on the light chrome surfaces (replaces --cream text-on-dark roles) */
+  --text-on-chrome: var(--ink-base);
+  --text-on-chrome-muted: var(--muted-ink);
+  --text-on-chrome-faint: rgba(26, 18, 8, 0.4);
+
+  /* Overlay scrim used behind chapter-opener titles — now light, fading up from paper */
+  --plate-scrim: linear-gradient(to bottom, transparent, rgba(250, 249, 245, 0.94)); /* @kind other */
+  --plate-caption-light: rgba(26, 18, 8, 0.55);
+}
+
+/* ─── FABLES OF TET — PER-CHAPTER WASH TINTS ───────────────────
+   Each chapter's iOS/Mac wallpaper (assets/wallpapers/*) carries a
+   distinct abstract color signature. These tokens are light,
+   low-saturation echoes of that signature — two-stop tint pairs
+   used behind a chapter's reading content at very low emphasis
+   (via the ChapterWash component), for per-chapter cohesion
+   without introducing any dark background. Not exact color
+   extractions — eyeballed from the source wallpapers. */
+
+:root {
+  --wash-crow-a: #eef3ea;      /* sage/green + gold grid */
+  --wash-crow-b: #f7ecd2;
+
+  --wash-fox-a: #eef1f7;       /* starry-night indigo + gold moon */
+  --wash-fox-b: #fbf0d9;
+
+  --wash-bat-a: #f2eef7;       /* faceted purple/charcoal crystal */
+  --wash-bat-b: #ece9ee;
+
+  --wash-octopus-a: #f5efe2;   /* sepia Escher-style isometric pattern */
+  --wash-octopus-b: #efe8d6;
+
+  --wash-horse-a: #f6ecd9;     /* parchment + radiating red-ember threads */
+  --wash-horse-b: #f8e2d3;
+
+  --wash-whale-a: #eef1f6;     /* deep navy + gold horizon */
+  --wash-whale-b: #f9e6d9;
+
+  --wash-elephant-a: #fbeee0;  /* red/ochre storm */
+  --wash-elephant-b: #f7dcd0;
+
+  --wash-chameleon-a: #f8f0da; /* gold + purple mosaic */
+  --wash-chameleon-b: #f1e9f3;
+
+  --wash-longnight-a: #eceef5; /* synthesis chapter — pale indigo/violet */
+  --wash-longnight-b: #eee9f2;
+}
+
+/* ─── FABLES OF TET — PER-CHAPTER ACCENT COLORS ────────────────
+   Direction 1b ("Paper & Gouache") adopted. Beyond the light wash
+   tints, each chapter now also gets a genuine ACCENT pair — pulled
+   from that chapter's own full illustration (not the abstract
+   wallpaper) — used for its eyebrow label, dividers, and reflection
+   bullets, so each chapter reads as visually its own.
+
+   The CHAMELEON pair doubles as --accent-primary-1/2 — the default,
+   system-wide brand accent for anything that isn't a specific
+   chapter (cover, header, TOC, marketing collateral, the wordmark).
+   The Chameleon fable is the flagship/general-communication story. */
+
+:root {
+  --accent-crow-1: #3d6b63;       /* deep teal, from the Klee-grid greens/blues */
+  --accent-crow-2: #b98a3e;       /* warm ochre-gold at the grid's center */
+
+  --accent-fox-1: #2f3b63;        /* Van Gogh starry-night indigo */
+  --accent-fox-2: #d1a13f;        /* moon / amber-gold fox coat */
+
+  --accent-bat-1: #6b4b8a;        /* violet glow at the bat's chest */
+  --accent-bat-2: #5a6072;        /* faceted slate-blue crystal wings */
+
+  --accent-octopus-1: #6b5f4f;    /* warm sepia ink, near-monochrome plate */
+  --accent-octopus-2: #8f8471;    /* lighter parchment-grey */
+
+  --accent-horse-1: #a8542f;      /* rust-red thread network */
+  --accent-horse-2: #c99a4a;      /* parchment gold */
+
+  --accent-whale-1: #1f3b5c;      /* deep navy dive */
+  --accent-whale-2: #d99a3a;      /* surface-light gold */
+
+  --accent-elephant-1: #c1502c;   /* burnt-orange storm */
+  --accent-elephant-2: #4a2f52;   /* deep plum undertone */
+
+  --accent-chameleon-1: #c9a227;  /* gold ground of the Klimt-style mosaic — THE flagship fable */
+  --accent-chameleon-2: #5e3a82;  /* the chameleon's mosaic purple */
+
+  --accent-longnight-1: #4a4a6b;  /* indigo synthesis */
+  --accent-longnight-2: #c69a3a;  /* the book's original gold, unchanged */
+
+  /* System default — general communication, not tied to a specific chapter.
+     Aliased to the Chameleon pair per direction: it becomes the flagship story. */
+  --accent-primary-1: var(--accent-chameleon-1);
+  --accent-primary-2: var(--accent-chameleon-2);
+}
+
+/* ─── FABLES OF TET — TYPE TOKENS ─────────────────────────────
+   Two Google-served serifs, no sans anywhere in the brand.
+   EB Garamond carries all reading copy; Playfair Display is
+   reserved for titles/headings only. */
+
+:root {
+  --font-body: 'EB Garamond', 'Garamond', 'Georgia', serif;
+  --font-display: 'Playfair Display', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-hand: 'Caveat', 'Segoe Script', cursive; /* direction 1b: hand-lettered epigraphs */
+
+  /* Base sizing — root font-size the reader sets, and the scale built on top of it */
+  --text-root-size: 18px;         /* html { font-size } on desktop */
+  --text-root-size-mobile: 17px;  /* html { font-size } under 620px */
+
+  --text-body-size: 1rem;
+  --text-body-line-height: 1.82;
+
+  /* Eyebrow / label (small caps-style uppercase tag above headings) */
+  --text-eyebrow-size: 0.7rem;
+  --text-eyebrow-tracking: 0.2em;
+
+  /* Display headings (Playfair Display, clamp for responsive) */
+  --text-cover-title-size: clamp(2.2rem, 6vw, 3.6rem);
+  --text-front-title-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  --text-chapter-title-size: clamp(1.6rem, 4vw, 2.5rem);
+  --text-display-line-height: 1.2;
+  --text-display-weight: 400; /* body/front-matter headings stay regular */
+  --text-chapter-title-weight: 700; /* direction 1b: chapter + cover titles set bolder, warmer */
+  --text-epigraph-size-hand: 1.3rem; /* Caveat renders smaller visually at the same px — sized up */
+
+  /* Supporting sizes */
+  --text-subtitle-size: 1.05rem;   /* cover subtitle, italic */
+  --text-epigraph-size: 1rem;      /* chapter epigraph, italic */
+  --text-questions-intro-size: 1.05rem;
+  --text-small-size: 0.88rem;      /* citation notes, rl-note */
+  --text-tiny-size: 0.68rem;       /* plate captions */
+  --text-nav-size: 0.85rem;        /* begin-btn, nav-btn */
+
+  --text-tracking-wide: 0.12em;    /* uppercase buttons */
+  --text-tracking-widest: 0.22em;  /* cover series label */
+}
+
+/* ─── FABLES OF TET — SPACING & SHAPE TOKENS ──────────────────
+   Values lifted directly from the reader app's layout code. */
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-11: 48px;
+  --space-12: 56px;
+  --space-13: 60px;
+  --space-14: 64px;
+  --space-15: 72px;
+  --space-16: 80px;
+  --space-20: 100px;
+
+  /* Reading measure */
+  --content-max-width: 700px;
+  --content-padding-desktop: 72px 40px 100px;
+  --content-padding-default: 64px 28px 80px;
+  --content-padding-mobile: 48px 20px 72px;
+
+  /* Radii — used sparingly, only on photographic thumbnails, never on cards/buttons */
+  --radius-thumb-desktop: 10px;
+  --radius-thumb-mobile: 8px;
+  --radius-btn: 6px;
+
+  /* Shadow — one soft warm-black shadow, used only under floating thumbnails */
+  --shadow-thumb: 0 4px 16px rgba(19, 14, 5, 0.18);
+
+  /* Fixed chrome */
+  --header-height: 54px;
+  --toc-width: 320px;
+}
+
 *{box-sizing:border-box}
 html{-webkit-font-smoothing:antialiased}
 body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--text-body);line-height:var(--leading-body)}
