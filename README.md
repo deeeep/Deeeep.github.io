@@ -178,6 +178,26 @@ full-size files rather than ship unused weight. If a future export brings
 back a use for the larger versions, they'll need re-extracting from that
 export's manifest — I didn't keep a separate archive of them in this package.
 
+### 4.7 Fixed: Ambassador form was pointing at dummy data
+The version of `products.html` processed earlier had a **non-functional**
+sign-up form: the submission target was the Google Form's `viewform` URL
+(the page a person visits, not a submission endpoint) and all three field
+IDs were obvious placeholders (`entry.111111111`, `entry.222222222`,
+`entry.333333333`). It would not have worked if someone had submitted it.
+
+The latest export fixes both: the target is now the real `formResponse`
+endpoint, and the field IDs (`entry.1162102303` for name, `entry.2001919023`
+for email, `entry.402786780` for motivation) match your actual Google Form.
+I left the submission mechanism itself untouched — it builds a hidden form
+and posts it to a hidden iframe, a standard no-CORS-safe pattern for
+submitting to Google Forms from a static page with no backend — and only
+verified the URL and entry IDs carried through correctly into this build
+(checked byte-for-byte, plus a Node syntax check on the whole script).
+Worth doing one real test submission after deploying, since I can't submit
+the actual form from here to confirm the entry IDs are correctly labelled
+in your Form (Anthropic's safety and privacy configuration prevent Claude
+from submitting the actual form) — a live test after deploying is the way to be sure.
+
 ## 5. What I did *not* do
 
 - I did not touch visual design, copy, layout, or component behavior —
