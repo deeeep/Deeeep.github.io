@@ -828,16 +828,15 @@ a:hover{color:var(--jewel-plum)}
 
 <section style="margin: 0 auto; padding: 14vh 24px 10vh; text-align: center; background:var(--paper-warm)" data-comment-anchor="452fe74ab4-section">
   <div style="font-family: var(--font-sans); font-size: 17px; font-weight: 800; letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--text-muted); margin-bottom: 22px" data-comment-anchor="4541450ab7-div">Eight fables · Eight talents · No test</div>
-  <h1 style="font-family:var(--font-serif);font-weight:600;font-size:clamp(3.8rem,9vw,7rem);line-height:1.05;letter-spacing:-0.02em;margin:0" data-comment-anchor="8fbb5851c9-h1">Something feels<br><em style="display:block;color:var(--tet-purple);font-style:italic;font-size:clamp(5rem,15vw,11rem);line-height:1;margin-top:-0.22em" data-comment-anchor="e55cff6bac-em">off</em></h1>
-  <p style="font-family:var(--font-serif);font-size:clamp(1.15rem,1.8vw,1.4rem);line-height:1.45;color:var(--text-secondary);max-width:600px;margin:28px auto 0">Not broken. Not secretly a type waiting to be discovered. Just a mind meeting situations that do not always know what to do with it.</p>
-  <div style="font-family: var(--font-sans); font-size: 18px; font-weight: 700; letter-spacing: 0.02em; color: var(--text-muted); margin-top: 22px" data-comment-anchor="ed0a42bb45-div">You do not need a diagnosis to recognise a pattern.</div>
+  <h1 style="font-family: var(--font-serif); font-weight: 600; font-size: 99px; line-height: 0.75; letter-spacing: -0.02em; margin: 0" data-comment-anchor="8fbb5851c9-h1">Some talents only<br><em style="display: block; color: var(--tet-purple); font-style: italic; font-size: 181px; line-height: 0.95; margin: 0.15em 0; margin-top: -0.07em; margin-bottom: -0.07em" data-comment-anchor="e55cff6bac-em">reveal</em>when the context changes.</h1>
+  <div style="font-family: var(--font-sans); font-size: 18px; font-weight: 700; letter-spacing: 0.02em; color: var(--text-muted); margin-top: 53px" data-comment-anchor="ed0a42bb45-div">You do not need a diagnosis to recognise a pattern.</div>
 </section>
 
 <section id="recognition" style="{{ recognitionGridStyle }}">
   
   <div style="display:flex;flex-direction:column;min-height:100%">
     <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.15;margin:0">Before talent,<br>there is often friction.</h2>
-    <p style="font-family: var(--font-serif); font-size: 17px; line-height: 1.6; color: var(--text-secondary); margin-top: 24px">The fables begin there: at the awkward edge where something useful can look excessive, difficult, strange or simply misplaced.</p><div style="font-family: var(--font-sans); font-size: 17px; font-weight: 800; color: var(--text-muted); margin-top: auto; padding-top: 24px" data-comment-anchor="142ee9c640-div">Not symptoms. Not criteria. Places to become curious.</div>
+    <p style="font-family: var(--font-serif); font-size: 17px; line-height: 1.6; color: var(--text-secondary); margin-top: 24px" data-comment-anchor="efa5687b1a-p">The fables begin there: at the awkward edge where a behaviour, feeling or instinct that is genuinely useful can look excessive, difficult, strange or simply misplaced.</p><div style="font-family: var(--font-sans); font-size: 17px; font-weight: 800; color: var(--text-muted); margin-top: auto; padding-top: 24px" data-comment-anchor="142ee9c640-div">Not symptoms. Not criteria. Places to become curious.</div>
   </div><div>
     <div style="border-top:1px solid var(--hairline)">
       <sc-for list="{{ frictions }}" as="f" hint-placeholder-count="6">
@@ -917,7 +916,7 @@ a:hover{color:var(--jewel-plum)}
   </div>
 
   <div style="max-width:1000px;margin:3vh auto 0;display:flex;align-items:center">
-    <div style="flex: 1; text-align: center; font-family: var(--font-sans); font-size: 11px; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(246,241,230,.45); font-weight: 700">Click a character · drag to rearrange · open its fable</div>
+    <div style="flex: 1; text-align: center; font-family: var(--font-sans); font-size: 17px; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: rgba(246,241,230,.45); font-weight: 500; font-style: normal">Click a character · drag to rearrange · open its fable</div>
     <button sc-camel-on-click="{{ resetConstellation }}" style="margin-left:16px;flex:none;font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(246,241,230,.7);background:transparent;border:1px solid rgba(255,255,255,.25);border-radius:var(--radius-full);padding:9px 18px;cursor:pointer" style-hover="background:rgba(255,255,255,.08);color:var(--paper)">Reset constellation</button>
   </div>
 </section>
@@ -944,13 +943,13 @@ a:hover{color:var(--jewel-plum)}
           </sc-for>
         </div>
         <div style="display:flex;gap:24px;flex-wrap:wrap">
-          <a href="#companions" style="display:inline-block;border-bottom:1px solid var(--tet-purple-soft);padding-bottom:4px;font-family:var(--font-sans);font-size:12px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--tet-purple-soft);text-decoration:none">Read all the fables →</a>
+          <a href="#companions" sc-camel-on-click="{{ closeOverlayAndGo }}" style="display:inline-block;border-bottom:1px solid var(--tet-purple-soft);padding-bottom:4px;font-family:var(--font-sans);font-size:12px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--tet-purple-soft);text-decoration:none">Read all the fables →</a>
           <sc-if value="{{ overlay.readHref }}" hint-placeholder-val="{{ false }}">
             <a href="{{ overlay.readHref }}" target="_blank" rel="noopener" style="display:inline-block;border-bottom:1px solid rgba(246,241,230,.5);padding-bottom:4px;font-family:var(--font-sans);font-size:12px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:rgba(246,241,230,.8);text-decoration:none">Read the full fable →</a>
           </sc-if>
         </div>
       </div>
-      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-md);padding:30px">
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-md);padding:30px" data-comment-anchor="a2154e1967-div">
         <div style="font-family:var(--font-sans);font-size:10.5px;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:rgba(246,241,230,.5);margin-bottom:14px">The talent inside it</div>
         <div style="margin-bottom:10px">
           <span style="font-family:var(--font-serif);font-weight:600;font-size:19px;color:var(--paper)">{{ overlay.talentName }}</span>
@@ -958,17 +957,9 @@ a:hover{color:var(--jewel-plum)}
         </div>
         <p style="font-family:var(--font-serif);font-size:15px;line-height:1.55;color:rgba(246,241,230,.8);margin:0 0 20px">{{ overlay.talentDef }}</p>
         <div style="display:grid;gap:0;border-top:1px solid rgba(255,255,255,.16)">
-          <div style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16);display:grid;grid-template-columns:88px 1fr;gap:12px">
+          <div style="padding:14px 0;display:grid;grid-template-columns:88px 1fr;gap:12px">
             <b style="font-family:var(--font-sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55)">Friction</b>
             <span style="font-family:var(--font-serif);font-size:14.5px;line-height:1.4;color:rgba(246,241,230,.85)">{{ overlay.talentFriction }}</span>
-          </div>
-          <div style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16);display:grid;grid-template-columns:88px 1fr;gap:12px">
-            <b style="font-family:var(--font-sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55)">Capability</b>
-            <span style="font-family:var(--font-serif);font-size:14.5px;line-height:1.4;color:rgba(246,241,230,.85)">{{ overlay.talentCapability }}</span>
-          </div>
-          <div style="padding:14px 0;display:grid;grid-template-columns:88px 1fr;gap:12px">
-            <b style="font-family:var(--font-sans);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,230,.55)">Conditions</b>
-            <span style="font-family:var(--font-serif);font-size:14.5px;line-height:1.4;color:rgba(246,241,230,.85)">{{ overlay.talentConditions }}</span>
           </div>
         </div>
       </div>
@@ -978,8 +969,8 @@ a:hover{color:var(--jewel-plum)}
 </sc-if>
 
 <section id="companions" style="max-width:1040px;margin:0 auto;padding:10vh 24px">
-  <div style="font-family: var(--font-sans); font-size: 14px; letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; font-weight: 900">Physical companions to the journey</div>
-  <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.6rem);margin:0;line-height:1.2">First recognise. Then stay with what you found.</h2>
+  <div style="font-family: var(--font-sans); font-size: 14px; letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; font-weight: 900" data-comment-anchor="ea8657cc91-div">Physical companions for the journey</div>
+  <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.6rem);margin:0;line-height:1.2" data-comment-anchor="2e95a645cc-h2">First recognise. Then explore what you found.</h2>
   <p style="font-family:var(--font-serif);font-size:17px;color:var(--text-secondary);line-height:1.55;margin:24px 0 56px">The fables help you recognise what might be there. The Friction Journals help you discover what it needs. <strong style="color:var(--ink)">Neither tells you what you are.</strong></p>
 
   <div style="{{ companionsGridStyle }}">
@@ -1024,7 +1015,7 @@ a:hover{color:var(--jewel-plum)}
       </a>
       <a href="https://doodle.com/bp/deepakmehta/professional-meeting" target="_blank" rel="noopener" style="background:var(--paper-warm);padding:36px 30px;text-decoration:none;color:var(--ink)" style-hover="background:var(--surface-card)">
         <h3 style="font-family:var(--font-display);font-weight:600;font-size:22px;margin:0 0 14px">In a team</h3>
-        <p style="font-family:var(--font-serif);font-size:14px;color:var(--text-secondary);line-height:1.5;margin:0 0 28px">When useful cognition is hiding inside behaviour the role, process or culture has learned to call difficult.</p>
+        <p style="font-family:var(--font-serif);font-size:14px;color:var(--text-secondary);line-height:1.5;margin:0 0 28px" data-comment-anchor="9a112ad8a3-p">When a colleague's real capability is disguised as behaviour the team has learned to call difficult.</p>
         <span style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--paper);background:var(--tet-purple);padding:8px 16px;border-radius:var(--radius-full);display:inline-block" data-comment-anchor="8ed313d195-span">Book a workshop →</span>
       </a>
       <a href="https://doodle.com/bp/deepakmehta/professional-meeting" target="_blank" rel="noopener" style="background:var(--paper-warm);padding:36px 30px;text-decoration:none;color:var(--ink)" style-hover="background:var(--surface-card)">
@@ -1040,7 +1031,7 @@ a:hover{color:var(--jewel-plum)}
   <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,3.4vw,2.4rem);margin:0;line-height:1.2">Recognition,<br>not classification.</h2>
   <div style="font-family:var(--font-serif);font-size:16px;color:var(--text-secondary);line-height:1.6">
     <p style="margin:0 0 18px">TƎT is deliberately unfinished when it reaches you. There is no score, no dominant talent and no correct constellation.</p>
-    <p style="margin:0 0 18px">It does not claim every difficulty is secretly a gift. It asks a smaller question: <strong style="color:var(--ink)">what else might be present — and what changes when the context changes?</strong></p>
+    <p style="margin:0 0 18px" data-comment-anchor="6921361888-p">It does not claim every difficulty is secretly a gift. It asks a smaller question instead: <strong style="color:var(--ink)">what else might be going on here, and does it look different in a different setting?</strong></p>
     <p style="margin:0">A fable gives you somewhere to recognise yourself. The framework gives you language to talk about what you noticed.</p>
   </div>
 </section>
@@ -1087,7 +1078,11 @@ a:hover{color:var(--jewel-plum)}
         <span style="display:block;font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Why would you like an Ambassador Edition?</span>
         <textarea name="entry.402786780" rows="5" required="" placeholder="What caught your attention, who do you imagine sharing the fables with, or how might you help the stories travel? Could you help find a sponsor, an ambassador, a translator, or a publisher?" style="width:100%;box-sizing:border-box;border:1px solid var(--hairline-strong);background:var(--surface-card);padding:11px 10px;font-family:var(--font-serif);font-size:15px;color:var(--ink);resize:vertical"></textarea>
       </label>
+      <sc-if value="{{ ambassadorSubmitted }}" hint-placeholder-val="{{ false }}">
+      </sc-if>
+      <sc-if value="{{ notAmbassadorSubmitted }}" hint-placeholder-val="{{ true }}">
       <button type="submit" style="background:var(--ink);color:var(--paper);border:none;border-radius:var(--radius-sm);padding:15px 18px;font-family:var(--font-sans);font-weight:600;font-size:13px;letter-spacing:.02em;cursor:pointer;display:flex;justify-content:space-between;align-items:center">Ask for Ambassador Edition access <span>→</span></button>
+      </sc-if>
       <p style="font-family:var(--font-sans);font-size:13px;color:var(--text-muted);margin:0;min-height:1.3em">{{ ambassadorStatus }}</p>
     </form>
     <iframe name="ambassadorFrame" title="Ambassador form submission" style="display:none"></iframe>
@@ -1234,6 +1229,9 @@ class Component extends DCLogic {
       closeAmbassador: () => this.setState({ showAmbassador: false }),
       navStyle, hamburgerStyle, recognitionGridStyle, companionsGridStyle, finalSectionGridStyle, overlayGridStyle, fableIconWidth,
       menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }),
+      closeOverlayAndGo: () => this.setState({ openFableIdx: null }),
+      ambassadorSubmitted: !!this.state.ambassadorStatus,
+      notAmbassadorSubmitted: !this.state.ambassadorStatus,
       submitAmbassador: () => {
         setTimeout(() => this.setState({ ambassadorStatus: 'Thank you — your Ambassador Edition request has been sent.' }), 400);
       }
