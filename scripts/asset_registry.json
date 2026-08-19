@@ -1,0 +1,284 @@
+{
+ "05fb71dda96f8396e5639225b0d1c036": {
+  "path": "assets/fonts/home/PlayfairDisplay-Variable.woff2",
+  "type": "font-ttf-to-woff2"
+ },
+ "4ee9a1562fd074aebc0d5f096ed72c6e": {
+  "path": "assets/fonts/home/PlayfairDisplay-Variable-Italic.woff2",
+  "type": "font-ttf-to-woff2"
+ },
+ "b2995d2f29f757537bd595136eeac274": {
+  "path": "assets/fonts/home/EBGaramond-Variable.woff2",
+  "type": "font-ttf-to-woff2"
+ },
+ "9a5e932362319437e17d44f0926133bb": {
+  "path": "assets/fonts/home/EBGaramond-Variable-Italic.woff2",
+  "type": "font-ttf-to-woff2"
+ },
+ "d75250dcf4a522fd2a60fd4c19355e15": {
+  "path": "assets/fonts/home/Caveat-Variable.woff2",
+  "type": "font-ttf-to-woff2"
+ },
+ "d5e6781d146904e54b05ac6a23c246e8": {
+  "path": "assets/fonts/home/LibreFranklin-Variable.woff2",
+  "type": "font-woff2-direct"
+ },
+ "dfc4401f53a457108f27ca2311c9886e": {
+  "path": "assets/fonts/home/LibreFranklin-Variable-Italic.woff2",
+  "type": "font-woff2-direct"
+ },
+ "54154fb7a29dd61534227a41e9870402": {
+  "path": "assets/images/fable-logos-small/08-chameleon-adaptive-masking.webp",
+  "type": "image-webp"
+ },
+ "4e2d9c76f464806e8b5962aad812f7cf": {
+  "path": "assets/images/fable-logos-small/03-bat-strategic-empathy.webp",
+  "type": "image-webp"
+ },
+ "ae0464a450e743b34991b0bf27940b80": {
+  "path": "assets/images/fable-logos-small/02-fox-creative-implementation.webp",
+  "type": "image-webp"
+ },
+ "9fd8bcc8396ffe520936fd52ede6a611": {
+  "path": "assets/images/fable-logos-small/07-elephant-emotional-intelligence.webp",
+  "type": "image-webp"
+ },
+ "c259525ee57b02cc70ef42d9b67de96b": {
+  "path": "assets/images/fable-logos-small/04-octopus-cognitive-dexterity.webp",
+  "type": "image-webp"
+ },
+ "3fcd13224e7e35bb12e1c7515f968ec0": {
+  "path": "assets/images/fable-logos-small/05-horse-embodiment.webp",
+  "type": "image-webp"
+ },
+ "0efb757d79a959a0a040ae9c3cac9676": {
+  "path": "assets/images/fable-logos-small/06-whale-deep-focus.webp",
+  "type": "image-webp"
+ },
+ "074c754e8823fb5f018fc3cab880df13": {
+  "path": "assets/images/fable-logos-small/01-crow-integrative-thinking.webp",
+  "type": "image-webp"
+ },
+ "969c83413d9e686d06d4a0cbf22f27f6": {
+  "path": "assets/images/fable-wide/crow.webp",
+  "type": "image-webp"
+ },
+ "2fa9f5b6dd059756cf9a1da00aba0db0": {
+  "path": "assets/images/fable-wide/bat.webp",
+  "type": "image-webp"
+ },
+ "0ec1b9128e45d5a966d599bd4db4db18": {
+  "path": "assets/images/fable-wide/fox.webp",
+  "type": "image-webp"
+ },
+ "cd3c892330741323f5ea5cbc2db40d6a": {
+  "path": "assets/images/products/fables-book-cover.webp",
+  "type": "image-webp"
+ },
+ "088cdf09eacf60788f2904b61be43d1c": {
+  "path": "assets/images/fable-wide/whale.webp",
+  "type": "image-webp"
+ },
+ "108da70b669fee97b4c53157ff7408ab": {
+  "path": "assets/images/fable-wide/octopus.webp",
+  "type": "image-webp"
+ },
+ "d3b6596c74972d4c3780d52d744c9e11": {
+  "path": "assets/images/fable-wide/horse.webp",
+  "type": "image-webp"
+ },
+ "e309baafe561199968d600731d1c0ad8": {
+  "path": "assets/images/fable-wide/elephant.webp",
+  "type": "image-webp"
+ },
+ "0469f23dfea312c06dfe59809fc4e306": {
+  "path": "assets/images/products/friction-journal-cover.webp",
+  "type": "image-webp"
+ },
+ "07e7a5ac3aceac753493e3a6a940ed9c": {
+  "path": "assets/images/fable-wide/chameleon.webp",
+  "type": "image-webp"
+ },
+ "1e0563e398b0715b97a5de5b8509b4c1": {
+  "path": "assets/js/ds-bundle-home.js",
+  "type": "js-passthrough"
+ },
+ "951ae391b8ae72ef12e671c2fad23353": {
+  "path": "assets/js/dc-runtime.js",
+  "type": "js-passthrough"
+ },
+ "ecf841e15f01bcac0dae84655625be78": {
+  "path": "assets/fable-bgs/fox.webp",
+  "type": "image-webp-bg-fallback",
+  "fallback_id": "bgFox"
+ },
+ "a44c62d2b55dc735c555f96a6775de74": {
+  "path": "assets/fable-bgs/crow.webp",
+  "type": "image-webp-bg-fallback",
+  "fallback_id": "bgCrow"
+ },
+ "3b36274a8c8569f2819dd5658687d205": {
+  "path": "assets/fable-bgs/horse.webp",
+  "type": "image-webp-bg-fallback",
+  "fallback_id": "bgHorse"
+ },
+ "26a12e68232e35b909f46fd46269ac0a": {
+  "path": "assets/fable-bgs/elephant.webp",
+  "type": "image-webp-bg-fallback",
+  "fallback_id": "bgElephant"
+ },
+ "5773d10f0f9448c2ae0ecb0a77ded5ae": {
+  "path": "assets/fable-bgs/bat.webp",
+  "type": "image-webp-bg-fallback",
+  "fallback_id": "bgBat"
+ },
+ "589e91344377760bdf8fe3a09b3ee246": {
+  "path": "assets/fable-bgs/octopus.webp",
+  "type": "image-webp-bg-fallback",
+  "fallback_id": "bgOctopus"
+ },
+ "fe82dc21304091fef5d1b8036ed4225e": {
+  "path": "assets/fable-bgs/whale.webp",
+  "type": "image-webp-bg-fallback",
+  "fallback_id": "bgWhale"
+ },
+ "cba0fcecc28d088f990031055a2063e5": {
+  "path": "assets/fable-bgs/chameleon.webp",
+  "type": "image-webp-bg-fallback",
+  "fallback_id": "bgChameleon"
+ },
+ "e91b2616629791b375867c298dc846cc": {
+  "path": "assets/js/react.production.min.js",
+  "type": "js-passthrough-cdn-shim",
+  "cdn_id": "https://unpkg.com/react@18.3.1/umd/react.production.min.js"
+ },
+ "7d4842a904e5d5d1b19240075998b111": {
+  "path": "assets/js/react-dom.production.min.js",
+  "type": "js-passthrough-cdn-shim",
+  "cdn_id": "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"
+ },
+ "1a4b137019bd3e19c2a8c541e7f5fde3": {
+  "path": "assets/fonts/home/EBGaramond-Variable.woff2",
+  "type": "font-woff2-direct-consolidated-to-home"
+ },
+ "1fde3bbfa79563c8c15f10e025b4002c": {
+  "path": "assets/fonts/home/Caveat-Variable.woff2",
+  "type": "font-woff2-direct-consolidated-to-home"
+ },
+ "6da252de0cbc8a69b5d5c2e0e3f67722": {
+  "path": "assets/fonts/home/PlayfairDisplay-Variable.woff2",
+  "type": "font-woff2-direct-consolidated-to-home"
+ },
+ "58b0a103adf8103c2f5832969daa7a44": {
+  "path": "assets/fonts/home/PlayfairDisplay-Variable-Italic.woff2",
+  "type": "font-woff2-direct-consolidated-to-home"
+ },
+ "5681846739269a042b9578b80d7b84d7": {
+  "path": "assets/fonts/home/EBGaramond-Variable-Italic.woff2",
+  "type": "font-woff2-direct-consolidated-to-home"
+ },
+ "4fa2884d13a758a0cc3a39bedf5a9899": {
+  "path": "assets/js/ds-bundle-reader.js",
+  "type": "js-passthrough"
+ },
+ "da8759ad4af32e12b90b8012873beb3f": {
+  "path": "assets/plates/chapters/whale-lock.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "1ab9dcb2825f6ae23e916866996e0d38": {
+  "path": "assets/plates/chapters/fox-plate.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "d7f25ef227ed12c7dfdec5eebf16203f": {
+  "path": "assets/plates/chapters/elephant-lock.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "6ecd74653f7d70616b34c060fc340f83": {
+  "path": "assets/plates/chapters/chameleon-plate.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "f8c4ae131f0d1a46e33e1cdbd03e9f8a": {
+  "path": "assets/plates/chapters/whale-plate.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "dff22f17886eeb294b70cd77361f71ce": {
+  "path": "assets/plates/chapters/octopus-plate.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "da5cfd671a4242ffd6b48efc1e0f2e56": {
+  "path": "assets/plates/chapters/crow-plate.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "c792d4401e4945c69ced4022e10c0285": {
+  "path": "assets/plates/chapters/elephant-plate.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "91fd14ce0fc99dab94f154819a9f5818": {
+  "path": "assets/plates/chapters/fox-lock.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "335521dc33083c51b9b719aa5a6149de": {
+  "path": "assets/plates/chapters/horse-lock.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "913356a47781dd55a10fb393e1e6d3d7": {
+  "path": "assets/plates/chapters/bat-lock.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "b3a9ca434f5a21c010645f4cbd54a87b": {
+  "path": "assets/plates/chapters/crow-lock.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "4670dd3d34c3870b7948a3b03283a691": {
+  "path": "assets/plates/chapters/chameleon-lock.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "fcabedd4fcee40e3fa0a5da8ffb9745d": {
+  "path": "assets/plates/chapters/octopus-lock.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "c10695fc09e3801ca9ca34893b95922e": {
+  "path": "assets/plates/chapters/horse-plate.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "c69323e846f5ff02382a577c9315800f": {
+  "path": "assets/plates/chapters/bat-plate.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "f3d3dc33fd70abb722a2e6ecb28451f5": {
+  "path": "assets/plates/title-page/wash.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "d12780f1001dce21a1e9e3f52f52c096": {
+  "path": "assets/plates/chapters/elephant-wallpaper.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "39007390d253d57fe905e50ed4e309ec": {
+  "path": "assets/plates/chapters/horse-wallpaper.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "c294acee23a9b1f6e9c85db614ac0cad": {
+  "path": "assets/plates/chapters/fox-wallpaper.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "faf3270a3527fb3fd52b5282db7e783b": {
+  "path": "assets/plates/chapters/whale-wallpaper.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "2a74647197d67beacc4194de2679880c": {
+  "path": "assets/plates/chapters/bat-wallpaper.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "a4e4de122bd044b0b426bbd6071fe24c": {
+  "path": "assets/plates/chapters/crow-wallpaper.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "386b8bad083d9bd665eea43b3912ede8": {
+  "path": "assets/plates/chapters/octopus-wallpaper.jpg",
+  "type": "image-jpeg-direct"
+ },
+ "090bee85388496ced4e2b72a9a039d7d": {
+  "path": "assets/plates/chapters/chameleon-wallpaper.jpg",
+  "type": "image-jpeg-direct"
+ }
+}

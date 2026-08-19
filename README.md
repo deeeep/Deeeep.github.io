@@ -3,8 +3,8 @@
 This replaces standalone Claude Design exports with real, linked, cacheable
 static files. Current pages:
 
-- `index.html` — homepage
-- `products.html` — Fables book / editions page (new)
+- `index.html` — homepage ("Fableworld") — also carries the book/journal
+  showcase that used to live on a separate `products.html` (retired, see §4.6/§4.9)
 - `fable-chameleon.html` — Chameleon fable landing page
 - `full-fables.html` — full reader (all 8 fables) — see §4.2, not for crawling
 
@@ -67,53 +67,50 @@ already cached instead of re-downloading a fresh 12MB blob.
 
 ```
 /
-├── index.html                  Homepage
-├── products.html                Fables book / editions page
+├── index.html                  Homepage ("Fableworld")
 ├── fable-chameleon.html        Chameleon fable landing page
 ├── full-fables.html            Full reader (all 8 fables) — see §4.2
 ├── robots.txt
 ├── README.md                   this file
+├── scripts/
+│   ├── rebuild_page.py         reusable export→clean-page pipeline — see scripts/README.md
+│   ├── asset_registry.json     hash→path memory the script reuses across runs
+│   └── README.md               what the script does and doesn't cover
 └── assets/
     ├── css/
-    │   ├── fonts-home.css      @font-face, Latin-only — index.html
-    │   ├── fonts-products.css  @font-face, Latin-only — products.html (points at fonts/home/, same underlying files)
-    │   ├── fonts-reader.css    @font-face, Latin-only — reader pages
-    │   └── styles-home.css     homepage + shared design tokens
-    ├── fonts/
-    │   ├── home/                7 WOFF2 files (Libre Franklin, Playfair Display, EB Garamond, Caveat)
-    │   │                         — also used by products.html (verified byte-identical, not duplicated)
-    │   └── reader/               5 WOFF2 files (Caveat, EB Garamond, Playfair Display)
+    │   ├── fonts-home.css      @font-face, Latin-only — shared by all three pages (see §4.11)
+    │   └── styles-home.css     homepage design tokens
+    ├── fonts/home/              7 WOFF2 files (Libre Franklin, Playfair Display, EB Garamond, Caveat)
+    │                             — single copy per family, shared/cached across all three pages
     ├── images/
-    │   ├── hero-tet.webp                  homepage hero
-    │   ├── fable-logos-small/             8 talent illustrations, homepage cards (WebP)
-    │   ├── talent-marks/                  8 talent icon SVGs
-    │   └── products/
-    │       └── products-hero.webp          book mockup, alpha-transparent
-    ├── plates/                  shared by both reader pages
-    │   ├── covers/                8 chapter cover thumbnails + 8 "locked" variants
-    │   ├── title-page/            2 images
-    │   └── chapters/              24 images (wallpaper/plate/lock × 8 fables)
+    │   ├── fable-logos-small/  8 talent illustrations, homepage draggable constellation (WebP)
+    │   ├── fable-wide/          8 wide fable-detail images, homepage overlay panel (WebP)
+    │   └── products/            2 book/journal cover images, homepage companions section (WebP)
+    ├── fable-bgs/                8 chapter background textures, homepage (WebP)
+    ├── plates/                  shared by both reader pages, 25 files total
+    │   ├── title-page/            1 image (wash.jpg — the title-page plate was a duplicate, see §4.11)
+    │   └── chapters/              24 images (wallpaper/plate/lock × 8 fables, deduped — see §4.11)
     └── js/
-        ├── dc-runtime.js          used by index.html, products.html, full-fables.html
-        ├── dc-runtime-legacy.js   used by fable-chameleon.html (different build — see note below)
-        ├── ds-bundle-home.js      used by products.html (Badge component, tone="live"/"forming")
+        ├── dc-runtime.js          used by index.html and full-fables.html
+        ├── ds-bundle-home.js      used by index.html (Badge/Button components)
         ├── ds-bundle-reader.js    shared by both reader pages
         ├── react.production.min.js
         └── react-dom.production.min.js
 ```
 
-**Note on `ds-bundle-home.js`:** on the homepage this file is unused (no
-Badge/Button/Card/etc. in `index.html`'s markup) — it's only loaded by
-`products.html`, which genuinely uses the `Badge` component. The name is a
-holdover from where it first appeared; it's project-wide shared design-system
-code, not literally "for the homepage."
+**Note on `ds-bundle-home.js`:** genuinely used by `index.html` now — the
+companions section (Fables book / Friction Journal cards) uses the `Badge`
+component for its "in development" status pills. This wasn't always true;
+early on this file only existed on the homepage as unused dead weight
+carried over from the same shared design-system export. It earned its
+place once the homepage absorbed the book-showcase content that used to
+live on a separate `products.html` page (retired — see §4.6/§4.9).
 
-**Note on the two `dc-runtime` builds:** your exported files weren't all
-built from the same version of this component runtime — `index.html` and
-`FullFables.html` shipped one build, `Fable-Chameleon.html` shipped a
-slightly different one. I kept both rather than forcing them onto a single
-version, since I can't verify they're behaviourally identical and a silent
-mismatch would be a worse failure mode than one extra 64KB file.
+**Note on `dc-runtime`:** earlier exports weren't all built from the same
+version of this component runtime — `index.html`/`full-fables.html` and
+`fable-chameleon.html` briefly shipped two different builds. A later
+export unified them; all three pages now load the same `dc-runtime.js`,
+confirmed by content hash, not just filename.
 
 ## 4. Flags for Deepak
 
@@ -241,6 +238,55 @@ Worth doing one real test submission after deploying, since I can't submit
 the actual form from here to confirm the entry IDs are correctly labelled
 in your Form (Anthropic's safety and privacy configuration prevent Claude
 from submitting the actual form) — a live test after deploying is the way to be sure.
+
+### 4.11 Cleanup pass: duplicate fonts, dead assets, duplicate plate images
+Three things caught by inspection, not by a fresh export — worth recording
+since they change what's on disk without changing what renders:
+
+**Fonts.** `assets/fonts/home/` and `assets/fonts/reader/` held two
+different files per family (Playfair Display, EB Garamond, Caveat) —
+same family name, different weight ranges, confirmed by hashing every
+file (none matched). Home's copies cover the full range each family
+needs; reader's were a narrower subset. Consolidated: reader pages now
+link `fonts-home.css` directly, `fonts-reader.css` and
+`assets/fonts/reader/` are gone. One font file per family now, shared
+and cached across all three pages instead of downloaded twice.
+
+**`assets/images/talent-marks/`** (8 SVGs) — removed. Same dead-data
+pattern as the `plate` field below: each talent object in `index.html`
+carries a `mark: 'assets/images/talent-marks/...'` field, but nothing in
+the markup ever binds it to a visible `<img>` — confirmed by searching
+for any `{{ mark }}` or `.mark` template reference and finding none.
+Since it's only ever a JS string literal, browsers never fetched these
+files anyway; removing them just stops them sitting in the repo for no
+reason. The dead `mark:` string in the data itself was left alone —
+editing the data structure is more invasive than the actual problem
+(unused files on disk) warranted.
+
+**Duplicate plate images.** `assets/plates/covers/{name}-cover.jpg` was
+byte-identical to `assets/plates/chapters/{name}-plate.jpg` for all 8
+fables, and `{name}-cover-lock.jpg` identical to `{name}-lock.jpg` the
+same way — Claude Design was reusing one source image at two display
+sizes via CSS rather than shipping two files. `title-page/plate.jpg` was
+also byte-identical to `chameleon-plate.jpg` — a three-way tie. Verified
+every match by hash (not filename) before touching anything, confirmed
+zero remaining references before deleting a single file, and re-ran the
+Node syntax check on both reader pages' data scripts afterward.
+
+Kept `chapters/{name}-plate.jpg` and `chapters/{name}-lock.jpg` as the
+canonical files (they're the primary in-story images; the cover
+thumbnails and the title page were the ones reusing them) and rewrote
+every reference in both `fable-chameleon.html` and `full-fables.html`
+to point there. `assets/plates/covers/` is gone entirely,
+`title-page/plate.jpg` is gone (`title-page/wash.jpg` remains — that one
+really is unique). 42 files → 25, ~7.0MB → ~4.0MB, and — more valuable
+than the disk savings — a fable's cover thumbnail and its chapter opener
+now genuinely share one cached download instead of fetching the same
+image twice under two different URLs.
+
+`scripts/asset_registry.json` was updated to match throughout (font
+consolidation, talent-marks removal, plate canonicalization) so a future
+run of `rebuild_page.py` won't reintroduce any of this duplication.
 
 ## 5. What I did *not* do
 
