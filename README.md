@@ -288,6 +288,50 @@ image twice under two different URLs.
 consolidation, talent-marks removal, plate canonicalization) so a future
 run of `rebuild_page.py` won't reintroduce any of this duplication.
 
+### 4.12 Fixed: real crash — `fable-chameleon.html` on click-through navigation
+Reported symptom: `undefined is not an object (evaluating 'paragraphs.map')`,
+only when navigating to the page by clicking the link from `index.html`,
+never on a direct/cold page load, and never on `full-fables.html`.
+
+Root cause, traced to an actual mistake earlier in this project, not a new
+bug: `full-fables.html`'s markup wraps all its content-rendering in
+`<sc-if value="{{ loaded }}">` guards, so nothing tries to read chapter
+data until `componentDidMount` has populated it. `fable-chameleon.html`
+has **no such guard anywhere** — it loops over `prefaceBeats`/`storyBeats`
+unconditionally from the very first render, before `componentDidMount`
+runs. It was relying entirely on the JS-side fallback object providing
+safe empty defaults for those keys while data was still loading.
+
+A prior Claude Design export simplified that fallback from a full object
+(`{ loaded: false, prefaceBeats: [], storyBeats: [], ... }`) down to just
+`{ loaded: false }`. When this was reviewed earlier in this project, it
+was logged as a harmless simplification — "data will always be loaded... so
+this branch essentially never fires in production" — which was wrong. The
+branch fires on every single mount, for the brief window between initial
+render and `componentDidMount`'s `setState`. On a cold page load that
+window is usually short enough not to matter user-visibly. On a
+click-through navigation from `index.html`, three scripts
+(`dc-runtime.js`, `react.production.min.js`, `react-dom.production.min.js`)
+are already warm in the browser cache and execute close to instantly,
+which changes the relative timing enough to expose the race: the first
+render actually paints with `prefaceBeats`/`storyBeats` undefined, and the
+`StoryText` component's internal `paragraphs.map(...)` throws.
+
+**Fix:** restored the full defensive fallback object. Verified the file's
+data script still parses (Node syntax check) and every asset reference
+still resolves. This is a one-line, low-risk fix that reverses exactly the
+change that introduced the regression — it does not touch the markup or
+the templating logic, which I'm not confident enough in this custom
+engine's exact semantics to safely restructure.
+
+**What I got wrong the first time:** I accepted that earlier simplification
+without checking whether the page's markup had a `loaded` guard the way
+`full-fables.html` does. It didn't, and I didn't verify that before calling
+the change equivalent. Worth remembering for future "minor code
+simplification, functionally equivalent" calls — equivalence claims about
+async initialization order need the actual render path checked, not just
+inferred.
+
 ## 5. What I did *not* do
 
 - I did not touch visual design, copy, layout, or component behavior —
