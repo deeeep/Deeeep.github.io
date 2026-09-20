@@ -280,5 +280,9 @@
  "090bee85388496ced4e2b72a9a039d7d": {
   "path": "assets/plates/chapters/chameleon-wallpaper.jpg",
   "type": "image-jpeg-direct"
+ },
+ "2fd56e17358c2f47589ee2894d54e4a3": {
+  "path": "assets/images/products/friction-journal-cover.webp",
+  "type": "image-new"
  }
 }
