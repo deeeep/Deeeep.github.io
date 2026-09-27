@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /full-fables.html
 Disallow: /assets/plates/
+Disallow: /{{*
+Disallow: /%7B%7B*
 
 Sitemap: https://deeeep.github.io/sitemap.xml
