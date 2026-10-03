@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TƎT: Talents for Exceptional Times</title>
+<meta name="description" content="Cases: where cognitive capability becomes useful. Each case asks which capability an environment needs, and when.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://deeeep.github.io/cases.html">
+<link rel="stylesheet" href="assets/css/fonts-home.css">
+<link rel="stylesheet" href="assets/css/styles-home.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-serif);font-size:19px;line-height:1.6}
+a{color:var(--tet-purple)} a:hover{color:var(--jewel-plum)}
+.sans{font-family:var(--font-sans)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 5vw}
+.read{max-width:720px}
+.eyebrow{font-family:var(--font-sans);font-size:13px;font-weight:800;letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--text-muted);margin:0 0 14px}
+h1,h2,h3{font-family:var(--font-serif);font-weight:600;line-height:1.1;margin:0;letter-spacing:-0.01em}
+h2.block{font-size:34px;margin:0 0 18px}
+section.b{padding:56px 0;border-top:1px solid var(--hairline)}
+.num{font-family:var(--font-sans);font-size:13px;font-weight:800;letter-spacing:var(--tracking-wider);color:var(--tet-purple);display:block;margin-bottom:10px}
+p{margin:0 0 16px}
+.pill{display:inline-block;font-family:var(--font-sans);font-size:14px;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:var(--radius-full);background:var(--tet-purple);color:var(--paper)}
+.pill:hover{background:var(--jewel-plum);color:var(--paper)}
+.pill.o{background:transparent;color:var(--tet-purple);border:1px solid var(--tet-purple);padding:9px 18px}
+.pill.o:hover{background:transparent;color:var(--jewel-plum);border-color:var(--jewel-plum)}
+.confirm{font-family:var(--font-sans);font-size:.62em;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:var(--jewel-ochre-soft,#f0dca8);color:var(--ink);padding:2px 7px;border-radius:var(--radius-full);white-space:nowrap}
+.meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin:26px 0 0;font-family:var(--font-sans);font-size:14px}
+.meta b{display:block;font-size:11px;font-weight:800;letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--text-muted)}
+.card{background:var(--paper-warm);border:1px solid var(--hairline);border-radius:var(--radius-md,6px);padding:28px 30px}
+.cardtitle{font-family:var(--font-sans);font-size:12px;font-weight:800;letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--tet-purple);margin-bottom:10px}
+.insights{display:grid;gap:22px;margin-top:8px}
+.ins{border:1px solid var(--hairline);border-radius:var(--radius-md,6px);padding:26px 30px;background:#fff}
+.ins h3{font-size:24px;margin-bottom:16px}
+.ins .l{display:grid;grid-template-columns:150px 1fr;gap:6px 22px;padding:12px 0;border-top:1px solid var(--hairline);font-size:17px}
+.ins .l:first-of-type{border-top:0}
+.ins .l span{font-family:var(--font-sans);font-size:12px;font-weight:800;letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--tet-purple);padding-top:5px}
+.ins .l p{margin:0}
+.tag{display:inline-block;font-family:var(--font-sans);font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--tet-purple);color:var(--tet-purple);border-radius:var(--radius-full);padding:2px 10px;margin-left:8px;vertical-align:middle}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{text-align:left;vertical-align:top;padding:12px 14px;border-top:1px solid var(--hairline)}
+th{font-family:var(--font-sans);font-size:11px;font-weight:800;letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--text-muted);border-top:0}
+td.step{font-family:var(--font-sans);font-weight:800}
+td.cap{font-family:var(--font-sans);font-weight:700;white-space:nowrap}
+ul.plain{margin:0;padding-left:1.1em} ul.plain li{margin-bottom:10px}
+.ooda{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 0}
+.ooda .st{border:1px solid var(--ink);border-radius:var(--radius-full);text-align:center;padding:12px 8px;font-family:var(--font-sans);font-weight:800;font-size:15px;position:relative}
+.ooda .st.act{background:var(--tet-purple);border-color:var(--tet-purple);color:var(--paper)}
+.ooda .st:not(:last-child)::after{content:"→";position:absolute;right:-17px;top:50%;transform:translateY(-52%);font-weight:400;color:var(--text-muted)}
+.ooda .tl{display:flex;flex-direction:column;gap:6px;margin-top:6px;font-family:var(--font-sans);font-size:13px;font-weight:600}
+.ooda .tl span{border:1px solid var(--hairline);background:#fff;border-radius:var(--radius-full);padding:6px 12px;text-align:center}
+.ooda .tl span.em{border:1.5px dashed var(--tet-purple);color:var(--tet-purple)}
+.ooda .loop{grid-column:3/5;border-left:1.5px dashed var(--tet-purple);border-right:1.5px dashed var(--tet-purple);border-bottom:1.5px dashed var(--tet-purple);border-radius:0 0 14px 14px;text-align:center;padding:8px;font-family:var(--font-sans);font-size:12px;font-weight:700;color:var(--tet-purple);letter-spacing:.04em;text-transform:uppercase}
+.src{font-size:15px;color:var(--text-secondary)} .src p{margin:0 0 8px}
+@media(max-width:760px){
+ body{font-size:18px}
+ .ins .l{grid-template-columns:1fr}
+ .ooda{grid-template-columns:1fr 1fr;row-gap:22px}
+ .ooda .st::after{display:none}
+ .ooda .loop{grid-column:1/-1}
+ td.cap{white-space:normal}
+ .tbl{overflow-x:auto}
+ table{min-width:560px}
+ .hide-m{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:22px;padding-bottom:22px;max-width:none;border-bottom:1px solid var(--hairline)">
+  <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)">
+    <span class="sans" style="font-weight:900;font-size:32px;line-height:1"><span>T</span><span style="color:var(--tet-purple);display:inline-block;transform:scaleX(-1);margin:0 1px">E</span><span>T</span></span>
+    <span class="sans hide-m" style="font-weight:700;font-size:15px;line-height:1.2;color:var(--text-secondary)">Talents for<br>Exceptional Times</span>
+  </a>
+  <nav class="sans" style="display:flex;align-items:center;gap:20px;font-size:14px;font-weight:600">
+    <a href="#cases" style="text-decoration:none">Cases</a>
+    <a href="https://doodle.com/bp/deepakmehta/professional-meeting" class="pill" style="padding:10px 18px;color:var(--paper)">Book a call →</a>
+  </nav>
+</header>
+
+<section style="background:var(--paper-warm);padding:11vh 0 9vh">
+  <div class="wrap">
+    <p class="eyebrow">Cases</p>
+    <h1 style="font-size:clamp(44px,8vw,92px);line-height:.98;max-width:12em">Where cognitive capability becomes <em style="color:var(--tet-purple)">useful</em></h1>
+    <div class="read" style="margin-top:34px">
+      <p>A capability is only useful somewhere. Which one, where, and when is what each case below looks at.</p>
+      <p style="margin:0">Every case asks the same thing: <strong>which capability does this environment need, and when?</strong> Every case ends with what an organisation like yours can take from it.</p>
+    </div>
+  </div>
+</section>
+
+<section id="cases" class="wrap" style="padding-top:44px;padding-bottom:44px">
+  <p class="eyebrow">Index</p>
+  <div class="tbl"><table>
+    <tr><th>Organisation</th><th>Sector</th><th>The question</th></tr>
+    <tr>
+      <td><a class="sans" style="font-weight:700;text-decoration:none" href="#antwerp-maritime-academy">Antwerp Maritime Academy</a></td>
+      <td class="sans" style="font-size:15px">Maritime</td>
+      <td>Who leads when the best view is not held by the highest rank?</td>
+    </tr>
+  </table></div>
+</section>
+
+<article id="antwerp-maritime-academy">
+
+<section style="background:var(--tet-purple);color:var(--paper);padding:10vh 0 8vh">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:22px"><p class="eyebrow" style="color:rgba(250,249,245,.75);margin:0">Case</p></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap"><h2 style="font-size:clamp(38px,6vw,68px);line-height:1;color:var(--paper);margin:0">Antwerp Maritime Academy</h2><div style="background:#fff;border-radius:var(--radius-md,6px);padding:12px 18px;display:flex;align-items:center;flex:none"><img src="assets/images/cases/ama-logo.svg" alt="Antwerp Maritime Academy" style="display:block;height:48px;width:auto"></div></div>
+    <p style="font-size:clamp(22px,3vw,30px);font-style:italic;max-width:24em;margin:22px 0 0;line-height:1.3">Human Factor at Sea: who leads when the best view is not held by the highest rank?</p>
+    <div class="meta" style="color:var(--paper)">
+      <div><b style="color:rgba(250,249,245,.8)">Sector</b>Maritime</div>
+      <div><b style="color:rgba(250,249,245,.8)">Contact</b><a href="https://www.linkedin.com/in/sophie-limbos-4694891/" target="_blank" rel="noopener" style="color:var(--paper)">Sophie Limbos</a></div>
+      <div><b style="color:rgba(250,249,245,.8)">Format</b>Crisis exercise with students</div>
+      <div><b style="color:rgba(250,249,245,.8)">Evidence</b>Observed</div>
+      <div><b style="color:rgba(250,249,245,.8)">Participants</b>Approx. 60 students</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<section class="b" style="border-top:0">
+  <h2 class="block">The question</h2>
+  <div class="read" style="max-width:none"><p style="font-size:23px;line-height:1.45;width:100%">In a crisis, the person who sees the problem first is often not the person with authority to act on it. What happens to that information?</p></div>
+</section>
+
+<section class="b">
+  <h2 class="block">The situation</h2>
+  <div class="read" style="max-width:none">
+    <p style="width:100%">Ships run on clear hierarchy, and they need to. A crisis tests it. The signal that matters is usually small, early and noticed by one person, while the decision sits with another. Maritime training teaches procedure and command well. This exercise looked at the gap between them: how a crew's understanding of a situation forms before anyone decides anything.</p>
+  </div>
+</section>
+
+<section class="b">
+  <h2 class="block">What gets lost</h2>
+  <div class="read" style="max-width:none">
+    <p>When capability is routed by rank, the organisation loses its earliest information. A slow trend, a sense that something is off, a concern that is hard to say upwards: each is a capability that existed and never reached the decision. In a ship's engine room the cost is a breakdown at sea. In other organisations it is the same mechanism with a different bill: a missed weak signal, a late correction, a decision made with the right people present and the wrong information. Weick and Sutcliffe (2007) describe the reverse as a core habit of high-reliability organisations: "deference to expertise," where authority moves to whoever knows most about the problem in front of them, whatever their rank.</p>
+  </div>
+</section>
+
+</div>
+
+<section style="background:var(--paper-warm);padding:12vh 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)">
+  <div class="wrap">
+    <p style="font-size:clamp(40px,8vw,104px);line-height:1;font-weight:600;letter-spacing:-0.02em;margin:0 auto;max-width:11em;text-align:center">Leadership can <em style="color:var(--tet-purple)">move.</em><br>Rank does not.</p>
+  </div>
+</section>
+
+<div class="wrap">
+
+<section class="b" style="border-top:0">
+  <h2 class="block">What we did</h2>
+  <div class="read" style="max-width:none">
+    <p>We ran a structured crisis scenario with students, using the OODA loop (Observe, Orient, Decide, Act) as the frame. TƎT added one question at each step: <strong>which kind of thinking helps here?</strong> The exercise concentrated on Observe and Orient, because that is where the team's understanding is formed.</p>
+  </div>
+
+  <div class="card read" style="margin:30px 0 40px">
+    <div class="cardtitle">Case card</div>
+    <h3 style="font-size:28px;margin-bottom:14px">Two Alarms, One Rumour</h3>
+    <p>A generator bearing has run hotter over several watches. It has not crossed the alarm threshold, but the trend is moving away from baseline.</p>
+    <p>The Chief Engineer wants to reduce speed and inspect.</p>
+    <p>The Captain wants to continue. A weather window of 14 hours is closing.</p>
+    <p>Neither position is irrational.</p>
+    <p style="margin:0">Then an old, unconfirmed rumour about the Captain's conduct on another vessel enters the room. The team has to separate signal from interpretation, operational pressure from risk, and evidence from anxiety. There is no clean procedural answer. That is the point.</p>
+  </div>
+
+  <p class="eyebrow">How the talents map to the loop</p>
+  <div class="ooda" role="img" aria-label="OODA loop: Observe, Orient, Decide, Act, with talents under Observe and Orient and an emerging link from Decide to Act back to Strategic Empathy">
+    <div class="st">Observe</div><div class="st">Orient</div><div class="st">Decide</div><div class="st act">Act</div>
+    <div class="tl"><span>Embodiment</span><span>Deep Focus</span><span>Integrative Thinking</span></div>
+    <div class="tl"><span>Cognitive Dexterity</span><span>Strategic Empathy</span><span>Emotional Intelligence &amp; Regulation</span><span>Adaptive Masking</span></div>
+    <div class="tl"><span>Cognitive Dexterity</span></div>
+    <div class="tl"><span>Emotional Intelligence &amp; Regulation</span></div>
+    <div class="tl" style="grid-column:3/5"><span class="em">Strategic Empathy · emerging</span></div>
+    <div class="loop" style="grid-column:3/5;grid-row:2;display:none"></div>
+  </div>
+
+  <div class="tbl" style="margin-top:34px"><table>
+    <tr><th>Step</th><th>The question</th><th>Capability that helps</th><th>What it contributes</th></tr>
+    <tr><td class="step" rowspan="3">Observe</td><td rowspan="3">What is happening before we explain it?</td><td class="cap">Embodiment</td><td>Notices that something is wrong before it can be shown.</td></tr>
+    <tr><td class="cap">Deep Focus</td><td>Stays on the slow trend others pass over.</td></tr>
+    <tr><td class="cap">Integrative Thinking</td><td>Connects signals that look unrelated.</td></tr>
+    <tr><td class="step" rowspan="4">Orient</td><td rowspan="4">What might these observations mean?</td><td class="cap">Cognitive Dexterity</td><td>Keeps competing explanations open instead of closing early.</td></tr>
+    <tr><td class="cap">Strategic Empathy</td><td>Holds the Engineer's and the Captain's view without choosing one too soon.</td></tr>
+    <tr><td class="cap">Emotional Intelligence &amp; Regulation</td><td>Stops anxiety, rank and rumour from bending the group's reading.</td></tr>
+    <tr><td class="cap">Adaptive Masking</td><td>Shows where a concern must be translated across rank, language or register to be heard at all.</td></tr>
+    <tr><td class="step">Decide</td><td>What do we commit to, and what do we keep open?</td><td class="cap">Cognitive Dexterity</td><td>Weighs the options against each other and changes course when the evidence shifts.</td></tr>
+    <tr><td class="step">Act</td><td>How do we carry it out together?</td><td class="cap">Emotional Intelligence &amp; Regulation</td><td>Keeps the team steady under pressure while the decision is carried out.</td></tr>
+    <tr><td class="step">Decide → Act</td><td>How do we move together?</td><td class="cap">Strategic Empathy <span class="tag">emerging</span></td><td>Explains the decision in terms each stakeholder can act on.</td></tr>
+  </table></div>
+</section>
+
+<section class="b">
+  <h2 class="block">What we saw</h2>
+  <div class="insights">
+
+    <div class="ins"><h3>1. The vocabulary made capability visible in other people, not just in yourself.</h3>
+      <div class="l"><span>What we saw</span><p>Students started naming what a colleague was contributing: "this needs someone to hold the question open," "we need to hear the other side before we say this to the crew."</p></div>
+      <div class="l"><span>Why it matters</span><p>A shared language moves a disagreement from the person to the task. People who feel safe to differ raise problems earlier (Edmondson, 1999).</p></div>
+      <div class="l"><span>Where else it shows up</span><p>Design reviews, board discussions, incident debriefs, any meeting where "you're overcomplicating this" ends the conversation.</p></div>
+    </div>
+
+    <div class="ins"><h3>2. Leadership moved. Rank did not.</h3>
+      <div class="l"><span>What we saw</span><p>The strongest discussion was about leadership as a position versus leadership as a function. Command stayed where it was. The lead on observation, on interpretation and on the decision could sit with different people.</p></div>
+      <div class="l"><span>Why it matters</span><p>Leadership is an activity anyone can do. Authority is a position (Heifetz, Grashow &amp; Linsky, 2009). High-reliability organisations route decisions to expertise during an event (Weick &amp; Sutcliffe, 2007).</p></div>
+      <div class="l"><span>Where else it shows up</span><p>Hospital teams, incident response, defence cells, trading floors, product launches that go wrong on a Friday.</p></div>
+    </div>
+
+    <div class="ins"><h3>3. Following well turned out to be a skill.</h3>
+      <div class="l"><span>What we saw</span><p>Students described a new move: recognising "someone else sees something I don't, and I should follow their reading for now."</p></div>
+      <div class="l"><span>Why it matters</span><p>Kelley (1992) separates passive and uncritical followers from the engaged, independently critical ones. The last group is what makes a leader's decision better rather than just faster. Follow does not mean stay quiet. It means support, with a live way to disagree.</p></div>
+      <div class="l"><span>Where else it shows up</span><p>Any hierarchical organisation: engineering, consulting, public administration, the military.</p></div>
+    </div>
+
+    <div class="ins"><h3>4. The loop does not ask for the same thinking at every step.</h3>
+      <div class="l"><span>What we saw</span><p>Observing rewarded some ways of working, orienting others, and acting on a decision asked for something different again.</p></div>
+      <div class="l"><span>Why it matters</span><p>Experienced decision-makers read a situation as a pattern first and choose options second (Klein, 1998). Boyd's OODA places most of the weight on orientation, which is where interpretation can go wrong (Osinga, 2007). If orientation is where teams fail, it is where the right capability matters most.</p></div>
+      <div class="l"><span>Where else it shows up</span><p>Strategy sprints, security operations, supply-chain disruption, any process with an explicit loop.</p></div>
+    </div>
+
+    <div class="ins" style="border-style:dashed;border-color:var(--tet-purple)"><h3>5. The moment between Decide and Act was a handover problem. <span class="tag">emerging</span></h3>
+      <p class="sans" style="font-size:14px;color:var(--text-muted);margin:-6px 0 6px">This came from the classroom, not from the original exercise design.</p>
+      <div class="l"><span>What we saw</span><p>Students noticed that a technically sound decision can fail when different stakeholders hear it differently. Strategic Empathy, used earlier to hold two views, came back here to carry the decision across them.</p></div>
+      <div class="l"><span>Why it matters</span><p>This is a hypothesis from one session. It fits the translation role described in boundary-spanning work (Obstfeld, 2005; Ancona &amp; Caldwell, 1992). It needs more exercises before we state it as a finding.</p></div>
+      <div class="l"><span>Where else it shows up</span><p>Any decision that crosses functions: finance to operations, headquarters to sites, regulator to operator.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="b">
+  <h2 class="block">What had to be true</h2>
+  <div class="read"><ul class="plain">
+    <li>The scenario was ambiguous on purpose. A clean answer would have hidden the problem.</li>
+    <li>Rank stayed real. The exercise did not pretend hierarchy away.</li>
+    <li>A common vocabulary existed before the discussion started.</li>
+    <li>Raising a concern about a senior person was treated as part of the exercise, not as a breach.</li>
+    <li>The facilitator held the line between "development exercise" and "assessment of students."</li>
+  </ul></div>
+</section>
+
+<section class="b">
+  <h2 class="block">Limits</h2>
+  <div class="read"><ul class="plain">
+    <li>One exercise, with students. Not a live crew, not a measured outcome.</li>
+    <li>We observed what participants said and did. We did not measure decision quality.</li>
+    <li>Observations come from the Lecturers' Observations.</li>
+    <li>Every capability has a point where the situation outgrows it, for example when uncertainty stays open longer than a group can hold it. That is a feature of situations, not of types of people. This case does not map who struggles where.</li>
+  </ul></div>
+</section>
+
+</div>
+
+<section style="background:var(--paper-warm);padding:72px 0;border-top:1px solid var(--hairline)">
+  <div class="wrap">
+    <h2 class="block">Your version of this question</h2>
+    <div class="read">
+      <p>Every environment asks for different thinking at different moments.</p>
+      <p style="font-size:24px;line-height:1.4;font-weight:600">If you run a team, project or operation where uncertainty and speed both matter: which capabilities does it need, and when?</p>
+      <a class="pill" href="https://doodle.com/bp/deepakmehta/professional-meeting" style="margin-top:8px">Start a conversation</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="padding-top:48px;padding-bottom:20px">
+  <div class="read src">
+    <p class="eyebrow">Sources</p>
+    <p>Ancona, D. &amp; Caldwell, D. (1992). Bridging the boundary. <em>Administrative Science Quarterly</em>, 37(4).</p>
+    <p>Edmondson, A. (1999). Psychological safety and learning behavior in work teams. <em>Administrative Science Quarterly</em>, 44(2).</p>
+    <p>Heifetz, R., Grashow, A. &amp; Linsky, M. (2009). <em>The Practice of Adaptive Leadership.</em> Harvard Business Press.</p>
+    <p>Kelley, R. (1992). <em>The Power of Followership.</em> Doubleday.</p>
+    <p>Klein, G. (1998). <em>Sources of Power.</em> MIT Press.</p>
+    <p>Obstfeld, D. (2005). Social networks, the tertius iungens orientation, and involvement in innovation. <em>Administrative Science Quarterly</em>, 50(1).</p>
+    <p>Osinga, F. (2007). <em>Science, Strategy and War: The Strategic Theory of John Boyd.</em> Routledge.</p>
+    <p>Weick, K. &amp; Sutcliffe, K. (2007). <em>Managing the Unexpected</em> (2nd ed.). Jossey-Bass.</p>
+  </div>
+</section>
+
+</article>
+
+<footer style="background:var(--tet-purple);color:var(--paper);padding:48px 0;margin-top:48px">
+  <div class="wrap" style="display:flex;flex-direction:column;gap:22px">
+    <p style="font-style:italic;margin:0;max-width:34em;font-size:18px">This case describes a development exercise. TƎT is not used to select, rate, rank or assess individuals.</p>
+    <div class="sans" style="display:flex;flex-wrap:wrap;gap:12px 28px;font-size:13px;font-weight:600">
+      <a href="index.html" style="color:var(--paper)">TƎT home</a>
+      <a href="https://www.linkedin.com/company/tǝt/" target="_blank" rel="noopener" style="color:var(--paper)">TƎT on LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
