@@ -383,9 +383,13 @@ class Component extends DCLogic {
     this._onResize = () => this.setState({ isMobile: window.innerWidth < 780, isNarrow: window.innerWidth < 1040 });
     this._onResize();
     window.addEventListener('resize', this._onResize);
+    this._goHash = () => { const id = decodeURIComponent(location.hash.slice(1)); const el = id && document.getElementById(id); if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset - 64); };
+    [0, 300, 900, 2000].forEach(t => setTimeout(this._goHash, t));
+    window.addEventListener('hashchange', this._goHash);
   }
   componentWillUnmount() {
     if (this._onResize) window.removeEventListener('resize', this._onResize);
+    if (this._goHash) window.removeEventListener('hashchange', this._goHash);
   }
   handleMove(e) {
     const i = this.state.dragIdx;
