@@ -43,17 +43,18 @@ a:hover{color:var(--jewel-plum)}
 
 <div style="background:var(--paper);color:var(--ink);font-family:var(--font-serif)">
 
-<header style="display:flex;align-items:center;justify-content:space-between;padding:22px 5vw;border-bottom:1px solid var(--hairline)">
+<header style="display:flex;align-items:center;justify-content:space-between;padding:22px 5vw;background:color-mix(in srgb,var(--jewel-ochre-soft) 45%,var(--paper));border-bottom:1px solid var(--hairline)">
   <div style="display:flex;align-items:center;gap:12px">
     <div style="font-family:var(--font-sans);font-weight:900;font-size:32px;line-height:1"><span>T</span><span style="color:var(--tet-purple);display:inline-block;transform:scaleX(-1);margin:0 1px">E</span><span>T</span></div>
-    <span style="font-family:var(--font-sans);font-weight:700;font-size:15px;line-height:1.2;color:var(--text-secondary)">Talents for<br>Exceptional Times</span>
+    <span style="{{ taglineStyle }}">Talents for<br>Exceptional Times</span>
   </div>
   <nav style="{{ navStyle }}">
-    <a href="#recognition" style="text-decoration:none">Recognition</a>
-    <a href="#constellation" style="text-decoration:none">Constellation</a>
-    <a href="#companions" style="text-decoration:none">Companions</a>
-    <a href="#follow" style="border:1px solid var(--tet-purple);color:var(--tet-purple);padding:9px 18px;border-radius:var(--radius-full);text-decoration:none">Follow us</a>
-    <a href="https://doodle.com/bp/deepakmehta/professional-meeting" style="background:var(--tet-purple);color:var(--paper);padding:10px 18px;border-radius:var(--radius-full);text-decoration:none">Book a call →</a>
+    <a href="#recognition" style="text-decoration:none;white-space:nowrap">Recognition</a>
+    <a href="#constellation" style="text-decoration:none;white-space:nowrap">Constellation</a>
+    <a href="#companions" style="text-decoration:none;white-space:nowrap">Companions</a>
+    <a href="cases.html" style="text-decoration:none;white-space:nowrap">Cases</a>
+    <a href="#follow" style="border:1px solid var(--tet-purple);color:var(--tet-purple);padding:9px 18px;border-radius:var(--radius-full);text-decoration:none;white-space:nowrap">Follow us</a>
+    <a href="https://doodle.com/bp/deepakmehta/professional-meeting" style="background:var(--tet-purple);color:var(--paper);padding:10px 18px;border-radius:var(--radius-full);text-decoration:none;white-space:nowrap">Book a call →</a>
   </nav>
   <button onClick="{{ toggleMenu }}" aria-label="Menu" style="{{ hamburgerStyle }}">
     <span style="display:block;width:20px;height:2px;background:var(--ink)"></span>
@@ -63,10 +64,11 @@ a:hover{color:var(--jewel-plum)}
 </header>
 
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-<div style="position:fixed;left:0;right:0;top:65px;z-index:250;background:var(--paper);border-bottom:1px solid var(--hairline);padding:22px 24px 28px;display:flex;flex-direction:column;gap:18px;font-family:var(--font-sans);font-size:14px;font-weight:600;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-secondary);box-shadow:0 16px 32px rgba(0,0,0,.08)">
+<div style="position:fixed;left:0;right:0;top:65px;z-index:250;background:color-mix(in srgb,var(--jewel-ochre-soft) 45%,var(--paper));border-bottom:1px solid var(--hairline);padding:22px 24px 28px;display:flex;flex-direction:column;gap:18px;font-family:var(--font-sans);font-size:14px;font-weight:600;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-secondary);box-shadow:0 16px 32px rgba(0,0,0,.08)">
   <a href="#recognition" onClick="{{ closeMenu }}" style="text-decoration:none;color:inherit">Recognition</a>
   <a href="#constellation" onClick="{{ closeMenu }}" style="text-decoration:none;color:inherit">Constellation</a>
   <a href="#companions" onClick="{{ closeMenu }}" style="text-decoration:none;color:inherit">Companions</a>
+  <a href="cases.html" onClick="{{ closeMenu }}" style="text-decoration:none;color:inherit">Cases</a>
   <a href="#follow" onClick="{{ closeMenu }}" style="text-decoration:none;border:1px solid var(--tet-purple);color:var(--tet-purple);padding:11px 18px;border-radius:var(--radius-full);text-align:center">Follow us</a>
   <a href="https://doodle.com/bp/deepakmehta/professional-meeting" onClick="{{ closeMenu }}" style="text-decoration:none;background:var(--tet-purple);color:var(--paper);padding:12px 18px;border-radius:var(--radius-full);text-align:center">Book a call →</a>
 </div>
@@ -288,22 +290,22 @@ a:hover{color:var(--jewel-plum)}
   <h2 style="font-family: var(--font-display); font-weight: 600; font-size: clamp(1.9rem,4vw,3.4rem); margin: 0 auto">You do not need a label to begin.</h2>
   <p style="font-family: var(--font-serif); font-style: italic; font-size: 33px; opacity: 0.85; margin: 24px auto 0">Start with the animal that keeps looking back at you.</p>
   <a href="#constellation" style="display: inline-block; margin-top: 34px; padding-bottom: 6px; border-bottom: 1px solid var(--jewel-ochre-soft); font-family: var(--font-sans); font-size: 12px; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--jewel-ochre-soft); text-decoration: none; font-weight: 700">Return to the constellation ↑</a>
-</section><footer id="follow" style="background:var(--ink);color:var(--text-muted);padding:72px 5vw 44px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:56px;font-family:var(--font-sans);font-size:12px;border-top:1px solid rgba(255,255,255,.08)">
+</section><footer id="follow" style="background:color-mix(in srgb,var(--jewel-ochre-soft) 45%,var(--paper));color:var(--ink);padding:72px 5vw 44px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:56px;font-family:var(--font-sans);font-size:12px;border-top:0">
   <div style="max-width:440px">
-    <div style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--jewel-ochre-soft);margin-bottom:16px">Stay close to the constellation</div>
-    <p style="font-family:var(--font-serif);font-size:18px;color:var(--paper);line-height:1.4;margin:0 0 14px">New stories, journals and ways to explore.</p>
-    <p style="font-family: var(--font-serif); font-size: 14px; color: rgba(246,241,230,.72); line-height: 1.6; margin: 0">TƎT is still growing. Subscribe to hear when the books come online, where you can test the Discovery Game, speak at or attend our TƎT Talks, and stay close as new stories, tools and gatherings emerge.</p>
+    <div style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:16px">Stay close to the constellation</div>
+    <p style="font-family:var(--font-serif);font-size:18px;color:var(--ink);line-height:1.4;margin:0 0 14px">New stories, journals and ways to explore.</p>
+    <p style="font-family: var(--font-serif); font-size: 14px; color: var(--ink); line-height: 1.6; margin: 0">TƎT is still growing. Subscribe to hear when the books come online, where you can test the Discovery Game, speak at or attend our TƎT Talks, and stay close as new stories, tools and gatherings emerge.</p>
   </div>
   <div style="min-width:260px">
     <form action="https://twitter.us6.list-manage.com/subscribe/post?u=5bf5641e99686b66085f92571&amp;id=d434c7e248&amp;f_id=002722e2f0" method="post" target="_blank" style="display:flex;flex-direction:column;gap:10px">
-      <span style="font-family:var(--font-sans);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)">Subscribe</span>
+      <span style="font-family:var(--font-sans);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)">Subscribe</span>
       <div style="display:flex;gap:8px">
-        <input type="email" name="EMAIL" required="" placeholder="Your email" style="background:transparent;border:1px solid var(--hairline-strong);border-radius:6px;color:var(--paper);font-family:var(--font-sans);font-size:12px;padding:9px 10px;width:190px">
+        <input type="email" name="EMAIL" required="" placeholder="Your email" style="background:transparent;border:1px solid rgba(32,28,22,.45);border-radius:6px;color:var(--ink);font-family:var(--font-sans);font-size:12px;padding:9px 10px;width:190px">
         <button type="submit" style="background:var(--tet-purple);color:var(--paper);border:none;border-radius:var(--radius-full);font-family:var(--font-sans);font-weight:700;font-size:12px;padding:9px 16px;cursor:pointer;white-space:nowrap">Subscribe</button>
       </div>
-      <span style="color:var(--paper);font-size:10.5px">Occasional updates only. No profile, no quiz, no funnel.</span>
+      <span style="color:var(--ink);font-size:11px">Occasional updates only. No profile, no quiz, no funnel.</span>
     </form>
-    <a href="https://www.linkedin.com/company/tǝt/" target="_blank" rel="noopener" aria-label="TƎT on LinkedIn" style="display:inline-flex;align-items:center;gap:10px;align-self:flex-start;margin-top:22px;text-decoration:none;color:var(--paper);font-family:var(--font-sans);font-size:12px;font-weight:600" style-hover="color:var(--jewel-ochre-soft)"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Follow TƎT on LinkedIn</a>
+    <a href="https://www.linkedin.com/company/tǝt/" target="_blank" rel="noopener" aria-label="TƎT on LinkedIn" style="display:inline-flex;align-items:center;gap:10px;align-self:flex-start;margin-top:22px;text-decoration:none;color:var(--ink);font-family:var(--font-sans);font-size:12px;font-weight:600" style-hover="color:var(--tet-purple)"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Follow TƎT on LinkedIn</a>
   </div>
 </footer>
 
@@ -374,11 +376,11 @@ const FRICTIONS=[
 'You carry what the group feels, even when nobody asked you to.'
 ];
 class Component extends DCLogic {
-  state = { openFableIdx: null, showAmbassador: false, ambassadorStatus: '', positions: DEFAULT_POS.map(p => ({ ...p })), dragIdx: null, hoverIdx: null, isMobile: false, menuOpen: false };
+  state = { openFableIdx: null, showAmbassador: false, ambassadorStatus: '', positions: DEFAULT_POS.map(p => ({ ...p })), dragIdx: null, hoverIdx: null, isMobile: false, isNarrow: false, menuOpen: false };
   mapNode = null;
   setMapRef = (node) => { this.mapNode = node; };
   componentDidMount() {
-    this._onResize = () => this.setState({ isMobile: window.innerWidth < 780 });
+    this._onResize = () => this.setState({ isMobile: window.innerWidth < 780, isNarrow: window.innerWidth < 1040 });
     this._onResize();
     window.addEventListener('resize', this._onResize);
   }
@@ -402,8 +404,9 @@ class Component extends DCLogic {
     this.setState({ positions });
   }
   renderVals() {
-    const { openFableIdx, showAmbassador, ambassadorStatus, positions, isMobile, menuOpen } = this.state;
-    const navStyle = isMobile ? 'display:none' : 'display:flex;align-items:center;gap:28px;font-family:var(--font-sans);font-size:12px;font-weight:600;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-secondary)';
+    const { openFableIdx, showAmbassador, ambassadorStatus, positions, isMobile, isNarrow, menuOpen } = this.state;
+    const navStyle = isMobile ? 'display:none' : `display:flex;align-items:center;gap:${isNarrow ? 18 : 28}px;font-family:var(--font-sans);font-size:12px;font-weight:600;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-secondary)`;
+    const taglineStyle = `font-family:var(--font-sans);font-weight:700;font-size:15px;line-height:1.2;color:var(--text-secondary);display:${isNarrow ? 'none' : 'block'}`;
     const hamburgerStyle = isMobile ? 'display:flex;flex-direction:column;gap:5px;justify-content:center;align-items:center;width:40px;height:40px;background:none;border:1px solid var(--hairline-strong);border-radius:6px;cursor:pointer' : 'display:none';
     const recognitionGridStyle = `max-width:1040px;margin:0 auto;padding:8vh 24px 10vh;display:grid;grid-template-columns:${isMobile ? '1fr' : '1fr 1fr'};gap:${isMobile ? '40px' : '60px'}`;
     const companionsGridStyle = `display:grid;grid-template-columns:${isMobile ? '1fr' : '1fr 1fr'};gap:${isMobile ? '36px' : '40px'}`;
@@ -475,7 +478,7 @@ class Component extends DCLogic {
       ambassadorStatus,
       openAmbassador: () => this.setState({ showAmbassador: true, ambassadorStatus: '' }),
       closeAmbassador: () => this.setState({ showAmbassador: false }),
-      navStyle, hamburgerStyle, recognitionGridStyle, companionsGridStyle, finalSectionGridStyle, overlayGridStyle, fableIconWidth,
+      navStyle, taglineStyle, hamburgerStyle, recognitionGridStyle, companionsGridStyle, finalSectionGridStyle, overlayGridStyle, fableIconWidth,
       menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }),
       closeOverlayAndGo: () => this.setState({ openFableIdx: null }),
       ambassadorSubmitted: !!this.state.ambassadorStatus,

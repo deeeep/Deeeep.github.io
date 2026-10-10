@@ -48,36 +48,80 @@ ul.plain{margin:0;padding-left:1.1em} ul.plain li{margin-bottom:10px}
 .ooda{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 0}
 .ooda .st{border:1px solid var(--ink);border-radius:var(--radius-full);text-align:center;padding:12px 8px;font-family:var(--font-sans);font-weight:800;font-size:15px;position:relative}
 .ooda .st.act{background:var(--tet-purple);border-color:var(--tet-purple);color:var(--paper)}
-.ooda .st:not(:last-child)::after{content:"→";position:absolute;right:-17px;top:50%;transform:translateY(-52%);font-weight:400;color:var(--text-muted)}
+.ooda .oc:not(:last-child) .st::after{content:"→";position:absolute;right:-17px;top:50%;transform:translateY(-52%);font-weight:400;color:var(--text-muted)}
+.ooda .emrow{grid-column:3/5}
 .ooda .tl{display:flex;flex-direction:column;gap:6px;margin-top:6px;font-family:var(--font-sans);font-size:13px;font-weight:600}
 .ooda .tl span{border:1px solid var(--hairline);background:#fff;border-radius:var(--radius-full);padding:6px 12px;text-align:center}
 .ooda .tl span.em{border:1.5px dashed var(--tet-purple);color:var(--tet-purple)}
 .ooda .loop{grid-column:3/5;border-left:1.5px dashed var(--tet-purple);border-right:1.5px dashed var(--tet-purple);border-bottom:1.5px dashed var(--tet-purple);border-radius:0 0 14px 14px;text-align:center;padding:8px;font-family:var(--font-sans);font-size:12px;font-weight:700;color:var(--tet-purple);letter-spacing:.04em;text-transform:uppercase}
 .src{font-size:15px;color:var(--text-secondary)} .src p{margin:0 0 8px}
-@media(max-width:760px){
+.hd{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 5vw;background:color-mix(in srgb,var(--jewel-ochre-soft) 45%,var(--paper));border-bottom:1px solid var(--hairline)}
+.hd .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.hd .tag2{font-family:var(--font-sans);font-weight:700;font-size:15px;line-height:1.2;color:var(--text-secondary)}
+.nav{display:flex;align-items:center;gap:28px;font-family:var(--font-sans);font-size:12px;font-weight:600;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-secondary)}
+.nav a{text-decoration:none;white-space:nowrap;color:inherit}
+.nav a.o{border:1px solid var(--tet-purple);color:var(--tet-purple);padding:9px 18px;border-radius:var(--radius-full)}
+.nav a.f{background:var(--tet-purple);color:var(--paper);padding:10px 18px;border-radius:var(--radius-full)}
+.burger{display:none;flex-direction:column;gap:5px;justify-content:center;align-items:center;width:40px;height:40px;background:none;border:1px solid var(--hairline-strong);border-radius:6px;cursor:pointer;padding:0}
+.burger span{display:block;width:20px;height:2px;background:var(--ink)}
+.mmenu{display:none;position:absolute;left:0;right:0;top:100%;z-index:250;background:color-mix(in srgb,var(--jewel-ochre-soft) 45%,var(--paper));border-bottom:1px solid var(--hairline);padding:22px 24px 28px;flex-direction:column;gap:18px;font-family:var(--font-sans);font-size:14px;font-weight:600;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--text-secondary);box-shadow:0 16px 32px rgba(0,0,0,.08)}
+.mmenu a{text-decoration:none;color:inherit}
+.mmenu a.o{border:1px solid var(--tet-purple);color:var(--tet-purple);padding:11px 18px;border-radius:var(--radius-full);text-align:center}
+.mmenu a.f{background:var(--tet-purple);color:var(--paper);padding:12px 18px;border-radius:var(--radius-full);text-align:center}
+.mmenu.open{display:flex}
+a.li:hover{color:var(--tet-purple)}
+@media(min-width:780px) and (max-width:1040px){.hd .tag2{display:none}.nav{gap:18px}}
+@media(max-width:779px){
  body{font-size:18px}
+ .wrap{padding:0 24px} .hd{padding:22px 24px}
+ .nav{display:none} .burger{display:flex}
+ .meta{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+ .card{padding:22px 20px} .ins{padding:22px 20px} h2.block{font-size:28px}
  .ins .l{grid-template-columns:1fr}
  .ooda{grid-template-columns:1fr 1fr;row-gap:22px}
  .ooda .st::after{display:none}
- .ooda .loop{grid-column:1/-1}
+ .ooda .emrow{grid-column:1/-1}
  td.cap{white-space:normal}
- .tbl{overflow-x:auto}
- table{min-width:560px}
- .hide-m{display:none}
+ table.stk,table.stk tbody,table.stk tr,table.stk td{display:block;width:100%}
+ table.stk tr:first-child:has(th){display:none}
+ table.stk td{border-top:0;padding:3px 0}
+ table.stk tr{margin-top:10px}
+ table.stk tr.g{margin-top:22px;padding-top:14px;border-top:2px solid var(--tet-purple)}
+ table.stk td.step{font-size:18px}
+ table.stk td.q{font-style:italic;color:var(--text-secondary);margin-bottom:8px}
+ table.stk td.cap{margin-top:6px}
+}
+@media(max-width:480px){
+ .ooda{grid-template-columns:1fr;row-gap:0}
+ .ooda .oc:not(:last-child)::after{content:"↓";display:block;text-align:center;color:var(--text-muted);padding:8px 0}
+ .meta{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<header class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:22px;padding-bottom:22px;max-width:none;border-bottom:1px solid var(--hairline)">
-  <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)">
+<header class="hd">
+  <a href="index.html" class="logo">
     <span class="sans" style="font-weight:900;font-size:32px;line-height:1"><span>T</span><span style="color:var(--tet-purple);display:inline-block;transform:scaleX(-1);margin:0 1px">E</span><span>T</span></span>
-    <span class="sans hide-m" style="font-weight:700;font-size:15px;line-height:1.2;color:var(--text-secondary)">Talents for<br>Exceptional Times</span>
+    <span class="tag2">Talents for<br>Exceptional Times</span>
   </a>
-  <nav class="sans" style="display:flex;align-items:center;gap:20px;font-size:14px;font-weight:600">
-    <a href="#cases" style="text-decoration:none">Cases</a>
-    <a href="https://doodle.com/bp/deepakmehta/professional-meeting" class="pill" style="padding:10px 18px;color:var(--paper)">Book a call →</a>
+  <nav class="nav">
+    <a href="index.html#recognition">Recognition</a>
+    <a href="index.html#constellation">Constellation</a>
+    <a href="index.html#companions">Companions</a>
+    <a href="cases.html">Cases</a>
+    <a href="index.html#follow" class="o">Follow us</a>
+    <a href="https://doodle.com/bp/deepakmehta/professional-meeting" class="f">Book a call →</a>
   </nav>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="mmenu" id="mmenu">
+    <a href="index.html#recognition">Recognition</a>
+    <a href="index.html#constellation">Constellation</a>
+    <a href="index.html#companions">Companions</a>
+    <a href="cases.html">Cases</a>
+    <a href="index.html#follow" class="o">Follow us</a>
+    <a href="https://doodle.com/bp/deepakmehta/professional-meeting" class="f">Book a call →</a>
+  </div>
 </header>
 
 <section style="background:var(--paper-warm);padding:11vh 0 9vh">
@@ -93,9 +137,9 @@ ul.plain{margin:0;padding-left:1.1em} ul.plain li{margin-bottom:10px}
 
 <section id="cases" class="wrap" style="padding-top:44px;padding-bottom:44px">
   <p class="eyebrow">Index</p>
-  <div class="tbl"><table>
+  <div class="tbl"><table class="stk">
     <tr><th>Organisation</th><th>Sector</th><th>The question</th></tr>
-    <tr>
+    <tr class="g">
       <td><a class="sans" style="font-weight:700;text-decoration:none" href="#antwerp-maritime-academy">Antwerp Maritime Academy</a></td>
       <td class="sans" style="font-size:15px">Maritime</td>
       <td>Who leads when the best view is not held by the highest rank?</td>
@@ -169,27 +213,25 @@ ul.plain{margin:0;padding-left:1.1em} ul.plain li{margin-bottom:10px}
 
   <p class="eyebrow">How the talents map to the loop</p>
   <div class="ooda" role="img" aria-label="OODA loop: Observe, Orient, Decide, Act, with talents under Observe and Orient and an emerging link from Decide to Act back to Strategic Empathy">
-    <div class="st">Observe</div><div class="st">Orient</div><div class="st">Decide</div><div class="st act">Act</div>
-    <div class="tl"><span>Embodiment</span><span>Deep Focus</span><span>Integrative Thinking</span></div>
-    <div class="tl"><span>Cognitive Dexterity</span><span>Strategic Empathy</span><span>Emotional Intelligence &amp; Regulation</span><span>Adaptive Masking</span></div>
-    <div class="tl"><span>Cognitive Dexterity</span></div>
-    <div class="tl"><span>Emotional Intelligence &amp; Regulation</span></div>
-    <div class="tl" style="grid-column:3/5"><span class="em">Strategic Empathy · emerging</span></div>
-    <div class="loop" style="grid-column:3/5;grid-row:2;display:none"></div>
+    <div class="oc"><div class="st">Observe</div><div class="tl"><span>Embodiment</span><span>Deep Focus</span><span>Integrative Thinking</span></div></div>
+    <div class="oc"><div class="st">Orient</div><div class="tl"><span>Cognitive Dexterity</span><span>Strategic Empathy</span><span>Emotional Intelligence &amp; Regulation</span><span>Adaptive Masking</span></div></div>
+    <div class="oc"><div class="st">Decide</div><div class="tl"><span>Cognitive Dexterity</span></div></div>
+    <div class="oc"><div class="st act">Act</div><div class="tl"><span>Emotional Intelligence &amp; Regulation</span></div></div>
+    <div class="tl emrow"><span class="em">Strategic Empathy · emerging</span></div>
   </div>
 
-  <div class="tbl" style="margin-top:34px"><table>
+  <div class="tbl" style="margin-top:34px"><table class="stk">
     <tr><th>Step</th><th>The question</th><th>Capability that helps</th><th>What it contributes</th></tr>
-    <tr><td class="step" rowspan="3">Observe</td><td rowspan="3">What is happening before we explain it?</td><td class="cap">Embodiment</td><td>Notices that something is wrong before it can be shown.</td></tr>
+    <tr class="g"><td class="step" rowspan="3">Observe</td><td class="q" rowspan="3">What is happening before we explain it?</td><td class="cap">Embodiment</td><td>Notices that something is wrong before it can be shown.</td></tr>
     <tr><td class="cap">Deep Focus</td><td>Stays on the slow trend others pass over.</td></tr>
     <tr><td class="cap">Integrative Thinking</td><td>Connects signals that look unrelated.</td></tr>
-    <tr><td class="step" rowspan="4">Orient</td><td rowspan="4">What might these observations mean?</td><td class="cap">Cognitive Dexterity</td><td>Keeps competing explanations open instead of closing early.</td></tr>
+    <tr class="g"><td class="step" rowspan="4">Orient</td><td class="q" rowspan="4">What might these observations mean?</td><td class="cap">Cognitive Dexterity</td><td>Keeps competing explanations open instead of closing early.</td></tr>
     <tr><td class="cap">Strategic Empathy</td><td>Holds the Engineer's and the Captain's view without choosing one too soon.</td></tr>
     <tr><td class="cap">Emotional Intelligence &amp; Regulation</td><td>Stops anxiety, rank and rumour from bending the group's reading.</td></tr>
     <tr><td class="cap">Adaptive Masking</td><td>Shows where a concern must be translated across rank, language or register to be heard at all.</td></tr>
-    <tr><td class="step">Decide</td><td>What do we commit to, and what do we keep open?</td><td class="cap">Cognitive Dexterity</td><td>Weighs the options against each other and changes course when the evidence shifts.</td></tr>
-    <tr><td class="step">Act</td><td>How do we carry it out together?</td><td class="cap">Emotional Intelligence &amp; Regulation</td><td>Keeps the team steady under pressure while the decision is carried out.</td></tr>
-    <tr><td class="step">Decide → Act</td><td>How do we move together?</td><td class="cap">Strategic Empathy <span class="tag">emerging</span></td><td>Explains the decision in terms each stakeholder can act on.</td></tr>
+    <tr class="g"><td class="step">Decide</td><td class="q">What do we commit to, and what do we keep open?</td><td class="cap">Cognitive Dexterity</td><td>Weighs the options against each other and changes course when the evidence shifts.</td></tr>
+    <tr class="g"><td class="step">Act</td><td class="q">How do we carry it out together?</td><td class="cap">Emotional Intelligence &amp; Regulation</td><td>Keeps the team steady under pressure while the decision is carried out.</td></tr>
+    <tr class="g"><td class="step">Decide → Act</td><td class="q">How do we move together?</td><td class="cap">Strategic Empathy <span class="tag">emerging</span></td><td>Explains the decision in terms each stakeholder can act on.</td></tr>
   </table></div>
 </section>
 
@@ -254,17 +296,6 @@ ul.plain{margin:0;padding-left:1.1em} ul.plain li{margin-bottom:10px}
 
 </div>
 
-<section style="background:var(--paper-warm);padding:72px 0;border-top:1px solid var(--hairline)">
-  <div class="wrap">
-    <h2 class="block">Your version of this question</h2>
-    <div class="read">
-      <p>Every environment asks for different thinking at different moments.</p>
-      <p style="font-size:24px;line-height:1.4;font-weight:600">If you run a team, project or operation where uncertainty and speed both matter: which capabilities does it need, and when?</p>
-      <a class="pill" href="https://doodle.com/bp/deepakmehta/professional-meeting" style="margin-top:8px">Start a conversation</a>
-    </div>
-  </div>
-</section>
-
 <section class="wrap" style="padding-top:48px;padding-bottom:20px">
   <div class="read src">
     <p class="eyebrow">Sources</p>
@@ -281,15 +312,49 @@ ul.plain{margin:0;padding-left:1.1em} ul.plain li{margin-bottom:10px}
 
 </article>
 
-<footer style="background:var(--tet-purple);color:var(--paper);padding:48px 0;margin-top:48px">
-  <div class="wrap" style="display:flex;flex-direction:column;gap:22px">
-    <p style="font-style:italic;margin:0;max-width:34em;font-size:18px">This case describes a development exercise. TƎT is not used to select, rate, rank or assess individuals.</p>
-    <div class="sans" style="display:flex;flex-wrap:wrap;gap:12px 28px;font-size:13px;font-weight:600">
-      <a href="index.html" style="color:var(--paper)">TƎT home</a>
-      <a href="https://www.linkedin.com/company/tǝt/" target="_blank" rel="noopener" style="color:var(--paper)">TƎT on LinkedIn</a>
+<section class="wrap" style="padding-top:36px;padding-bottom:64px;text-align:center">
+  <p class="eyebrow" style="margin:0 0 10px;color:var(--tet-purple)">More cases coming</p>
+  <p style="margin:0;font-style:italic;color:var(--text-secondary)">This is the first case in the series. New ones will be added here.</p>
+</section>
+
+<section style="background:var(--paper-warm);padding:72px 0;border-top:1px solid var(--hairline)">
+  <div class="wrap">
+    <h2 class="block">Your version of this question</h2>
+    <div class="read">
+      <p>Every environment asks for different thinking at different moments.</p>
+      <p style="font-size:24px;line-height:1.4;font-weight:600">If you run a team, project or operation where uncertainty and speed both matter: which capabilities does it need, and when?</p>
+      <a class="pill" href="https://doodle.com/bp/deepakmehta/professional-meeting" style="margin-top:8px">Start a conversation</a>
     </div>
+  </div>
+</section>
+
+<section style="background:var(--tet-purple);color:var(--paper);padding:44px 0"><div class="wrap"><p style="font-style:italic;font-size:clamp(20px,2.4vw,26px);line-height:1.4;margin:0 auto;max-width:30em;text-align:center">This case describes a development exercise.<br>TƎT is not used to select, rate, rank or assess individuals.</p></div></section>
+
+<footer id="follow" style="background:color-mix(in srgb,var(--jewel-ochre-soft) 45%,var(--paper));color:var(--ink);padding:72px 5vw 44px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:56px;font-family:var(--font-sans);font-size:12px;border-top:0">
+  <div style="max-width:440px">
+    <div style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:16px">Stay close to the constellation</div>
+    <p style="font-family:var(--font-serif);font-size:18px;color:var(--ink);line-height:1.4;margin:0 0 14px">New stories, journals and ways to explore.</p>
+    <p style="font-family: var(--font-serif); font-size: 14px; color: var(--ink); line-height: 1.6; margin: 0">TƎT is still growing. Subscribe to hear when the books come online, where you can test the Discovery Game, speak at or attend our TƎT Talks, and stay close as new stories, tools and gatherings emerge.</p>
+  </div>
+  <div style="min-width:260px">
+    <form action="https://twitter.us6.list-manage.com/subscribe/post?u=5bf5641e99686b66085f92571&amp;id=d434c7e248&amp;f_id=002722e2f0" method="post" target="_blank" style="display:flex;flex-direction:column;gap:10px">
+      <span style="font-family:var(--font-sans);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)">Subscribe</span>
+      <div style="display:flex;gap:8px">
+        <input type="email" name="EMAIL" required="" placeholder="Your email" style="background:transparent;border:1px solid rgba(32,28,22,.45);border-radius:6px;color:var(--ink);font-family:var(--font-sans);font-size:12px;padding:9px 10px;width:190px">
+        <button type="submit" style="background:var(--tet-purple);color:var(--paper);border:none;border-radius:var(--radius-full);font-family:var(--font-sans);font-weight:700;font-size:12px;padding:9px 16px;cursor:pointer;white-space:nowrap">Subscribe</button>
+      </div>
+      <span style="color:var(--ink);font-size:11px">Occasional updates only. No profile, no quiz, no funnel.</span>
+    </form>
+    <a href="https://www.linkedin.com/company/tǝt/" target="_blank" rel="noopener" aria-label="TƎT on LinkedIn" style="display:inline-flex;align-items:center;gap:10px;align-self:flex-start;margin-top:22px;text-decoration:none;color:var(--ink);font-family:var(--font-sans);font-size:12px;font-weight:600" class="li"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Follow TƎT on LinkedIn</a>
   </div>
 </footer>
 
+<script>
+(function(){var b=document.getElementById('burger'),m=document.getElementById('mmenu');
+function s(o){m.classList.toggle('open',o);b.setAttribute('aria-expanded',o)}
+b.addEventListener('click',function(){s(!m.classList.contains('open'))});
+m.addEventListener('click',function(e){if(e.target.closest('a'))s(false)});
+window.addEventListener('resize',function(){if(innerWidth>=780)s(false)});})();
+</script>
 </body>
 </html>
